@@ -6,6 +6,7 @@ var pac_color;
 var start_time;
 var time_elapsed;
 var interval;
+//
 var position_flag;
 var side_packman_X = 0.15 * Math.PI;
 var side_packman_Y = 1.85 * Math.PI;
@@ -112,6 +113,7 @@ function Draw() {
 			center.x = i * 60 + 30;
 			center.y = j * 60 + 30;
 			if (board[i][j] == 2) {
+				//
 				if(position_flag==1){ // key up
 					side_packman_X =1.65 * Math.PI;
 					side_packman_Y =1.35 * Math.PI;
@@ -140,6 +142,7 @@ function Draw() {
 					eye_packman_Y = -15;	
 
 				}
+				//
 				context.beginPath();
 				context.arc(center.x, center.y, 30, side_packman_X, side_packman_Y); // half circle - Right
 				context.lineTo(center.x, center.y);
@@ -171,7 +174,9 @@ function UpdatePacmanSide(side){
 function UpdatePosition() {
 	board[shape.i][shape.j] = 0;
 	var x = GetKeyPressed();
+	//
 	position_flag = x;
+	//
 	if (x == 1) { // Up Side
 		if (shape.j > 0 && board[shape.i][shape.j - 1] != 4) {
 			shape.j--;

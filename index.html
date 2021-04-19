@@ -8,30 +8,73 @@
 
 	<body>
 
-		<div class="main">
+	<header>
+		<img id="logo" src="images/logo.png" style="width: 110px; height: auto; display: block; margin: inherit; z-index: 100;">
+	</header>
 
-			<div class="welcome" style="background-image: url('images/CookieEater.jpg'); background-size: cover; height: 1000px; width: 100%; padding-top: 85px;">
-				<img id="logo" src="images/logo.png" style="width: 110px; height: auto; display: block; margin: inherit" >
-				
-				<button class="btn1" id="registerButton">Register</button>
-				<button class="btn2" id="LogInButton">LogIn</button>
+	<div class="Menu">
+		<a id="#welcome" onclick="Welcome()">Welcome</a>
+		<a id="#register" onclick="Register()">Register</a>
+		<a id="#login" onclick="LogIn()">LogIn</a>
+		<a id="#about" onclick="About()">About</a>
+	</div>
 
-			</div>
+	<div class="Content">
 
-			<br /><br /><br /><br /><br /><br />
+		<div class="welcome" style="background-image: url('images/CookieEater.jpg'); background-size: cover; height: 1000px; width: 100%; padding-top: 85px;">
+			<button class="btn1" id="registerButton" onclick="RegisterDiv()">Register</button>
+			<button class="btn2" id="LogInButton">LogIn</button>
+		</div>
 
-			<div id="score">
-				<label for="lblScore">SCORE:</label>
-				<input id="lblScore" type="text" />
-			</div>
-			<div id="time">
-				<label for="lblTime">TIME:</label>
-				<input id="lblTime" type="text" />
-			</div>
-			<div id="game">
-				<canvas id="canvas" height="600" width="600"></canvas>
-			</div>
+		<div class="RegisterDiv">
+			<form action="/action_page.php">
+
+
+				<p>Please fill in this form to create an account.</p>
+				<hr>
+
+				<label for="email"><b>Email</b></label><br />
+				<input type="text" placeholder="Enter Email" name="email" id="email" required><br />
+
+				<label for="psw"><b>Password</b></label><br />
+				<input type="password" placeholder="Enter Password" name="psw" id="psw" required><br />
+
+				<label for="psw-repeat"><b>Repeat Password</b></label><br />
+				<input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required><br />
+				<hr>
+
+				<label for="birthday">Birthday:</label>
+				<input type="date" id="birthday" name="birthday">
+
+				<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+				<button type="submit" class="registerbtn">Register</button>
+
+
+
+
+			</form>
+		</div>
+
 
 		</div>
+
+		<br /><br /><br /><br /><br /><br />
+
+		<div id="score" style="display: none;">
+			<label for="lblScore">SCORE:</label>
+			<input id="lblScore" type="text" />
+		</div>
+		<div id="time" style="display: none;">
+			<label for="lblTime">TIME:</label>
+			<input id="lblTime" type="text" />
+		</div>
+		<div id="game" style="display: none;">
+			<canvas id="canvas" height="600" width="600"></canvas>
+		</div>
+
+	</div>
+	<footer>
+		<p> Liad Segev & Dvir Rainisch 2021 &copy; copyright</p>
+	</footer>
 	</body>
 </html>
