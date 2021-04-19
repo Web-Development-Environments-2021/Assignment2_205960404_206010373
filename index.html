@@ -1,11 +1,41 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="style.css" />
 		<script src="./jquery-3.4.1.slim.min.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
 	</head>
 
 	<body>
+
+
+		<div id="menu">
+			<ul>
+				<il><a id="welcome" onclick="Welcome()"> Welcome</></il>
+				<il><a onclick="register()"> Register</></il>
+				<il><a onclick="login()"> Login</></il>
+				<il><a onclick="about()">About</></il>
+
+			</ul>
+		</div>
+
+		
+
+
+		<div style="background-image: url('images/CookieEater.jpg'); background-size: cover; height: 100%; width: 100%; padding-top: 85px;">
+
+			<button id="registerButton" on>Register</button>
+			<button id="LogInButton">LogIn</button>
+
+		</div>
+
+
+
+
+
+
+
+
 		<div id="score">
 			<label for="lblScore">SCORE:</label>
 			<input id="lblScore" type="text" />

@@ -1,0 +1,124 @@
+
+body {
+  
+  background-image: linear-gradient( rgb(102, 102, 102), rgb(38, 38, 38));
+  margin: 0px;
+  font-family: Copperplate, Papyrus, fantasy;
+}
+
+/* MENU */
+.navbar {
+  top: 0px;
+  left: 0px;
+  margin-top: 0;
+  width: 100%;
+  background-color:#b3b3ff;
+  position: fixed;
+  flout: left;
+}
+
+
+/* MENU links */
+.navbar a {
+  float: left;
+  text-align: center;
+  padding: 11px;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.navbar img {
+  float: left;
+  margin: 0px 10px;
+}
+
+/* MENUlinks on mouse-over */
+.navbar a:hover {
+  background-color: #808080;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #E6E6FA;
+  color: white;
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right;
+ 
+}
+
+/* pic gallery to center */
+.section #container{
+	text-align: center
+}
+
+.section #about{
+	margin-top:50;}
+
+body, h1, h2, h3, h4, h5, h6 {
+  color: white;
+}
+
+section{
+    margin:30px;
+    paddind:50px;
+    text-align:center;
+    border-width: 5px;
+    border-style:double;
+    text-align:center;
+    font-size: 115%;}
+
+h1{
+	color: rgb(179, 179, 255);
+	font-family: Copperplate, Papyrus, fantasy;
+	font-size: 270%;
+	margin: 20px;
+}
+
+h3{
+	color: rgb(64, 64, 64);
+        font-family: Copperplate, Papyrus, fantasy;
+	font-size: 500%;
+	margin: 20px;
+	text-align:right;
+	font-weight: bold;
+}
+
+a:-webkit-any-link {
+    color: white;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#Button {
+Height: 30px;
+Width: 180px;
+background-color: #b3b3ff;
+font-family: Copperplate, Papyrus, fantasy;
+font-size: 18px;
+color: #FFFFFF;
+}
+
+#Button:hover {
+background-color: #808080;
+font-family: Copperplate, Papyrus, fantasy;
+}
+
+#emojis{
+Height: 30px;
+Width: 50px;
+background-color: #b3b3ff;
+font-size: 18px;
+color: #FFFFFF;
+}
+
+#Button:hover {
+background-color: #808080;
+font-family: Copperplate, Papyrus, fantasy;
+}
+
+
+
