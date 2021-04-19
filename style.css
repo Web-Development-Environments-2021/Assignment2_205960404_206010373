@@ -1,75 +1,79 @@
 
-body {
-  
+body 
+{
   background-image: linear-gradient( rgb(102, 102, 102), rgb(38, 38, 38));
   margin: 0px;
   font-family: Copperplate, Papyrus, fantasy;
 }
 
-/* MENU */
-.navbar {
-  top: 0px;
-  left: 0px;
-  margin-top: 0;
+.welcome{
+  position: relative;
   width: 100%;
-  background-color:#b3b3ff;
-  position: fixed;
-  flout: left;
 }
 
+.welcome img {
+  width: 100%;
+  height: auto;
+}
 
-/* MENU links */
-.navbar a {
-  float: left;
-  text-align: center;
-  padding: 11px;
+.welcome .btn1 {
+  position: absolute;
+  top: 70%;
+  left: 56%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
   color: white;
-  text-decoration: none;
-  font-size: 18px;
+  font-size: 16px;
+  padding: 30px 70px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-.navbar img {
-  float: left;
-  margin: 0px 10px;
-}
-
-/* MENUlinks on mouse-over */
-.navbar a:hover {
-  background-color: #808080;
-}
-
-/* Add a color to the active/current link */
-.topnav a.active {
-  background-color: #E6E6FA;
+.welcome .btn2 {
+  position: absolute;
+  top: 70%;
+  left: 44%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
   color: white;
+  font-size: 16px;
+  padding: 30px 70px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-/* Right-aligned section inside the top navigation */
-.topnav-right {
-  float: right;
- 
+.welcome .btn1:hover {
+  background-color: black;
+}
+.welcome .btn2:hover {
+  background-color: black;
 }
 
-/* pic gallery to center */
-.section #container{
-	text-align: center
+
+#logo{
+position:absolute;
+top:0;
+left:0;
 }
 
-.section #about{
-	margin-top:50;}
 
-body, h1, h2, h3, h4, h5, h6 {
-  color: white;
-}
 
-section{
-    margin:30px;
-    paddind:50px;
-    text-align:center;
-    border-width: 5px;
-    border-style:double;
-    text-align:center;
-    font-size: 115%;}
+
+
+
+
+
+
+
+
+
+
+
+
 
 h1{
 	color: rgb(179, 179, 255);
@@ -82,7 +86,7 @@ h3{
 	color: rgb(64, 64, 64);
         font-family: Copperplate, Papyrus, fantasy;
 	font-size: 500%;
-	margin: 20px;
+	margin: 80px;
 	text-align:right;
 	font-weight: bold;
 }
@@ -107,13 +111,6 @@ background-color: #808080;
 font-family: Copperplate, Papyrus, fantasy;
 }
 
-#emojis{
-Height: 30px;
-Width: 50px;
-background-color: #b3b3ff;
-font-size: 18px;
-color: #FFFFFF;
-}
 
 #Button:hover {
 background-color: #808080;

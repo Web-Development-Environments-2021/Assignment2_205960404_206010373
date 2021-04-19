@@ -8,44 +8,30 @@
 
 	<body>
 
+		<div class="main">
 
-		<div id="menu">
-			<ul>
-				<il><a id="welcome" onclick="Welcome()"> Welcome</></il>
-				<il><a onclick="register()"> Register</></il>
-				<il><a onclick="login()"> Login</></il>
-				<il><a onclick="about()">About</></il>
+			<div class="welcome" style="background-image: url('images/CookieEater.jpg'); background-size: cover; height: 1000px; width: 100%; padding-top: 85px;">
+				<img id="logo" src="images/logo.png" style="width: 110px; height: auto; display: block; margin: inherit" >
+				
+				<button class="btn1" id="registerButton">Register</button>
+				<button class="btn2" id="LogInButton">LogIn</button>
 
-			</ul>
-		</div>
+			</div>
 
-		
+			<br /><br /><br /><br /><br /><br />
 
+			<div id="score">
+				<label for="lblScore">SCORE:</label>
+				<input id="lblScore" type="text" />
+			</div>
+			<div id="time">
+				<label for="lblTime">TIME:</label>
+				<input id="lblTime" type="text" />
+			</div>
+			<div id="game">
+				<canvas id="canvas" height="600" width="600"></canvas>
+			</div>
 
-		<div style="background-image: url('images/CookieEater.jpg'); background-size: cover; height: 100%; width: 100%; padding-top: 85px;">
-
-			<button id="registerButton" on>Register</button>
-			<button id="LogInButton">LogIn</button>
-
-		</div>
-
-
-
-
-
-
-
-
-		<div id="score">
-			<label for="lblScore">SCORE:</label>
-			<input id="lblScore" type="text" />
-		</div>
-		<div id="time">
-			<label for="lblTime">TIME:</label>
-			<input id="lblTime" type="text" />
-		</div>
-		<div id="game">
-			<canvas id="canvas" height="600" width="600"></canvas>
 		</div>
 	</body>
 </html>
