@@ -13,6 +13,14 @@ var side_packman_Y = 1.85 * Math.PI;
 var eye_packman_X = 5;
 var eye_packman_Y = -15;
 
+var Keys;
+var BallsNum;
+var BallsColor60Per;
+var BallColor30Per;
+var BallsColor10Per;
+var gameTime;
+var MonstersNums;
+
 $(document).ready(function() {
 		
 	//context = canvas.getContext("2d");
@@ -22,31 +30,67 @@ $(document).ready(function() {
 
 
 
-function Start() {
+function Start(Keys, BallsNum, BallsColor60Per, BallColor30Per, BallsColor10Per, gameTime, MonstersNums) {
+//function Start() {
 	board = new Array();
 	score = 0;
 	pac_color = "blue";
+
 	var cnt = 100;
-	var food_remain = 50;
+	var numBalls60 = 0.6 * BallsNum;
+	var numBalls30 = 0.3 * BallsNum;
+	var numBalls10 = 0.1 * BallsNum;
+	var food_remain = numBalls60 + numBalls30 + numBalls10;
+
+
 	var pacman_remain = 1;
 	start_time = new Date();
 	for (var i = 0; i < 10; i++) {
 		board[i] = new Array();
 		//put obstacles in (i=3,j=3) and (i=3,j=4) and (i=3,j=5), (i=6,j=1) and (i=6,j=2)
 		for (var j = 0; j < 10; j++) {
-			if (
-				(i == 3 && j == 3) ||
-				(i == 3 && j == 4) ||
-				(i == 3 && j == 5) ||
-				(i == 6 && j == 1) ||
-				(i == 6 && j == 2)
-			) {
-				board[i][j] = 4;
-			} else {
+			if ((i == 3 && j == 3) || (i == 3 && j == 4) ||	(i == 3 && j == 5) ||
+				(i == 6 && j == 1) || (i == 6 && j == 2)) {
+				board[i][j] = 4; //wall
+			} 
+			else {
 				var randomNum = Math.random();
 				if (randomNum <= (1.0 * food_remain) / cnt) {
+					
+					// 8 - 60
+					// 7 - 30
+					// 6 - 10
+					var randomFood = Math.floor(Math.random() * (8 - 6 + 1) + 6); 
+					board[i][j] = randomFood;
+					switch(randomFood){
+						case 6:
+							if (numBalls10 != 0){
+								numBalls10--;
+								food_remain--;
+								board[i][j] = randomFood;
+								break;
+							}
+							else{
+							
+							}
+							
+						case 7:
+							if (numBalls10 != 0){
+								numBalls10--;
+								food_remain--;
+								board[i][j] = randomFood;
+							}
+							break;
+						case 8:
+							if (numBalls10 != 0){
+								numBalls10--;
+								food_remain--;
+								board[i][j] = randomFood;
+							}
+							break;
+					}
+
 					food_remain--;
-					board[i][j] = 1;
 				} else if (randomNum < (1.0 * (pacman_remain + food_remain)) / cnt) {
 					shape.i = i;
 					shape.j = j;
