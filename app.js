@@ -30,16 +30,19 @@ $(document).ready(function() {
 
 
 
-function Start(Keys, BallsNum, BallsColor60Per, BallColor30Per, BallsColor10Per, gameTime, MonstersNums) {
-//function Start() {
+//function Start(Keys, BallsNum, BallsColor60Per, BallColor30Per, BallsColor10Per, gameTime, MonstersNums) {
+function Start() {
 	board = new Array();
 	score = 0;
 	pac_color = "blue";
 
 	var cnt = 100;
-	var numBalls60 = 0.6 * BallsNum;
-	var numBalls30 = 0.3 * BallsNum;
-	var numBalls10 = 0.1 * BallsNum;
+	//var numBalls60 = 0.6 * BallsNum;
+	var numBalls60 = 0.6 * 50;
+	//var numBalls30 = 0.3 * BallsNum;
+	var numBalls30 = 0.3 * 50;
+	//var numBalls10 = 0.1 * BallsNum;
+	var numBalls10 = 0.1 * 50;
 	var food_remain = numBalls60 + numBalls30 + numBalls10;
 
 
@@ -67,30 +70,36 @@ function Start(Keys, BallsNum, BallsColor60Per, BallColor30Per, BallsColor10Per,
 							if (numBalls10 != 0){
 								numBalls10--;
 								food_remain--;
-								board[i][j] = randomFood;
+								board[i][j] = 6;
 								break;
 							}
 							else{
-							
+								randomFood = Math.floor(Math.random() * (8 - 6 + 1) + 6);
 							}
 							
 						case 7:
-							if (numBalls10 != 0){
-								numBalls10--;
+							if (numBalls30 != 0){
+								numBalls30--;
 								food_remain--;
-								board[i][j] = randomFood;
+								board[i][j] = 7;
+								break;
 							}
-							break;
+							else{
+								randomFood = Math.floor(Math.random() * (8 - 6 + 1) + 6);
+							}
 						case 8:
-							if (numBalls10 != 0){
-								numBalls10--;
+							if (numBalls60 != 0){
+								numBalls60--;
 								food_remain--;
-								board[i][j] = randomFood;
+								board[i][j] = 8;
+								break;
 							}
-							break;
+							else{
+								randomFood = Math.floor(Math.random() * (8 - 6 + 1) + 6);
+							}
 					}
 
-					food_remain--;
+					//food_remain--;
 				} else if (randomNum < (1.0 * (pacman_remain + food_remain)) / cnt) {
 					shape.i = i;
 					shape.j = j;
@@ -200,10 +209,25 @@ function Draw() {
 				context.arc(center.x + eye_packman_X, center.y + eye_packman_Y, 5, 0, 2 * Math.PI); // circle
 				context.fillStyle = "black"; //color
 				context.fill();
-			} else if (board[i][j] == 1) {
+			//} else if (board[i][j] == 1) {
+			//	context.beginPath();
+			//	context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+			//	context.fillStyle = "black"; //color
+			//	context.fill();
+			} else if (board[i][j] == 6) {
 				context.beginPath();
 				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-				context.fillStyle = "black"; //color
+				context.fillStyle = "red"; //color
+				context.fill();
+			} else if (board[i][j] == 7) {
+				context.beginPath();
+				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+				context.fillStyle = "yellow"; //color
+				context.fill();
+			} else if (board[i][j] == 8) {
+				context.beginPath();
+				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+				context.fillStyle = "pink"; //color
 				context.fill();
 			} else if (board[i][j] == 4) {
 				context.beginPath();
@@ -249,8 +273,17 @@ function UpdatePosition() {
 		}
 		
 	}
-	if (board[shape.i][shape.j] == 1) {
-		score++;
+	//if (board[shape.i][shape.j] == 1) {
+	//	score++;
+	//}
+	if (board[shape.i][shape.j] == 6) {
+		score+=25;
+	}
+	else if (board[shape.i][shape.j] == 7) {
+		score+=15;
+	}
+	else if (board[shape.i][shape.j] == 8) {
+		score+=5;
 	}
 	board[shape.i][shape.j] = 2;
 	var currentTime = new Date();
@@ -283,7 +316,7 @@ function hideDivs() {
 	$('.RegisterDiv').hide();
 	$('.LoginDiv').hide();
 	$('.GameDiv').hide();
-	$('.settings').hide();
+	$('.SettingsDiv').hide();
 	$('.about').hide();
 	// resetGame();
 };
