@@ -21,17 +21,15 @@
 			<a id="#Game" onclick="changeDivs('GameDiv')">Game</a>
 		</div>
 
-	<div class="Content" style="background-image: url('images/CookieEater.jpg'); background-size: cover; height: 1000px; width: 100%; padding-top: 85px;">
+		<div class="Content" style="background-image: url('images/CookieEater.jpg'); background-size: cover; height: 1000px; width: 100%; padding-top: 85px;">
 
-		<div class="WelcomeDiv" >
-			<button class="btn1" id="registerButton" onclick="changeDivs('RegisterDiv')">Register</button>
-			<button class="btn2" id="LogInButton" onclick="changeDivs('LoginDiv')">LogIn</button>
-		</div>
+			<div class="WelcomeDiv">
+				<button class="btn1" id="registerButton" onclick="changeDivs('RegisterDiv')">Register</button>
+				<button class="btn2" id="LogInButton" onclick="changeDivs('LoginDiv')">LogIn</button>
+			</div>
 
-		<div class="RegisterDiv">
-			<form action="/action_page.php">
-
-
+			<div class="RegisterDiv">
+				<form action="/action_page.php">
 				<div id="RegisterDiv">
 					<div id="registerForm">
 						<div id="RegisterTitle">
@@ -77,52 +75,72 @@
 					</div>
 				</div>
 
-			</form>
+				</form>
+			</div>
+
+			<div class="LoginDiv">
+				<form action="action_page.php" method="post">
+					<div class="imgcontainer">
+						<img src="img_avatar2.png" alt="Avatar" class="avatar">
+					</div>
+
+					<div class="container">
+						<label for="uname"><b>Username</b></label><br />
+						<input type="text" placeholder="Enter Username" name="uname" required><br />
+
+						<label for="psw"><b>Password</b></label><br />
+						<input type="password" placeholder="Enter Password" name="psw" required><br /><br /><br />
+
+						<button type="submit">Login</button>
+					</div>
+				</form>
+			</div>
+
+			<div class="SettingsDiv">
+				<h1>Choose the Game Settings as you Wish:</h1>
+				<div class="set" id="SetNumOfBalls">
+					<label for="" class="SetNumOfBalls">Choose Number Of Cookies:</label>
+					50  <input type="range" min="50" max="90" value="50" class="slider" id="myRange" required>  90
+				</div>
+				<div class="set" id="SetGameTime">
+					<label for="" class="set-labels">Choose Game Time in seconds: (minimum 60 sec):</label>
+					<input type="text" min='60' required>
+				</div>
+				<div class="set" id="setNumOfMonsters">
+					<label for="liad">Choose Number Of Monsters:</label>
+					<select name="numOfMonsters" id="numOfMonsters">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select>
+					<br><br>
+
+				</div>
+			</div>
+			
+
+
+			<div class="GameDiv">
+
+				<div id="score">
+					<label for="lblScore">SCORE:</label>
+					<input id="lblScore" type="text" />
+				</div>
+				<div id="time">
+					<label for="lblTime">TIME:</label>
+					<input id="lblTime" type="text" />
+				</div>
+				<div id="game">
+					<canvas id="canvas" height="600" width="600"></canvas>
+				</div>
+			</div>
 		</div>
 
-		<div class="LoginDiv">
-			<form action="action_page.php" method="post">
-				<div class="imgcontainer">
-					<img src="img_avatar2.png" alt="Avatar" class="avatar">
-				</div>
+			<br /><br /><br /><br /><br /><br />
 
-				<div class="container">
-					<label for="uname"><b>Username</b></label><br />
-					<input type="text" placeholder="Enter Username" name="uname" required><br />
-
-					<label for="psw"><b>Password</b></label><br />
-					<input type="password" placeholder="Enter Password" name="psw" required><br /><br /><br />
-
-					<button type="submit">Login</button>
-				</div>
-
-
-			</form>
-
-		</div>
-
-        <div class="GameDiv">
-
-            <div id="score" >
-                <label for="lblScore">SCORE:</label>
-                <input id="lblScore" type="text" />
-            </div>
-            <div id="time" >
-                <label for="lblTime">TIME:</label>
-                <input id="lblTime" type="text" />
-            </div>
-            <div id="game">
-                <canvas id="canvas" height="600" width="600"></canvas>
-            </div>
-        </div>
-	</div>
-
-		<br /><br /><br /><br /><br /><br />
-
-		
-
-		<footer>
-			<p> Liad Segev & Dvir Rainisch 2021 &copy; copyright</p>
-		</footer>
+			<footer>
+				<p> Liad Segev & Dvir Rainisch 2021 &copy; copyright</p>
+			</footer>
 </body>
 </html>

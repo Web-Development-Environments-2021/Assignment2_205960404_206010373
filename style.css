@@ -76,14 +76,14 @@ left:0;
 
 
 h1{
-	color: rgb(179, 179, 255);
+	color: black;
 	font-family: Copperplate, Papyrus, fantasy;
-	font-size: 270%;
+	font-size: 180%;
 	margin: 20px;
 }
 
 h3{
-	color: rgb(64, 64, 64);
+	color: black;;
         font-family: Copperplate, Papyrus, fantasy;
 	font-size: 500%;
 	margin: 80px;
