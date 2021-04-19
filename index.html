@@ -16,9 +16,9 @@
 			<a id="#welcome" onclick="changeDivs('WelcomeDiv')">Welcome</a>
 			<a id="#register" onclick="changeDivs('RegisterDiv')">Register</a>
 			<a id="#login" onclick="changeDivs('LoginDiv')">LogIn</a>
-			<a id="#Settings" onclick="changeDivs('Game')">Settings</a>
+			<a id="#Settings" onclick="changeDivs('SettingsDiv')">Settings</a>
 			<a id="#about" onclick="changeDivs('AboutDiv')">About</a>
-			<a id="#Game" onclick="changeDivs('Game')">Game</a>
+			<a id="#Game" onclick="changeDivs('GameDiv')">Game</a>
 		</div>
 
 	<div class="Content" style="background-image: url('images/CookieEater.jpg'); background-size: cover; height: 1000px; width: 100%; padding-top: 85px;">
@@ -101,22 +101,25 @@
 
 		</div>
 
+        <div class="GameDiv">
 
-		</div>
+            <div id="score" >
+                <label for="lblScore">SCORE:</label>
+                <input id="lblScore" type="text" />
+            </div>
+            <div id="time" >
+                <label for="lblTime">TIME:</label>
+                <input id="lblTime" type="text" />
+            </div>
+            <div id="game">
+                <canvas id="canvas" height="600" width="600"></canvas>
+            </div>
+        </div>
+	</div>
 
 		<br /><br /><br /><br /><br /><br />
 
-		<div id="score" style="display: none;">
-			<label for="lblScore">SCORE:</label>
-			<input id="lblScore" type="text" />
-		</div>
-		<div id="time" style="display: none;">
-			<label for="lblTime">TIME:</label>
-			<input id="lblTime" type="text" />
-		</div>
-		<div id="game" style="display: none;">
-			<canvas id="canvas" height="600" width="600"></canvas>
-		</div>
+		
 
 		<footer>
 			<p> Liad Segev & Dvir Rainisch 2021 &copy; copyright</p>

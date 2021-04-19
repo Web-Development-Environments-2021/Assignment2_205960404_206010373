@@ -14,6 +14,7 @@ var eye_packman_X = 5;
 var eye_packman_Y = -15;
 
 $(document).ready(function() {
+		
 	//context = canvas.getContext("2d");
 	//Start();
 	changeDivs('WelcomeDiv');
@@ -227,13 +228,17 @@ function UpdatePosition() {
 function changeDivs(div) {
 	hideDivs();
 	$('.' + div).show();
+	if(div == 'GameDiv'){
+		context = canvas.getContext("2d");
+		Start();
+	}
 };
 
 function hideDivs() {
 	$('.WelcomeDiv').hide();
 	$('.RegisterDiv').hide();
 	$('.LoginDiv').hide();
-	$('.pacman').hide();
+	$('.GameDiv').hide();
 	$('.settings').hide();
 	$('.about').hide();
 	// resetGame();
