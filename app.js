@@ -7,6 +7,7 @@ var start_time;
 var time_elapsed;
 var interval;
 //
+var friendPackman = new Object();
 var position_flag;
 var side_packman_X = 0.15 * Math.PI;
 var side_packman_Y = 1.85 * Math.PI;
@@ -56,13 +57,24 @@ function Start() {
 				(i == 6 && j == 1) || (i == 6 && j == 2)) {
 				board[i][j] = 4; //wall
 			} 
+			else if ((i == 0 && j == 0) || (i == 0 && j == 9) ||	(i == 9 && j == 0) ||
+				(i == 9 && j == 9)) {
+				board[i][j] = 5; //monster
+			} 
+			else if( i==4 && j==4){
+				board[i][j] = 10;
+				friendPackman.i = 4;
+				friendPackman.j = 4;
+			}
 			else {
 				var randomNum = Math.random();
 				if (randomNum <= (1.0 * food_remain) / cnt) {
 					
+					// 10 - friendPackman
 					// 8 - 60
 					// 7 - 30
 					// 6 - 10
+					// 5 - Monsters
 					var randomFood = Math.floor(Math.random() * (8 - 6 + 1) + 6); 
 					board[i][j] = randomFood;
 					switch(randomFood){
@@ -234,14 +246,22 @@ function Draw() {
 				context.rect(center.x - 30, center.y - 30, 60, 60);
 				context.fillStyle = "grey"; //color
 				context.fill();
+			} else if (board[i][j] == 5) {
+				context.beginPath();
+				context.rect(center.x - 30, center.y - 30, 60, 60);
+				context.fillStyle = "black"; //color
+				context.fill();
+			
+			} else if (board[i][j] >=10) {
+				context.beginPath();
+				context.rect(center.x - 30, center.y - 30, 60, 60);
+				context.fillStyle = "white"; //color
+				context.fill();
 			}
 		}
 	}
 }
 
-function UpdatePacmanSide(side){
-	
-}
 
 function UpdatePosition() {
 	board[shape.i][shape.j] = 0;
@@ -285,13 +305,17 @@ function UpdatePosition() {
 	else if (board[shape.i][shape.j] == 8) {
 		score+=5;
 	}
+	else if (board[shape.i][shape.j] == 5) {
+		score-=10;
+	}
 	board[shape.i][shape.j] = 2;
 	var currentTime = new Date();
 	time_elapsed = (currentTime - start_time) / 1000;
 	if (score >= 20 && time_elapsed <= 10) {
 		pac_color = "green";
 	}
-	if (score == 50) {
+	if (score >= 50) {
+		Draw();
 		window.clearInterval(interval);
 		window.alert("Game completed");
 	} else {
