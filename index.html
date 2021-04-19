@@ -8,22 +8,22 @@
 
 	<body>
 
-	<header>
-		<img id="logo" src="images/logo.png" style="width: 110px; height: auto; display: block; margin: inherit; z-index: 100;">
-	</header>
+		<header>
+			<!-- <img id="logo" src="images/logo.png" style="width: 110px; height: auto; display: block; margin: inherit; z-index: 100;"> -->
+		</header>
 
 	<div class="Menu">
-		<a id="#welcome" onclick="Welcome()">Welcome</a>
-		<a id="#register" onclick="Register()">Register</a>
-		<a id="#login" onclick="LogIn()">LogIn</a>
-		<a id="#about" onclick="About()">About</a>
+		<a id="#welcome" onclick="changeDivs('WelcomeDiv')">Welcome</a>
+		<a id="#register" onclick="changeDivs('RegisterDiv')">Register</a>
+		<a id="#login" onclick="changeDivs('LoginDiv')">LogIn</a>
+		<a id="#about" onclick="changeDivs()">About</a>
 	</div>
 
-	<div class="Content">
+	<div class="Content" style="background-image: url('images/CookieEater.jpg'); background-size: cover; height: 1000px; width: 100%; padding-top: 85px;">
 
-		<div class="welcome" style="background-image: url('images/CookieEater.jpg'); background-size: cover; height: 1000px; width: 100%; padding-top: 85px;">
-			<button class="btn1" id="registerButton" onclick="RegisterDiv()">Register</button>
-			<button class="btn2" id="LogInButton">LogIn</button>
+		<div class="WelcomeDiv" >
+			<button class="btn1" id="registerButton" onclick="changeDivs('RegisterDiv')">Register</button>
+			<button class="btn2" id="LogInButton" onclick="changeDivs('LoginDiv')">LogIn</button>
 		</div>
 
 		<div class="RegisterDiv">
@@ -55,6 +55,33 @@
 			</form>
 		</div>
 
+		<div class="LoginDiv">
+			<form action="action_page.php" method="post">
+				<div class="imgcontainer">
+					<img src="img_avatar2.png" alt="Avatar" class="avatar">
+				</div>
+
+				<div class="container">
+					<label for="uname"><b>Username</b></label>
+					<input type="text" placeholder="Enter Username" name="uname" required>
+
+					<label for="psw"><b>Password</b></label>
+					<input type="password" placeholder="Enter Password" name="psw" required>
+
+					<button type="submit">Login</button>
+					<label>
+						<input type="checkbox" checked="checked" name="remember"> Remember me
+					</label>
+				</div>
+
+				<div class="container" style="background-color:#f1f1f1">
+					<button type="button" class="cancelbtn">Cancel</button>
+					<span class="psw">Forgot <a href="#">password?</a></span>
+				</div>
+			</form>
+
+		</div>
+
 
 		</div>
 
@@ -72,9 +99,8 @@
 			<canvas id="canvas" height="600" width="600"></canvas>
 		</div>
 
-	</div>
-	<footer>
-		<p> Liad Segev & Dvir Rainisch 2021 &copy; copyright</p>
-	</footer>
-	</body>
+		<footer>
+			<p> Liad Segev & Dvir Rainisch 2021 &copy; copyright</p>
+		</footer>
+</body>
 </html>

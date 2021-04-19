@@ -14,9 +14,12 @@ var eye_packman_X = 5;
 var eye_packman_Y = -15;
 
 $(document).ready(function() {
-	context = canvas.getContext("2d");
-	Start();
+	//context = canvas.getContext("2d");
+	//Start();
+	changeDivs('WelcomeDiv');
 });
+
+
 
 function Start() {
 	board = new Array();
@@ -216,4 +219,25 @@ function UpdatePosition() {
 	} else {
 		Draw();
 	}
+
+
+
 }
+
+function changeDivs(div) {
+	hideDivs();
+	$('.' + div).show();
+};
+
+function hideDivs() {
+	$('.WelcomeDiv').hide();
+	$('.RegisterDiv').hide();
+	$('.LoginDiv').hide();
+	$('.pacman').hide();
+	$('.settings').hide();
+	$('.about').hide();
+	// resetGame();
+};
+
+
+
