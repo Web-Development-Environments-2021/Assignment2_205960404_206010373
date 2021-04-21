@@ -1,28 +1,38 @@
 // JavaScript source code
-Login(){
-    // todo
+function Login(){
+    //let uname= document.getElementById('username').value;
+    //let pass= document.getElementById('psw').value;
+    //if (loginValid(uname,pass)){
+    changeDivs('SettingsDiv');
+   // }
+    //else {
+   //     alert("no good!");
+  //  }
 }
 
-checkIfUserExists(userName){
+    
+
+
+function checkIfUserExists(userName){
      //todo
-}
-checkIfPasswordValid(pass)
+};
+function checkIfPasswordValid(pass)
 {
     //todo
 }
 
-checkIfFullNameValid()
+function checkIfFullNameValid()
 {
     //todo
 } 
 
-checkIfMailValid()
+function checkIfMailValid()
 {
     //todo
 }
 
 
-registerInfo(){
+function registerInfo(){
     let userName = document.getElementById('usernameRegiser').value;
     //check if exists
     let UserNameExist = checkIfUserExists(userName);
@@ -60,11 +70,11 @@ registerInfo(){
         }
     }
 }
-randomSettings(){
+function randomSettings(){
     // todo
 }
 
-applySettings(){
+function applySettings(){
     // todo
 }
 
@@ -77,9 +87,9 @@ const users = [
         birthDate: ""
     },
 
-    username: "liad",
+    {username: "liad",
     password: "liad1410",
     fullName: "liad Segev",
     email: "Liadey2@gmail.com",
     birthDate: ""
-    },
+    }]
