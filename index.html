@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" type="text/css" href="StyleWelcomeDiv.css" />
+		<link rel="stylesheet" type="text/css" href="StyleRegisterDiv.css" />
+		<link rel="stylesheet" type="text/css" href="StyleLoginDiv.css" />
+		<link rel="stylesheet" type="text/css" href="StyleSettingsDiv.css" />
+		<link rel="stylesheet" type="text/css" href="StyleGameDiv.css" />
 		<script src="./jquery-3.4.1.slim.min.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
 		<script type="text/javascript" src="./settings.js"></script>
@@ -35,47 +39,48 @@
 				<div id="RegisterDiv">
 					<div id="registerForm">
 						<div id="RegisterTitle">
-							Register Here <br /><br /><br />
 						</div>
 
 						<div id="RegiserInstruction">
-							Please fill in this form to create an account !
+							Please fill this form to create your account !
 						</div>
 
 						<div class="registerFields">
 							User Name
 						</div>
-						<input class="reg-input" type="text" placeholder="Enter User Name" name="userName" id="usernameRegiser" required>
+						<input class="registerinput" type="text" placeholder="Enter User Name" name="userName" id="usernameRegiser" required>
 
 						<div class="registerField">
 							Password
 						</div>
-						<input class="reg-input" type="password" placeholder="Enter Password" name="psw" id="pswRegiser" required>
+						<input class="registerinput" type="password" placeholder="Enter Password" name="psw" id="passwordRegiser" required>
 
 						<div class="registerField">
 							Full Name
 						</div>
-						<input class="reg-input" type="text" placeholder="Enter your full name" name="fullname" id="nameRegiser" required>
+						<input class="registerinput" type="text" placeholder="Enter your full name" name="fullname" id="nameRegiser" required>
 
 						<div class="registerField">
 							Email
 						</div>
-						<input class="reg-input" type="text" placeholder="Enter Email" name="email" id="emailRegiser" required>
+						<input class="registerinput" type="text" placeholder="Enter Email" name="email" id="emailRegiser" required>
 
 						<div id="containerDateRegisterBtn">
 							<div id="dateContainer">
 								<div class="registerField">
 									Birth Date
 								</div>
-								<input class="reg-input" type="date" name="birthday" id="birthdayRegiser" required>
+								<input class="registerinput" type="date" name="birthday" id="birthdayRegiser" required>
 							</div>
 
-							<button id="registerbtn" onclick="registerUser()">
+							<button id="registerbtn" onclick="registerInfo()">
 								Register
 							</button>
 						</div>
 					</div>
 				</div>
+
+
 
 				</form>
 			</div>
@@ -160,7 +165,7 @@
 
 				</div>
 				<div id="set">
-					<button id="setrandBtn" onclick="setRandomSettings()">Random Settings</button>
+					<button id="setrandBtn" onclick="randomSettings()">Random Settings</button>
 					<button id="setapplyBtn" onclick="applySettings()">Apply</button>
 				</div>
 			</div>

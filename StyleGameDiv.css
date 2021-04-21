@@ -16,9 +16,9 @@ body
   height: auto;
 }
 
-.welcome .btn1 {
+.WelcomeDiv .btn1 {
   position: absolute;
-  top: 70%;
+  top: 80%;
   left: 56%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
@@ -31,9 +31,9 @@ body
   border-radius: 5px;
 }
 
-.welcome .btn2 {
+.WelcomeDiv .btn2 {
   position: absolute;
-  top: 70%;
+  top: 80%;
   left: 44%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
@@ -46,10 +46,10 @@ body
   border-radius: 5px;
 }
 
-.welcome .btn1:hover {
+.WelcomeDiv .btn1:hover {
   background-color: black;
 }
-.welcome .btn2:hover {
+.WelcomeDiv .btn2:hover {
   background-color: black;
 }
 

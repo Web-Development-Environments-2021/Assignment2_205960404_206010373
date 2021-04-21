@@ -1,0 +1,121 @@
+
+body 
+{
+  background-image: linear-gradient( rgb(102, 102, 102), rgb(38, 38, 38));
+  margin: 0px;
+  font-family: Copperplate, Papyrus, fantasy;
+}
+
+.welcome{
+  position: relative;
+  width: 100%;
+}
+
+.welcome img {
+  width: 100%;
+  height: auto;
+}
+
+.WelcomeDiv .btn1 {
+  position: absolute;
+  top: 80%;
+  left: 56%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 30px 70px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.WelcomeDiv .btn2 {
+  position: absolute;
+  top: 80%;
+  left: 44%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 30px 70px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.WelcomeDiv .btn1:hover {
+  background-color: black;
+}
+.WelcomeDiv .btn2:hover {
+  background-color: black;
+}
+
+
+#logo{
+position:absolute;
+top:0;
+left:0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+h1{
+	color: black;
+	font-family: Copperplate, Papyrus, fantasy;
+	font-size: 180%;
+	margin: 20px;
+}
+
+h3{
+	color: black;;
+        font-family: Copperplate, Papyrus, fantasy;
+	font-size: 500%;
+	margin: 80px;
+	text-align:right;
+	font-weight: bold;
+}
+
+a:-webkit-any-link {
+    color: white;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#Button {
+Height: 30px;
+Width: 180px;
+background-color: #b3b3ff;
+font-family: Copperplate, Papyrus, fantasy;
+font-size: 18px;
+color: #FFFFFF;
+}
+
+#Button:hover {
+background-color: #808080;
+font-family: Copperplate, Papyrus, fantasy;
+}
+
+
+#Button:hover {
+background-color: #808080;
+font-family: Copperplate, Papyrus, fantasy;
+}
+
+
+
