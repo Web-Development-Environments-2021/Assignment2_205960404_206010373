@@ -4,6 +4,8 @@
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<script src="./jquery-3.4.1.slim.min.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
+		<script type="text/javascript" src="./settings.js"></script>
+		<script type="text/javascript" src="./Users.js"></script>
 	</head>
 
 	<body>
@@ -99,29 +101,52 @@
 			<div class="SettingsDiv">
 				<h1>Choose the Game Settings as you Wish:</h1>
 				<!-- keyboard--todo------------>
-				<!---------->
+				<div class="set" id="upkey">
+					<label>Choose your UP Key:</label>
+					<input class="key" type="text" id="keyup" placeholder="Choose any key"><br /><br />
+				</div>
+				<div class="set" id="downkey">
+					<label>Choose your Down Key:</label>
+					<input class="key" type="text" id="keydown" placeholder="Choose any key"><br /><br />
+				</div>
+				<div class="set" id="rightkey">
+					<label>Choose your Right Key:</label>
+					<input class="key" type="text" id="keyright" placeholder="Choose any key"><br /><br />
+				</div>
+				<div class="set" id="leftkey">
+					<label>Choose your Left Key:</label>
+					<input class="key" type="text" id="keyleft" placeholder="Choose any key"><br /><br />
+				</div>
+
+
 
 				<div class="set" id="SetNumOfBalls">
 					<label for="" class="SetNumOfBalls">Choose Number Of Cookies:</label>
 					50  <input type="range" min="50" max="90" value="50" class="slider" id="NumOfBallsChosenVal" onchange="NumOfBallsChosen(this.value)" required>  90
-					<label for="SetNumOfBalls" id="NumOfBallsChosen"></label>
+					<label for="SetNumOfBalls" id="NumOfBallsChosen"></label><br><br>
 				</div>
 
 
-				<!-----todo colors----->
-				<label for="favcolor">Select your favorite color:</label>
-				<input type="color" id="favcolor" name="favcolor" value="#ff0000"><br><br>
 
-				<label for="favcolor">Select your favorite color:</label>
-				<input type="color" id="favcolor" name="favcolor" value="#ff0000"><br><br>
+				<div class="set">
+					<label for="favcolor">Select your favorite color:</label>
+					<input type="color" id="ColorFor10" name="favcolor" value="#ff0000"><br><br>
+				</div>
 
-				<label for="favcolor">Select your favorite color:</label>
-				<input type="color" id="favcolor" name="favcolor" value="#ff0000"><br><br>
+				<div>
+					<label for="favcolor">Select your favorite color:</label>
+					<input type="color" id="ColorFor30" name="favcolor" value="#ff0000"><br><br>
+				</div>
+
+				<div>
+					<label for="favcolor">Select your favorite color:</label>
+					<input type="color" id="ColorFor60" name="favcolor" value="#ff0000"><br><br>
+				</div>
 
 
 				<div class="set" id="SetGameTime">
 					<label for="" class="set-labels">Choose Game Time in seconds: (minimum 60 sec):</label>
-					<input type="text" min='60' id="GameTimeVal" required>
+					<input type="text" min='60' id="GameTimeVal" required><br><br>
 				</div>
 				<div class="set" id="setNumOfMonsters">
 					<label for="liad">Choose Number Of Monsters:</label>
@@ -133,6 +158,10 @@
 					</select>
 					<br><br>
 
+				</div>
+				<div id="set">
+					<button id="setrandBtn" onclick="setRandomSettings()">Random Settings</button>
+					<button id="setapplyBtn" onclick="applySettings()">Apply</button>
 				</div>
 			</div>
 
