@@ -43,3 +43,11 @@ let ball30ColorFromUser = document.getElementById('Colorfor30').value;
 let ball60ColorFromUser = document.getElementById('Colorfor60').value;
 let gameTimeFromUser = document.getElementById('GameTimeVal').value;
 let numOfMonstersFromUser = document.getElementById('numOfMonstersValue').value;
+
+applySettings(){
+	// todo
+}
+
+randomSettings(){
+	// todo
+}

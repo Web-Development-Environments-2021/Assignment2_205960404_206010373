@@ -1,34 +1,39 @@
-// JavaScript source code
+//Login Functions
 function Login(){
-    //let uname= document.getElementById('username').value;
-    //let pass= document.getElementById('psw').value;
-    //if (loginValid(uname,pass)){
+    let uname= document.getElementById('username').value;
+    let pass= document.getElementById('psw').value;
+    if (loginValid(uname,pass)){
     changeDivs('SettingsDiv');
-   // }
-    //else {
-   //     alert("no good!");
-  //  }
+   }
+    else {
+       alert("no good!");
+   }
+}
+   
+function LoginValid(uname, pass)
+{
+    return SavedUsers.some((user) => user.username === uname && user.password === pass);
 }
 
-    
-
-
-function checkIfUserExists(userName){
-     //todo
-};
-function checkIfPasswordValid(pass)
+//Register Functions
+function checkIfUserExists()
 {
-    //todo
-}
-
-function checkIfFullNameValid()
-{
-    //todo
+    return SavedUsers.some((user) => user.username === uname);
 } 
 
-function checkIfMailValid()
+function PasswordOK()
 {
-    //todo
+    pass
+}
+
+function FullNameOK()
+{
+    pass
+} 
+
+function EmailOK()
+{
+    pass
 }
 
 
@@ -46,23 +51,20 @@ function registerInfo(){
     let validMail = checkIfMailValid(email);
 
     if (UserNameExist) {
-        if (confirm('UserName exists! Wanna login?')) {
-            changeDivs("LoginDiv")
-        } else {
-            changeDivs("WelcomeDiv")
-        }
+        if (confirm('Sorry... Username already taken')) {
+            changeDivs("RegisterDiv")
         return;
     }
-    if (validPassword && validFullName && validMail) {
-        users.push({
+    if (PasswordOK && FullNameOK && EmailOK) {
+        SavedUsers.push({
             username: userName,
-            password: psw,
+            password: pass,
             fullName: fullname,
-            email: mail,
+            email: email,
             birthDate: birthdate,
         });
         if (
-            confirm('You are Registrated! Wanna start a game now?')
+            confirm('Ready to go! Wanna start a game now?')
         ) {
             changeDivs("GameDiv")
         } else {
@@ -70,6 +72,11 @@ function registerInfo(){
         }
     }
 }
+
+
+
+// settings Function
+
 function randomSettings(){
     // todo
 }
@@ -78,7 +85,8 @@ function applySettings(){
     // todo
 }
 
-const users = [
+const SavedUsers = 
+[
     {
         username: "k",
         password: "k",
@@ -87,9 +95,11 @@ const users = [
         birthDate: ""
     },
 
-    {username: "liad",
-    password: "liad1410",
-    fullName: "liad Segev",
-    email: "Liadey2@gmail.com",
-    birthDate: ""
-    }]
+    {
+        username: "liad",
+        password: "liad1410",
+        fullName: "liad Segev",
+        email: "Liadey2@gmail.com",
+        birthDate: ""
+    }
+];
