@@ -8,11 +8,19 @@ var time_elapsed;
 var interval;
 //
 var friendPackman = new Object();
+var Monster1 = new Object();
+var Monster2 = new Object();
+var Monster3 = new Object();
+var Monster4 = new Object();
+var totalMonsters;
+
 var position_flag;
+var friendPackmanFlag;
 var side_packman_X = 0.15 * Math.PI;
 var side_packman_Y = 1.85 * Math.PI;
 var eye_packman_X = 5;
 var eye_packman_Y = -15;
+var disqualification;
 
 var Keys;
 var BallsNum;
@@ -22,6 +30,8 @@ var BallsColor10Per;
 var gameTime;
 var MonstersNums;
 
+var myMusic;
+
 $(document).ready(function() {
 		
 	//context = canvas.getContext("2d");
@@ -30,13 +40,31 @@ $(document).ready(function() {
 });
 
 
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+        this.sound.play();
+    }
+    this.stop = function(){
+        this.sound.pause();
+    }    
+}
 
 //function Start(Keys, BallsNum, BallsColor60Per, BallColor30Per, BallsColor10Per, gameTime, MonstersNums) {
 function Start() {
+	myMusic = new sound('AMNAMNAM.mp3');
+	myMusic.play();
+	MonstersNums = 4;
+	totalMonsters = 0;
 	board = new Array();
 	score = 0;
 	pac_color = "blue";
-
+	friendPackmanFlag = false;
 	var cnt = 100;
 	//var numBalls60 = 0.6 * BallsNum;
 	var numBalls60 = 0.6 * 50;
@@ -46,7 +74,7 @@ function Start() {
 	var numBalls10 = 0.1 * 50;
 	var food_remain = numBalls60 + numBalls30 + numBalls10;
 
-
+	disqualification = 5;
 	var pacman_remain = 1;
 	start_time = new Date();
 	for (var i = 0; i < 10; i++) {
@@ -54,13 +82,37 @@ function Start() {
 		//put obstacles in (i=3,j=3) and (i=3,j=4) and (i=3,j=5), (i=6,j=1) and (i=6,j=2)
 		for (var j = 0; j < 10; j++) {
 			if ((i == 3 && j == 3) || (i == 3 && j == 4) ||	(i == 3 && j == 5) ||
-				(i == 6 && j == 1) || (i == 6 && j == 2)) {
+				(i == 6 && j == 1) || (i == 6 && j == 2) || (i==0) || (j==0) || (i==9) || (j==9) ){
 				board[i][j] = 4; //wall
 			} 
-			else if ((i == 0 && j == 0) || (i == 0 && j == 9) ||	(i == 9 && j == 0) ||
-				(i == 9 && j == 9)) {
-				board[i][j] = 5; //monster
-			} 
+			else if ((i == 1 && j == 1) || (i == 1 && j == 8) ||	(i == 8 && j == 1) ||
+				(i == 8 && j == 8)) {
+					if (MonstersNums >0){	
+						switch(MonstersNums){
+							case 1:
+								Monster1.i = i;
+								Monster1.j = j
+								break;
+							case 2:
+								Monster2.i = i;
+								Monster2.j = j
+								break;
+							case 3:
+								Monster3.i = i;
+								Monster3.j = j
+								break;
+							case 4:
+								Monster4.i = i;
+								Monster4.j = j
+								break;
+
+						}
+					MonstersNums--;
+					totalMonsters++;
+					board[i][j] = 5; //monster
+				} 
+			}
+
 			else if( i==4 && j==4){
 				board[i][j] = 10;
 				friendPackman.i = 4;
@@ -221,11 +273,7 @@ function Draw() {
 				context.arc(center.x + eye_packman_X, center.y + eye_packman_Y, 5, 0, 2 * Math.PI); // circle
 				context.fillStyle = "black"; //color
 				context.fill();
-			//} else if (board[i][j] == 1) {
-			//	context.beginPath();
-			//	context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-			//	context.fillStyle = "black"; //color
-			//	context.fill();
+		
 			} else if (board[i][j] == 6) {
 				context.beginPath();
 				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
@@ -253,6 +301,7 @@ function Draw() {
 				context.fill();
 			
 			} else if (board[i][j] >=10) {
+
 				context.beginPath();
 				context.rect(center.x - 30, center.y - 30, 60, 60);
 				context.fillStyle = "white"; //color
@@ -262,13 +311,67 @@ function Draw() {
 	}
 }
 
+function RandomPositionPackman(){
+
+	var NotEmpty = false;
+	while(!NotEmpty){
+		var RandomI = Math.floor(Math.random() * (8 - 1 + 1) + 1);
+		var RandomJ = Math.floor(Math.random() * (8 - 1 + 1) + 1);
+		if (board[RandomI][RandomJ] == 0){
+			shape.i = RandomI;
+			shape.j = RandomJ;
+			board[RandomI][RandomJ] = 2;
+			position_flag = 4;
+			NotEmpty = true;
+		}
+	}
+	
+}
+
+
+function InitMonsters(){
+
+	switch(totalMonsters){
+		case 1:
+			Monster1.i = 1;
+			Monster1.j = 1;
+			break;
+		case 2:
+			Monster1.i = 1;
+			Monster1.j = 1;
+			Monster2.i = 1;
+			Monster2.j = 9;
+			break;
+		case 3: 
+			Monster1.i = 1;
+			Monster1.j = 1;
+			Monster2.i = 1;
+			Monster2.j = 9;
+			Monster3.i = 9;
+			Monster3.j = 1;
+			break;
+		case 4:
+			Monster1.i = 1;
+			Monster1.j = 1;
+			Monster2.i = 1;
+			Monster2.j = 8;
+			Monster3.i = 8;
+			Monster3.j = 1;
+			Monster4.i = 8;
+			Monster4.j = 8;
+			break;
+	}
+}
 
 function UpdatePosition() {
+	var randomFriendPackman = Math.floor(Math.random() * (4 - 1 + 1) + 1);
 	board[shape.i][shape.j] = 0;
 	var x = GetKeyPressed();
 	//
 	position_flag = x;
 	//
+	if (!friendPackmanFlag){updatePackmenFriendPosition(randomFriendPackman);}
+
 	if (x == 1) { // Up Side
 		if (shape.j > 0 && board[shape.i][shape.j - 1] != 4) {
 			shape.j--;
@@ -293,10 +396,14 @@ function UpdatePosition() {
 		}
 		
 	}
-	//if (board[shape.i][shape.j] == 1) {
-	//	score++;
-	//}
-	if (board[shape.i][shape.j] == 6) {
+
+	if(board[shape.i][shape.j] >= 10)
+	{
+		board[shape.i][shape.j]-=10;
+		score+=50;
+		friendPackmanFlag = true;
+	}
+	else if (board[shape.i][shape.j] == 6) {
 		score+=25;
 	}
 	else if (board[shape.i][shape.j] == 7) {
@@ -307,22 +414,75 @@ function UpdatePosition() {
 	}
 	else if (board[shape.i][shape.j] == 5) {
 		score-=10;
+		disqualification-=1;
+		if(disqualification == 0){
+			Draw();
+			window.clearInterval(interval);
+			window.alert("Game Over");
+		}
+		else{
+			RandomPositionPackman();
+			InitMonsters();
+			var currentTime = new Date();
+			time_elapsed = (currentTime - start_time) / 1000;
+			Draw();
+		}
 	}
+	else{
 	board[shape.i][shape.j] = 2;
 	var currentTime = new Date();
 	time_elapsed = (currentTime - start_time) / 1000;
-	if (score >= 20 && time_elapsed <= 10) {
+	if (score >= 80 && time_elapsed <= 10) {
 		pac_color = "green";
 	}
-	if (score >= 50) {
+	if (score >= 100) {
 		Draw();
 		window.clearInterval(interval);
 		window.alert("Game completed");
 	} else {
 		Draw();
 	}
+}
 
 
+
+}
+
+
+function updatePackmenFriendPosition(randomFriendPackman) {
+
+	if (randomFriendPackman == 1) { // Up Side
+		if (friendPackman.j > 0 && board[friendPackman.i][friendPackman.j - 1] != 4) {
+			board[friendPackman.i][friendPackman.j]-=10;
+			friendPackman.j--;
+			board[friendPackman.i][friendPackman.j]+=10;
+		}
+		
+	}
+	else if (randomFriendPackman == 2) { //Down Side
+		if (friendPackman.j < 9 && board[friendPackman.i][friendPackman.j + 1] != 4) {
+			board[friendPackman.i][friendPackman.j]-=10;
+			friendPackman.j++;
+			board[friendPackman.i][friendPackman.j]+=10;
+		}
+		
+	}
+	else if (randomFriendPackman == 3) { // Left Side
+		if (friendPackman.i > 0 && board[friendPackman.i - 1][friendPackman.j] != 4) {
+			board[friendPackman.i][friendPackman.j]-=10;
+			friendPackman.i--;
+			board[friendPackman.i][friendPackman.j ]+=10;
+
+		}
+		
+	}
+	else if (randomFriendPackman == 4) { // Right Side
+		if (friendPackman.i < 9 && board[friendPackman.i + 1][friendPackman.j] != 4) {
+			board[friendPackman.i][friendPackman.j]-=10;
+			friendPackman.i++;
+			board[friendPackman.i][friendPackman.j ]+=10;
+			}
+		}
 
 }
 
