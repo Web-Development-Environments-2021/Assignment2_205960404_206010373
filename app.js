@@ -13,6 +13,8 @@ var Monster2 = new Object();
 var Monster3 = new Object();
 var Monster4 = new Object();
 var totalMonsters;
+var MonstersArray;
+var MonsterTemp;
 
 var position_flag;
 var friendPackmanFlag;
@@ -30,6 +32,11 @@ var BallsColor10Per;
 var gameTime;
 var MonstersNums;
 
+var numBalls60;
+var numBalls30;
+var numBalls10;
+var food_remain;
+
 var myMusic;
 
 $(document).ready(function() {
@@ -39,6 +46,23 @@ $(document).ready(function() {
 	changeDivs('WelcomeDiv');
 });
 
+
+function defaultMonsers(){
+	MonsterTemp = new Array();
+	MonsterTemp[0] = new Object();
+	MonsterTemp[1] = new Object();
+	MonsterTemp[2] = new Object();
+	MonsterTemp[3] = new Object();
+
+	MonsterTemp[0].i = 1;
+	MonsterTemp[0].j = 1;
+	MonsterTemp[1].i = 1;
+	MonsterTemp[1].j = 8;
+	MonsterTemp[2].i = 8;
+	MonsterTemp[2].j = 1;
+	MonsterTemp[3].i = 8;
+	MonsterTemp[3].j = 8;
+}
 
 function sound(src) {
     this.sound = document.createElement("audio");
@@ -55,6 +79,7 @@ function sound(src) {
     }    
 }
 
+
 //function Start(Keys, BallsNum, BallsColor60Per, BallColor30Per, BallsColor10Per, gameTime, MonstersNums) {
 function Start() {
 	myMusic = new sound('AMNAMNAM.mp3');
@@ -67,12 +92,22 @@ function Start() {
 	friendPackmanFlag = false;
 	var cnt = 100;
 	//var numBalls60 = 0.6 * BallsNum;
-	var numBalls60 = 0.6 * 50;
+	numBalls60 = 0.6 * 50;
 	//var numBalls30 = 0.3 * BallsNum;
-	var numBalls30 = 0.3 * 50;
+	numBalls30 = 0.3 * 50;
 	//var numBalls10 = 0.1 * BallsNum;
-	var numBalls10 = 0.1 * 50;
-	var food_remain = numBalls60 + numBalls30 + numBalls10;
+	numBalls10 = 0.1 * 50;
+	food_remain = numBalls60 + numBalls30 + numBalls10;
+
+	defaultMonsers()
+	MonstersArray = new Array();
+	for(var indexMonser = 0; indexMonser<MonstersNums;indexMonser++){
+			MonstersArray[indexMonser] = new Object();
+			MonstersArray[indexMonser].i = MonsterTemp[indexMonser].i;
+			MonstersArray[indexMonser].j = MonsterTemp[indexMonser].j;
+			totalMonsters++;
+	}
+
 
 	disqualification = 5;
 	var pacman_remain = 1;
@@ -87,30 +122,7 @@ function Start() {
 			} 
 			else if ((i == 1 && j == 1) || (i == 1 && j == 8) ||	(i == 8 && j == 1) ||
 				(i == 8 && j == 8)) {
-					if (MonstersNums >0){	
-						switch(MonstersNums){
-							case 1:
-								Monster1.i = i;
-								Monster1.j = j
-								break;
-							case 2:
-								Monster2.i = i;
-								Monster2.j = j
-								break;
-							case 3:
-								Monster3.i = i;
-								Monster3.j = j
-								break;
-							case 4:
-								Monster4.i = i;
-								Monster4.j = j
-								break;
-
-						}
-					MonstersNums--;
-					totalMonsters++;
-					board[i][j] = 5; //monster
-				} 
+				
 			}
 
 			else if( i==4 && j==4){
@@ -127,44 +139,10 @@ function Start() {
 					// 7 - 30
 					// 6 - 10
 					// 5 - Monsters
-					var randomFood = Math.floor(Math.random() * (8 - 6 + 1) + 6); 
-					board[i][j] = randomFood;
-					switch(randomFood){
-						case 6:
-							if (numBalls10 != 0){
-								numBalls10--;
-								food_remain--;
-								board[i][j] = 6;
-								break;
-							}
-							else{
-								randomFood = Math.floor(Math.random() * (8 - 6 + 1) + 6);
-							}
-							
-						case 7:
-							if (numBalls30 != 0){
-								numBalls30--;
-								food_remain--;
-								board[i][j] = 7;
-								break;
-							}
-							else{
-								randomFood = Math.floor(Math.random() * (8 - 6 + 1) + 6);
-							}
-						case 8:
-							if (numBalls60 != 0){
-								numBalls60--;
-								food_remain--;
-								board[i][j] = 8;
-								break;
-							}
-							else{
-								randomFood = Math.floor(Math.random() * (8 - 6 + 1) + 6);
-							}
-					}
-
-					//food_remain--;
-				} else if (randomNum < (1.0 * (pacman_remain + food_remain)) / cnt) {
+					placeFood(i,j);
+				} 
+				
+				else if (randomNum < (1.0 * (pacman_remain + food_remain)) / cnt) {
 					shape.i = i;
 					shape.j = j;
 					pacman_remain--;
@@ -198,6 +176,7 @@ function Start() {
 	);
 	interval = setInterval(UpdatePosition, 250);
 }
+
 
 function findRandomEmptyCell(board) {
 	var i = Math.floor(Math.random() * 9 + 1);
@@ -298,23 +277,34 @@ function Draw() {
 				context.rect(center.x - 30, center.y - 30, 60, 60);
 				context.fillStyle = "grey"; //color
 				context.fill();
-			} else if (board[i][j] == 5) {
-				context.beginPath();
-				context.rect(center.x - 30, center.y - 30, 60, 60);
-				context.fillStyle = "black"; //color
-				context.fill();
-			
-			} else if (board[i][j] >=10) {
+				
+			}  else if (board[i][j] >=10) {
 
 				context.beginPath();
 				context.rect(center.x - 30, center.y - 30, 60, 60);
 				context.fillStyle = "white"; //color
 				context.fill();
 			}
+			if (MonsterOnPlace(i,j)) {
+				context.beginPath();
+				context.rect(center.x - 30, center.y - 30, 60, 60);
+				context.fillStyle = "black"; //color
+				context.fill();
+			
+			}
 		}
 	}
 }
 
+function MonsterOnPlace(numI, numJ){
+
+	for(var inx=0; inx<MonstersArray.length;inx++){
+		if (MonstersArray[inx].i == numI && MonstersArray[inx].j == numJ){
+			return true;
+		}
+	}
+	return false;
+}
 function RandomPositionPackman(){
 
 	var NotEmpty = false;
@@ -332,37 +322,74 @@ function RandomPositionPackman(){
 	
 }
 
+function placeFood(i,j){
+	var randomFood = Math.floor(Math.random() * (8 - 6 + 1) + 6); 
+	board[i][j] = randomFood;
+	switch(randomFood){
+		case 6:
+			if (numBalls10 != 0){
+				numBalls10--;
+				food_remain--;
+				board[i][j] = 6;
+				break;
+			}
+			else{
+				randomFood = Math.floor(Math.random() * (8 - 6 + 1) + 6);
+			}
+			
+		case 7:
+			if (numBalls30 != 0){
+				numBalls30--;
+				food_remain--;
+				board[i][j] = 7;
+				break;
+			}
+			else{
+				randomFood = Math.floor(Math.random() * (8 - 6 + 1) + 6);
+			}
+		case 8:
+			if (numBalls60 != 0){
+				numBalls60--;
+				food_remain--;
+				board[i][j] = 8;
+				break;
+			}
+			else{
+				randomFood = Math.floor(Math.random() * (8 - 6 + 1) + 6);
+			}
+	}
+}
 
 function InitMonsters(){
 
 	switch(totalMonsters){
 		case 1:
-			Monster1.i = 1;
-			Monster1.j = 1;
+			MonstersArray[0].i = 1;
+			MonstersArray[0].j = 1;
 			break;
 		case 2:
-			Monster1.i = 1;
-			Monster1.j = 1;
-			Monster2.i = 1;
-			Monster2.j = 9;
+			MonstersArray[0].i = 1;
+			MonstersArray[0].j = 1;
+			MonstersArray[1].i = 1;
+			MonstersArray[1].j = 9;
 			break;
 		case 3: 
-			Monster1.i = 1;
-			Monster1.j = 1;
-			Monster2.i = 1;
-			Monster2.j = 9;
-			Monster3.i = 9;
-			Monster3.j = 1;
+			MonstersArray[0].i = 1;
+			MonstersArray[0].j = 1;
+			MonstersArray[1].i = 1;
+			MonstersArray[1].j = 9;
+			MonstersArray[2].i = 9;
+			MonstersArray[2].j = 1;
 			break;
 		case 4:
-			Monster1.i = 1;
-			Monster1.j = 1;
-			Monster2.i = 1;
-			Monster2.j = 8;
-			Monster3.i = 8;
-			Monster3.j = 1;
-			Monster4.i = 8;
-			Monster4.j = 8;
+			MonstersArray[0].i = 1;
+			MonstersArray[0].j = 1;
+			MonstersArray[1].i = 1;
+			MonstersArray[1].j = 8;
+			MonstersArray[2].i = 8;
+			MonstersArray[2].j = 1;
+			MonstersArray[3].i = 8;
+			MonstersArray[3].j = 8;
 			break;
 	}
 }
@@ -404,6 +431,88 @@ function UpdatePosition() {
 	//	score++;
 	//}
 
+	for(var inxMon=0; inxMon<MonstersArray.length;inxMon++){
+
+		if (Math.abs(MonstersArray[inxMon].i - shape.i)==0){
+			if(shape.j > MonstersArray[inxMon].j){
+				MonstersArray[inxMon].j++;
+			}
+			else{
+				MonstersArray[inxMon].j--;
+
+			}
+		}
+		else if(Math.abs(MonstersArray[inxMon].j - shape.j)==0){
+
+			if(shape.i > MonstersArray[inxMon].i){
+				MonstersArray[inxMon].i++;
+			}
+			else{
+				MonstersArray[inxMon].i--;
+
+			}
+		}
+
+		else if(Math.abs(MonstersArray[inxMon].i - shape.i) < Math.abs(MonstersArray[inxMon].j - shape.j) && Math.abs(MonstersArray[inxMon].i - shape.i)>0)
+		{
+			if(MonstersArray[inxMon].i < shape.i && board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j] != 4){
+				MonstersArray[inxMon].i++;
+			}
+			else if(MonstersArray[inxMon].i > shape.i && board[MonstersArray[inxMon].i - 1][MonstersArray[inxMon].j] != 4){
+				MonstersArray[inxMon].i--;
+			}
+			else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j + 1] != 4 && MonstersArray[inxMon].j < shape.j){
+				MonstersArray[inxMon].j++;
+			}
+			else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j - 1] != 4 && MonstersArray[inxMon].j > shape.j) {
+				MonstersArray[inxMon].j--; 
+
+			}
+
+
+			else if(board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j] != 4){
+				MonstersArray[inxMon].i++;
+			}
+			else if(board[MonstersArray[inxMon].i - 1][MonstersArray[inxMon].j] != 4){
+				MonstersArray[inxMon].i--;
+			}
+			else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j + 1] != 4 ){
+				MonstersArray[inxMon].j++;
+			}
+			else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j - 1] != 4 ) {
+				MonstersArray[inxMon].j--; 
+
+			}
+		}
+		else{
+			if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j + 1] != 4 && MonstersArray[inxMon].j < shape.j){
+				MonstersArray[inxMon].j++;
+			}
+			else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j - 1] != 4 && MonstersArray[inxMon].j > shape.j){
+				MonstersArray[inxMon].j--;
+			}
+			else if(MonstersArray[inxMon].i < shape.i && board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j] != 4){
+				MonstersArray[inxMon].i++;
+			}
+			else if(board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j ] != 4 && MonstersArray[inxMon].i > shape.i){
+				MonstersArray[inxMon].i--; 
+			}
+
+
+			else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j + 1] != 4){
+				MonstersArray[inxMon].j++;
+			}
+			else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j - 1] != 4 ){
+				MonstersArray[inxMon].j--;
+			}
+			else if(board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j] != 4){
+				MonstersArray[inxMon].i++;
+			}
+			else if(board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j ] != 4){
+				MonstersArray[inxMon].i--; 
+			}
+		}
+	}
 	if(board[shape.i][shape.j] >= 10)
 	{
 		board[shape.i][shape.j]-=10;
@@ -419,7 +528,7 @@ function UpdatePosition() {
 	else if (board[shape.i][shape.j] == 8) {
 		score+=5;
 	}
-	else if (board[shape.i][shape.j] == 5) {
+	else if (MonsterOnPlace(shape.i,shape.j)) {
 		score-=10;
 		disqualification-=1;
 		if(disqualification == 0){
