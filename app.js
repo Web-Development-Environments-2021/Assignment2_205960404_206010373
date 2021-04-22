@@ -273,7 +273,11 @@ function Draw() {
 				context.arc(center.x + eye_packman_X, center.y + eye_packman_Y, 5, 0, 2 * Math.PI); // circle
 				context.fillStyle = "black"; //color
 				context.fill();
-		
+			//} else if (board[i][j] == 1) {
+			//	context.beginPath();
+			//	context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+			//	context.fillStyle = "black"; //color
+			//	context.fill();
 			} else if (board[i][j] == 6) {
 				context.beginPath();
 				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
@@ -396,6 +400,9 @@ function UpdatePosition() {
 		}
 		
 	}
+	//if (board[shape.i][shape.j] == 1) {
+	//	score++;
+	//}
 
 	if(board[shape.i][shape.j] >= 10)
 	{
