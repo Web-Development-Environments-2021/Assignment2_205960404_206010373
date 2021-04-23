@@ -82,9 +82,9 @@ function sound(src) {
 
 //function Start(Keys, BallsNum, BallsColor60Per, BallColor30Per, BallsColor10Per, gameTime, MonstersNums) {
 function Start() {
-	myMusic = new sound('AMNAMNAM.mp3');
-	myMusic.play();
-	MonstersNums = 4;
+	//myMusic = new sound('AMNAMNAM.mp3');
+	//myMusic.play();
+	MonstersNums = 1;
 	totalMonsters = 0;
 	board = new Array();
 	score = 0;
@@ -534,6 +534,7 @@ function UpdatePosition() {
 		if(disqualification == 0){
 			Draw();
 			window.clearInterval(interval);
+		//	myMusic.pause();
 			window.alert("Game Over");
 		}
 		else{
@@ -548,10 +549,10 @@ function UpdatePosition() {
 	board[shape.i][shape.j] = 2;
 	var currentTime = new Date();
 	time_elapsed = (currentTime - start_time) / 1000;
-	if (score >= 80 && time_elapsed <= 10) {
+	if (score >= 800 && time_elapsed <= 10) {
 		pac_color = "green";
 	}
-	if (score >= 100) {
+	if (score >= 1000) {
 		Draw();
 		window.clearInterval(interval);
 		window.alert("Game completed");
