@@ -1,21 +1,4 @@
-var SavedUsers = 
-[
-    {
-        username: "k",
-        password: "k",
-        fullName: "",
-        email: "",
-        birthDate: ""
-    },
 
-    {
-        username: "liad",
-        password: "liad1410",
-        fullName: "liad Segev",
-        email: "Liadey2@gmail.com",
-        birthDate: ""
-    }
-];
 
 
 //Login Functions
@@ -108,3 +91,22 @@ function applySettings(){
 
 
 }
+
+var SavedUsers = 
+[
+    {
+        username: "k",
+        password: "k",
+        fullName: "",
+        email: "",
+        birthDate: ""
+    },
+
+    {
+        username: "liad",
+        password: "liad1410",
+        fullName: "liad Segev",
+        email: "Liadey2@gmail.com",
+        birthDate: ""
+    }
+];

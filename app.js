@@ -618,7 +618,7 @@ function hideDivs() {
 	$('.LoginDiv').hide();
 	$('.GameDiv').hide();
 	$('.SettingsDiv').hide();
-	$('.about').hide();
+	$('.AboutDiv').hide();
 	// resetGame();
 };
 

@@ -2,10 +2,10 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="StyleWelcomeDiv.css" />
-		<link rel="stylesheet" type="text/css" href="StyleRegisterDiv.css" />
+		<!-- <link rel="stylesheet" type="text/css" href="StyleRegisterDiv.css" />
 		<link rel="stylesheet" type="text/css" href="StyleLoginDiv.css" />
 		<link rel="stylesheet" type="text/css" href="StyleSettingsDiv.css" />
-		<link rel="stylesheet" type="text/css" href="StyleGameDiv.css" />
+		<link rel="stylesheet" type="text/css" href="StyleGameDiv.css" /> -->
 		<script src="./jquery-3.4.1.slim.min.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
 		<script type="text/javascript" src="./settings.js"></script>
@@ -102,7 +102,7 @@
 					<input id="uname" type="text" placeholder="Enter Username" name="uname" ><br /><br />
 					<input id="pass" type="password" placeholder="Enter Password" name="pass" ><br /><br />
 					
-					<button onclick="Login()">Login</button>
+					<button onclick="Login(); return false;">Login</button>
 					<button onclick="changeDivs('RegisterDiv'); return false;">Register</button>
 				</form>
 			</div>
