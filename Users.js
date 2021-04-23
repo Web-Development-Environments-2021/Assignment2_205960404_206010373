@@ -1,10 +1,31 @@
+var SavedUsers = 
+[
+    {
+        username: "k",
+        password: "k",
+        fullName: "",
+        email: "",
+        birthDate: ""
+    },
+
+    {
+        username: "liad",
+        password: "liad1410",
+        fullName: "liad Segev",
+        email: "Liadey2@gmail.com",
+        birthDate: ""
+    }
+];
+
+
 //Login Functions
 function Login(){
-    let uname= document.getElementById('username').value;
-    let pass= document.getElementById('psw').value;
-    if (loginValid(uname,pass)){
-    changeDivs('SettingsDiv');
-   }
+    let uname1= document.getElementById('uname').value;
+    let pass1= document.getElementById('pass').value;
+    if (LoginValid(uname1,pass1))
+    {
+        changeDivs('SettingsDiv');
+    }
     else {
        alert("no good!");
    }
@@ -43,8 +64,8 @@ function registerInfo(){
     let UserNameExist = checkIfUserExists(userName);
     let pass = document.getElementById('passwordRegiser').value;
     let fullname = document.getElementById('nameRegiser').value;
-    let email = document.getElementById('emailReg').value;
-    let birthdate = document.getElementById('emailRegiser').value;
+    let email = document.getElementById('emailRegiser').value;
+    let birthdate = document.getElementById('birthdayRegiser').value;
     //check Valid
     let validPassword = checkIfPasswordValid(pass);
     let validFullName = checkIfFullNameValid(fullname);
@@ -85,21 +106,5 @@ function applySettings(){
     // todo
 }
 
-const SavedUsers = 
-[
-    {
-        username: "k",
-        password: "k",
-        fullName: "",
-        email: "",
-        birthDate: ""
-    },
 
-    {
-        username: "liad",
-        password: "liad1410",
-        fullName: "liad Segev",
-        email: "Liadey2@gmail.com",
-        birthDate: ""
-    }
-];
+}

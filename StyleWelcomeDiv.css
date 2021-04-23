@@ -6,15 +6,53 @@ body
   font-family: Copperplate, Papyrus, fantasy;
 }
 
-.welcome{
-  position: relative;
-  width: 100%;
+/* menu */
+
+ul {
+  list-style-type: none;
+  margin: 10px;
+  margin-top: 30px;
+  padding: 0;
+  font-size: 70px;
 }
 
-.welcome img {
-  width: 100%;
-  height: auto;
+li {
+  display: inline;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 200%;
+  font-style: inherit;
+  flex-grow: inherit;
+  font-size: larger;
 }
+
+li:hover {
+  font-weight: bold;
+}
+
+.Content
+{
+ 
+  text-align: center;
+  background: rgb(88, 111, 145);
+  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-right: 5px;
+  padding-left: 5px;
+  width: 40%;
+  border-radius: 3rem;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.4)
+  );
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+
+  margin-left: 30%;
+  margin-top: 20%;
+}
+
+/* WelcomeDiv */
 
 .WelcomeDiv .btn1 {
   position: absolute;

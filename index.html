@@ -19,22 +19,26 @@
 		</header>
 
 		<div class="Menu">
-			<a id="#welcome" onclick="changeDivs('WelcomeDiv')">Welcome</a>
-			<a id="#register" onclick="changeDivs('RegisterDiv')">Register</a>
-			<a id="#login" onclick="changeDivs('LoginDiv')">LogIn</a>
-			<a id="#Settings" onclick="changeDivs('SettingsDiv')">Settings</a>
-			<a id="#about" onclick="changeDivs('AboutDiv')">About</a>
-			<a id="#Game" onclick="changeDivs('GameDiv')">Game</a>
+			<ul></ul>
+			<li id="#welcome" onclick="changeDivs('WelcomeDiv')">Welcome</li>
+			<li id="#register" onclick="changeDivs('RegisterDiv')">Register</li>
+			<li id="#login" onclick="changeDivs('LoginDiv')">LogIn</li>
+			<li id="#Settings" onclick="changeDivs('SettingsDiv')">Settings</ali>
+			<li id="#about" onclick="changeDivs('AboutDiv')">About</li>
+			<li id="#Game" onclick="changeDivs('GameDiv')">Game</li>
+		</ul>
 		</div>
 
 		<div class="Content" >
 
 			<div class="WelcomeDiv">
+				<h1>Welcome to the Cookie Monster Packmam Game:</h1>
 				<button class="btn1" id="registerButton" onclick="changeDivs('RegisterDiv')">Register</button>
 				<button class="btn2" id="LogInButton" onclick="changeDivs('LoginDiv')">LogIn</button>
 			</div>
 
 			<div class="RegisterDiv">
+				<h1>Register:</h1>
 				<form >
 				<div id="RegisterDiv1">
 					<div id="registerForm">
@@ -76,6 +80,11 @@
 							<button id="registerbtn" onclick="registerInfo()">
 								Register
 							</button>
+							<div>
+								<p>Already have an account?
+									<button onclick="changeDivs('LoginDiv'); return false;">Sign in</button>
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -86,34 +95,34 @@
 			</div>
 
 			<div class="LoginDiv">
+				<h1>Login:</h1>
 				<form method="post">
 					<div class="imgcontainer">
-						<img src="img_avatar2.png" alt="Avatar" class="avatar">
 					</div>
 					<input id="uname" type="text" placeholder="Enter Username" name="uname" ><br /><br />
-					<input id="pass" type="password" placeholder="Enter Password" name="psw" ><br /><br />
+					<input id="pass" type="password" placeholder="Enter Password" name="pass" ><br /><br />
 					
-					<button   onclick="Login(); return false;">Login</button>
-					<button  onclick="changeDivs('RegisterDiv'); return false;">Register</button>
+					<button onclick="Login()">Login</button>
+					<button onclick="changeDivs('RegisterDiv'); return false;">Register</button>
 				</form>
 			</div>
 
 			<div class="SettingsDiv">
 				<h1>Choose the Game Settings as you Wish:</h1>
 				<!-- keyboard--todo------------>
-				<div class="set" id="upkey">
-					<label>Choose your UP Key:</label>
+				<div class="set" id="keyup">
+			
 					<input class="key" type="text" id="keyup" placeholder="Choose any key"><br /><br />
 				</div>
-				<div class="set" id="downkey">
+				<div class="set" id="keydown">
 					<label>Choose your Down Key:</label>
 					<input class="key" type="text" id="keydown" placeholder="Choose any key"><br /><br />
 				</div>
-				<div class="set" id="rightkey">
+				<div class="set" id="keyright">
 					<label>Choose your Right Key:</label>
 					<input class="key" type="text" id="keyright" placeholder="Choose any key"><br /><br />
 				</div>
-				<div class="set" id="leftkey">
+				<div class="set" id="keyleft">
 					<label>Choose your Left Key:</label>
 					<input class="key" type="text" id="keyleft" placeholder="Choose any key"><br /><br />
 				</div>
@@ -163,9 +172,20 @@
 					<button id="setrandBtn" onclick="randomSettings()">Random Settings</button>
 					<button id="setapplyBtn" onclick="applySettings()">Apply</button>
 				</div>
+
+				
+
 			</div>
 
-
+				
+			<div class="AboutDiv">
+				<h2>We are Liad and Dvir, 3rd year in Information Systems Engineering Department.<br>
+					This Cookie Monsters Packmen Game is Part of Engineering Enviornment Course.<br>
+					<img src="images/logo.png" alt="k" class="k" ><br>
+					Hope you enjoy Our Game!
+	
+				</h2>
+			</div>
 
 				<div class="GameDiv">
 

@@ -33,21 +33,20 @@ function setKeyPressed(keyIdToSet) {
 }
 
 
-let keyUp = getElementById("upkey").placeholder;
-let keyDown = getElementById("downkey").placeholder;
-let keyRight = getElementById("rightkey").placeholder;
-let keyLeft= getElementById("leftkey").placeholder;
-let numOfBallsFromUser = document.getElementById('NumOfBallsChosenValue').value;
-let ball10ColorFromUser = document.getElementById('ColorFor10').value;
-let ball30ColorFromUser = document.getElementById('Colorfor30').value;
-let ball60ColorFromUser = document.getElementById('Colorfor60').value;
-let gameTimeFromUser = document.getElementById('GameTimeVal').value;
-let numOfMonstersFromUser = document.getElementById('numOfMonstersValue').value;
 
-applySettings(){
-	// todo
+function applySettings(){
+	let keyUp = getElementById("keyup").placeholder;
+	let keyDown = getElementById("keydown").placeholder;
+	let keyRight = getElementById("keyright").placeholder;
+	let keyLeft= getElementById("keyleft").placeholder;
+	let numOfBallsFromUser = document.getElementById('NumOfBallsChosenValue').value;
+	let ball10ColorFromUser = document.getElementById('ColorFor10').value;
+	let ball30ColorFromUser = document.getElementById('Colorfor30').value;
+	let ball60ColorFromUser = document.getElementById('Colorfor60').value;
+	let gameTimeFromUser = document.getElementById('GameTimeVal').value;
+	let numOfMonstersFromUser = document.getElementById('numOfMonstersValue').value;
 }
 
-randomSettings(){
-	// todo
+function randomSettings(){
+	pass
 }
