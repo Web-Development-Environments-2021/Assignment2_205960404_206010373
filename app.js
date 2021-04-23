@@ -6,6 +6,8 @@ var pac_color;
 var start_time;
 var time_elapsed;
 var interval;
+var monsterInterval;
+
 //
 var friendPackman = new Object();
 var Monster1 = new Object();
@@ -105,6 +107,8 @@ function Start() {
 			MonstersArray[indexMonser] = new Object();
 			MonstersArray[indexMonser].i = MonsterTemp[indexMonser].i;
 			MonstersArray[indexMonser].j = MonsterTemp[indexMonser].j;
+			MonstersArray[indexMonser].image = new Image();
+			MonstersArray[indexMonser].image.src = "Screenshot_1.jpg";
 			totalMonsters++;
 	}
 
@@ -175,6 +179,7 @@ function Start() {
 		false
 	);
 	interval = setInterval(UpdatePosition, 250);
+	monsterInterval = setInterval(UpdateMonsterPosition, 1000);
 }
 
 
@@ -371,14 +376,14 @@ function InitMonsters(){
 			MonstersArray[0].i = 1;
 			MonstersArray[0].j = 1;
 			MonstersArray[1].i = 1;
-			MonstersArray[1].j = 9;
+			MonstersArray[1].j = 8;
 			break;
 		case 3: 
 			MonstersArray[0].i = 1;
 			MonstersArray[0].j = 1;
 			MonstersArray[1].i = 1;
-			MonstersArray[1].j = 9;
-			MonstersArray[2].i = 9;
+			MonstersArray[1].j = 8;
+			MonstersArray[2].i = 8;
 			MonstersArray[2].j = 1;
 			break;
 		case 4:
@@ -394,6 +399,165 @@ function InitMonsters(){
 	}
 }
 
+
+function UpdateMonsterPosition(){
+
+	for(var inxMon=0; inxMon<MonstersArray.length;inxMon++){
+		
+		//same Col or Row
+		 if(Math.abs(MonstersArray[inxMon].i - shape.i)==0 && shape.j <= MonstersArray[inxMon].j && board[MonstersArray[inxMon].i ][MonstersArray[inxMon].j - 1] != 4){
+			MonstersArray[inxMon].j--;
+		}
+		
+		else if (Math.abs(MonstersArray[inxMon].i - shape.i)==0 && shape.j >= MonstersArray[inxMon].j && board[MonstersArray[inxMon].i ][MonstersArray[inxMon].j + 1] != 4){
+			MonstersArray[inxMon].j++;
+		}
+
+		
+		else if(Math.abs(MonstersArray[inxMon].j - shape.j)==0 && shape.i <= MonstersArray[inxMon].i && board[MonstersArray[inxMon].i - 1 ][MonstersArray[inxMon].j ] != 4){
+			MonstersArray[inxMon].i--;
+		}
+
+		else if (Math.abs(MonstersArray[inxMon].j - shape.j)==0 && shape.i >= MonstersArray[inxMon].i && board[MonstersArray[inxMon].i +1][MonstersArray[inxMon].j ] != 4){
+			MonstersArray[inxMon].i++;
+		}
+
+		
+
+		else{
+
+			// if(Math.abs(MonstersArray[inxMon].i - shape.i) <= Math.abs(MonstersArray[inxMon].j - shape.j) && shape.i >= MonstersArray[inxMon].i && board[MonstersArray[inxMon].i +1][MonstersArray[inxMon].j ] != 4){
+			// 	MonstersArray[inxMon].i++;
+			// 	return;
+			// }
+			
+			// if(Math.abs(MonstersArray[inxMon].i - shape.i) >= Math.abs(MonstersArray[inxMon].j - shape.j) && shape.j >= MonstersArray[inxMon].j && board[MonstersArray[inxMon].i ][MonstersArray[inxMon].j +1 ] != 4){
+			// 	MonstersArray[inxMon].j++;
+			// 	return;
+			// }
+
+			// if(Math.abs(MonstersArray[inxMon].i - shape.i) <= Math.abs(MonstersArray[inxMon].j - shape.j) && shape.i <= MonstersArray[inxMon].i && board[MonstersArray[inxMon].i -1][MonstersArray[inxMon].j ] != 4){
+			// 	MonstersArray[inxMon].i--;
+			// 	return;
+			// }
+
+			
+			
+			// if(Math.abs(MonstersArray[inxMon].i - shape.i) >= Math.abs(MonstersArray[inxMon].j - shape.j) && shape.j <= MonstersArray[inxMon].j && board[MonstersArray[inxMon].i ][MonstersArray[inxMon].j -1] != 4){
+			// 	MonstersArray[inxMon].j--;
+			// 	return;
+			// }
+
+			if( shape.i <= MonstersArray[inxMon].i && board[MonstersArray[inxMon].i -1][MonstersArray[inxMon].j ] != 4){
+				MonstersArray[inxMon].i--;
+				return;
+			}
+
+			if(shape.j >= MonstersArray[inxMon].j && board[MonstersArray[inxMon].i ][MonstersArray[inxMon].j +1 ] != 4){
+				MonstersArray[inxMon].j++;
+				return;
+			}
+
+			if( shape.j <= MonstersArray[inxMon].j && board[MonstersArray[inxMon].i ][MonstersArray[inxMon].j -1] != 4){
+				MonstersArray[inxMon].j--;
+				return;
+			}
+
+			if(shape.i >= MonstersArray[inxMon].i && board[MonstersArray[inxMon].i +1][MonstersArray[inxMon].j ] != 4){
+				MonstersArray[inxMon].i++;
+				return;
+			}
+			
+			
+
+		
+			
+			
+		}
+
+
+		// if (Math.abs(MonstersArray[inxMon].i - shape.i)==0){
+		// 	if(shape.j > MonstersArray[inxMon].j){
+		// 		MonstersArray[inxMon].j++;
+		// 	}
+		// 	else{
+		// 		MonstersArray[inxMon].j--;
+
+		// 	}
+		// }
+		// else if(Math.abs(MonstersArray[inxMon].j - shape.j)==0){
+
+		// 	if(shape.i > MonstersArray[inxMon].i){
+		// 		MonstersArray[inxMon].i++;
+		// 	}
+		// 	else{
+		// 		MonstersArray[inxMon].i--;
+
+		// 	}
+		// }
+
+		// else if(Math.abs(MonstersArray[inxMon].i - shape.i) < Math.abs(MonstersArray[inxMon].j - shape.j) && Math.abs(MonstersArray[inxMon].i - shape.i)>0)
+		// {
+		// 	if(MonstersArray[inxMon].i < shape.i && board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j] != 4){
+		// 		MonstersArray[inxMon].i++;
+		// 	}
+		// 	else if(MonstersArray[inxMon].i > shape.i && board[MonstersArray[inxMon].i - 1][MonstersArray[inxMon].j] != 4){
+		// 		MonstersArray[inxMon].i--;
+		// 	}
+		// 	else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j + 1] != 4 && MonstersArray[inxMon].j < shape.j){
+		// 		MonstersArray[inxMon].j++;
+		// 	}
+		// 	else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j - 1] != 4 && MonstersArray[inxMon].j > shape.j) {
+		// 		MonstersArray[inxMon].j--; 
+
+		// 	}
+
+
+		// 	else if(board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j] != 4){
+		// 		MonstersArray[inxMon].i++;
+		// 	}
+		// 	else if(board[MonstersArray[inxMon].i - 1][MonstersArray[inxMon].j] != 4){
+		// 		MonstersArray[inxMon].i--;
+		// 	}
+		// 	else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j + 1] != 4 ){
+		// 		MonstersArray[inxMon].j++;
+		// 	}
+		// 	else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j - 1] != 4 ) {
+		// 		MonstersArray[inxMon].j--; 
+
+		// 	}
+		// }
+		// else{
+		// 	if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j + 1] != 4 && MonstersArray[inxMon].j < shape.j){
+		// 		MonstersArray[inxMon].j++;
+		// 	}
+		// 	else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j - 1] != 4 && MonstersArray[inxMon].j > shape.j){
+		// 		MonstersArray[inxMon].j--;
+		// 	}
+		// 	else if(MonstersArray[inxMon].i < shape.i && board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j] != 4){
+		// 		MonstersArray[inxMon].i++;
+		// 	}
+		// 	else if(board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j ] != 4 && MonstersArray[inxMon].i > shape.i){
+		// 		MonstersArray[inxMon].i--; 
+		// 	}
+
+
+		// 	else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j + 1] != 4){
+		// 		MonstersArray[inxMon].j++;
+		// 	}
+		// 	else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j - 1] != 4 ){
+		// 		MonstersArray[inxMon].j--;
+		// 	}
+		// 	else if(board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j] != 4){
+		// 		MonstersArray[inxMon].i++;
+		// 	}
+		// 	else if(board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j ] != 4){
+		// 		MonstersArray[inxMon].i--; 
+		// 	}
+		// }
+	}
+
+}
 function UpdatePosition() {
 	var randomFriendPackman = Math.floor(Math.random() * (4 - 1 + 1) + 1);
 	board[shape.i][shape.j] = 0;
@@ -431,88 +595,7 @@ function UpdatePosition() {
 	//	score++;
 	//}
 
-	for(var inxMon=0; inxMon<MonstersArray.length;inxMon++){
-
-		if (Math.abs(MonstersArray[inxMon].i - shape.i)==0){
-			if(shape.j > MonstersArray[inxMon].j){
-				MonstersArray[inxMon].j++;
-			}
-			else{
-				MonstersArray[inxMon].j--;
-
-			}
-		}
-		else if(Math.abs(MonstersArray[inxMon].j - shape.j)==0){
-
-			if(shape.i > MonstersArray[inxMon].i){
-				MonstersArray[inxMon].i++;
-			}
-			else{
-				MonstersArray[inxMon].i--;
-
-			}
-		}
-
-		else if(Math.abs(MonstersArray[inxMon].i - shape.i) < Math.abs(MonstersArray[inxMon].j - shape.j) && Math.abs(MonstersArray[inxMon].i - shape.i)>0)
-		{
-			if(MonstersArray[inxMon].i < shape.i && board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j] != 4){
-				MonstersArray[inxMon].i++;
-			}
-			else if(MonstersArray[inxMon].i > shape.i && board[MonstersArray[inxMon].i - 1][MonstersArray[inxMon].j] != 4){
-				MonstersArray[inxMon].i--;
-			}
-			else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j + 1] != 4 && MonstersArray[inxMon].j < shape.j){
-				MonstersArray[inxMon].j++;
-			}
-			else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j - 1] != 4 && MonstersArray[inxMon].j > shape.j) {
-				MonstersArray[inxMon].j--; 
-
-			}
-
-
-			else if(board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j] != 4){
-				MonstersArray[inxMon].i++;
-			}
-			else if(board[MonstersArray[inxMon].i - 1][MonstersArray[inxMon].j] != 4){
-				MonstersArray[inxMon].i--;
-			}
-			else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j + 1] != 4 ){
-				MonstersArray[inxMon].j++;
-			}
-			else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j - 1] != 4 ) {
-				MonstersArray[inxMon].j--; 
-
-			}
-		}
-		else{
-			if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j + 1] != 4 && MonstersArray[inxMon].j < shape.j){
-				MonstersArray[inxMon].j++;
-			}
-			else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j - 1] != 4 && MonstersArray[inxMon].j > shape.j){
-				MonstersArray[inxMon].j--;
-			}
-			else if(MonstersArray[inxMon].i < shape.i && board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j] != 4){
-				MonstersArray[inxMon].i++;
-			}
-			else if(board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j ] != 4 && MonstersArray[inxMon].i > shape.i){
-				MonstersArray[inxMon].i--; 
-			}
-
-
-			else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j + 1] != 4){
-				MonstersArray[inxMon].j++;
-			}
-			else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j - 1] != 4 ){
-				MonstersArray[inxMon].j--;
-			}
-			else if(board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j] != 4){
-				MonstersArray[inxMon].i++;
-			}
-			else if(board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j ] != 4){
-				MonstersArray[inxMon].i--; 
-			}
-		}
-	}
+	
 	if(board[shape.i][shape.j] >= 10)
 	{
 		board[shape.i][shape.j]-=10;
