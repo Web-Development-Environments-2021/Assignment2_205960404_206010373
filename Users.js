@@ -1,4 +1,121 @@
+$.validator.addMethod("pwcheck", function(value) {
+    return /^[A-Za-z0-9\d=!\-@._*]*$/.test(value) // consists of only these
+        && /[a-z]/.test(value) // has a lowercase letter
+        && /\d/.test(value) // has a digit
+ });
 
+$.validator.addMethod("fullnamecheck", function(value) {
+    return /^[a-zA-Z ]+$/.test(value);
+});
+
+
+
+$.validator.addMethod("passwordMatch", function() {
+    let uname1 = $('#uname').val();
+    let pass1 = $('#pass').val();
+
+    return LoginValid(uname1,pass1);
+});
+
+
+$(document).ready(function() {
+
+    //register
+    $("#RegisterDivForm").validate({
+        rules: {
+            userName: {
+                required: true
+            },
+            psw: {
+                required: true,
+                minlength: 6,
+                pwcheck: true,
+            },
+            fullname: {
+                required: true,
+                fullnamecheck: true,
+            },
+            email: {
+                required: true,
+                email: true,
+            }
+        },
+
+
+        messages: {
+            userName: "Enter your username.",
+            psw: {
+                required: "Enter your password.",
+                minlength: "Password must consist at least 6 characters.",
+                pwcheck: "Password must include at least one character and least one digit."
+            },
+            fullname: {
+                required: "Enter your full name.",
+                fullnamecheck: "Name can only consist alphabetic chars."
+            },
+            email: {
+                required: "Enter your Email.",
+                email: "Enter valid Email. ( example@gmail.com )",
+            },
+        },
+        
+        // errorPlacement: function(error, element) {
+        //     $(".myerror").html(error)
+        //   },
+        
+        submitHandler: function() {
+
+            let username = $('#userName').val();
+            let password = $('#psw').val();
+            let fullname = $('#fullname').val();
+            let email = $('#email').val();
+            let birthDate = $('#birthDate').val();
+            
+            SavedUsers.push({
+                username: username,
+                password: password,
+                fullName: fullname,
+                email: email,
+                birthDate: birthDate,
+            });
+
+           // SavedUsers.push([userName, psw]); // liad - how to push to SAVEDUSERS
+
+            switchDivs("LoginDiv");
+            $('#RegisterDivForm')[0].reset();
+
+
+        }
+
+
+    });
+
+    $("#LoginDivForm").validate({
+        rules: {
+            uname: {
+                required: true
+            },
+            pass: {
+                required: true,
+              //  passwordMatch: true, //liad
+            },
+        },
+
+        messages: {
+            uname: "Enter your username.",
+            pass: {
+                required: "Enter your password.",
+            },
+        },
+
+        submitHandler: function() {
+            userNameInGame = $('#uname').val();
+            changeDivs('SettingsDiv');
+            $('#loginForm')[0].reset();
+
+        }
+    });
+});
 
 
 //Login Functions
@@ -8,9 +125,10 @@ function Login(){
     if (LoginValid(uname1,pass1))
     {
         changeDivs('SettingsDiv');
+        $('#LoginDivForm')[0].reset();
     }
     else {
-       alert("no good!");
+       alert("Incorrect username or password!");
    }
 }
    

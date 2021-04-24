@@ -6,8 +6,11 @@
 		<link rel="stylesheet" type="text/css" href="StyleLoginDiv.css" />
 		<link rel="stylesheet" type="text/css" href="StyleSettingsDiv.css" />
 		<link rel="stylesheet" type="text/css" href="StyleGameDiv.css" /> -->
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
 		<script src="./jquery-3.4.1.slim.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+    	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js"></script> -->
+		<script src="./jquery.validate.min.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
 		<script type="text/javascript" src="./settings.js"></script>
 		<script type="text/javascript" src="./Users.js"></script>
@@ -40,7 +43,7 @@
 
 			<div class="RegisterDiv">
 				<h1>Register:</h1>
-				<form >
+				<form id="RegisterDivForm">
 				<div id="RegisterDiv1">
 					<div id="registerForm">
 						<div id="RegisterTitle">
@@ -97,7 +100,7 @@
 
 			<div class="LoginDiv">
 				<h1>Login:</h1>
-				<form method="post">
+				<form method="post" id="LoginDivForm">
 					<div class="imgcontainer">
 					</div>
 					<input id="uname" type="text" placeholder="Enter Username" name="uname" ><br /><br />
