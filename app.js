@@ -7,7 +7,7 @@ var start_time;
 var time_elapsed;
 var interval;
 var monsterInterval;
-
+var emptyCell;
 //
 var friendPackman = new Object();
 var Monster1 = new Object();
@@ -120,17 +120,17 @@ function Start() {
 	//var numBalls10 = 0.1 * BallsNum;
 	numBalls10 = Math.round(0.1 * 50);
 	food_remain = numBalls60 + numBalls30 + numBalls10;
-	food_remain_in_game = food_remain;
+	food_remain_in_game = food_remain + 1; //change
 
 
-	defaultMonsers()
+	defaultMonsers();
 	MonstersArray = new Array();
 	for(var indexMonser = 0; indexMonser<MonstersNums;indexMonser++){
 			MonstersArray[indexMonser] = new Object();
 			MonstersArray[indexMonser].i = MonsterTemp[indexMonser].i;
 			MonstersArray[indexMonser].j = MonsterTemp[indexMonser].j;
 			MonstersArray[indexMonser].image = new Image();
-			MonstersArray[indexMonser].image.src = "Screenshot_1.jpg";
+			//MonstersArray[indexMonser].image.src = "Screenshot_1.jpg";
 			totalMonsters++;
 	}
 
@@ -146,10 +146,10 @@ function Start() {
 				(i == 6 && j == 1) || (i == 6 && j == 2) || (i==0) || (j==0) || (i==9) || (j==9) ){
 				board[i][j] = 4; //wall
 			} 
-			else if ((i == 1 && j == 1) || (i == 1 && j == 8) ||	(i == 8 && j == 1) ||
-				(i == 8 && j == 8)) {
+			// else if ((i == 1 && j == 1) || (i == 1 && j == 8) ||	(i == 8 && j == 1) ||
+			// 	(i == 8 && j == 8)) {
 				
-			}
+			// }
 
 			else if( i==4 && j==4){
 				board[i][j] = 10;
@@ -181,9 +181,11 @@ function Start() {
 		}
 	}
 	while (food_remain > 0) {
-		var emptyCell = findRandomEmptyCell(board);
-		board[emptyCell[0]][emptyCell[1]] = 1;
-		food_remain--;
+
+		emptyCell = findRandomEmptyCell(board);
+		placeFood(emptyCell[0],emptyCell[1]);
+		//board[emptyCell[0]][emptyCell[1]] = 1;
+		//food_remain--;
 	}
 	keysDown = {};
 	addEventListener(
@@ -353,7 +355,7 @@ function RandomPositionPackman(){
 
 function placeFood(i,j){
 	var randomFood = Math.floor(Math.random() * (8 - 6 + 1) + 6); 
-	board[i][j] = randomFood;
+	//board[i][j] = randomFood;
 	switch(randomFood){
 		case 6:
 			if (numBalls10 != 0){
@@ -628,22 +630,35 @@ function UpdatePosition() {
 	}
 	else if (board[shape.i][shape.j] == 6) {
 		score+=25;
-		food_remain_in_game--;
+		food_remain_in_game-=1;
+		if (food_remain_in_game==0){
+			Draw();
+			window.clearInterval(interval);
+			window.clearInterval(monsterInterval);
+			window.alert("Game completed");
+		}
 	}
 	else if (board[shape.i][shape.j] == 7) {
 		score+=15;
-		food_remain_in_game--;
+		food_remain_in_game-=1;
+		if (food_remain_in_game==0){
+			Draw();
+			window.clearInterval(interval);
+			window.clearInterval(monsterInterval);
+			window.alert("Game completed");
+		}
 	}
 	else if (board[shape.i][shape.j] == 8) {
 		score+=5;
-		food_remain_in_game--;
+		food_remain_in_game-=1;
+		if (food_remain_in_game==0){
+			Draw();
+			window.clearInterval(interval);
+			window.clearInterval(monsterInterval);
+			window.alert("Game completed");
+		}
 	}
-	if (food_remain_in_game==0){
-		Draw();
-		window.clearInterval(interval);
-		window.alert("Game completed");
-		return;
-	}
+	
 	else if (MonsterOnPlace(shape.i,shape.j)) {
 		score-=10;
 		disqualification-=1;
@@ -671,6 +686,7 @@ function UpdatePosition() {
 	if (score >= 1000) {
 		Draw();
 		window.clearInterval(interval);
+		window.clearInterval(monsterInterval);
 		window.alert("Game completed");
 	} else {
 		Draw();
