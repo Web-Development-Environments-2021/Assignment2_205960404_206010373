@@ -18,6 +18,7 @@ var totalMonsters;
 var MonstersArray;
 var MonsterTemp;
 
+var stopGame = false;
 var position_flag;
 var friendPackmanFlag;
 var side_packman_X = 0.15 * Math.PI;
@@ -38,8 +39,10 @@ var numBalls60;
 var numBalls30;
 var numBalls10;
 var food_remain;
+var food_remain_in_game;
 
 var myMusic;
+var musicPlay = false;
 
 $(document).ready(function() {
 		
@@ -81,11 +84,28 @@ function sound(src) {
     }    
 }
 
+function StartMusic(){
+	if(!musicPlay){
+	myMusic = new sound('AMNAMNAM.mp3');
+	myMusic.play();
+	musicPlay = true;
+	}
+}
 
+function PauseMusic(){
+	if(musicPlay){
+	myMusic.stop();
+	musicPlay = false;
+	}
+}
+
+function LifeRemmeaning(){
+	return disqualification;
+}
 //function Start(Keys, BallsNum, BallsColor60Per, BallColor30Per, BallsColor10Per, gameTime, MonstersNums) {
 function Start() {
-	//myMusic = new sound('AMNAMNAM.mp3');
-	//myMusic.play();
+	stopGame = false;
+	StartMusic();
 	MonstersNums = 1;
 	totalMonsters = 0;
 	board = new Array();
@@ -94,12 +114,14 @@ function Start() {
 	friendPackmanFlag = false;
 	var cnt = 100;
 	//var numBalls60 = 0.6 * BallsNum;
-	numBalls60 = 0.6 * 50;
+	numBalls60 = Math.round(0.6 * 50);
 	//var numBalls30 = 0.3 * BallsNum;
-	numBalls30 = 0.3 * 50;
+	numBalls30 = Math.round(0.3 * 50);
 	//var numBalls10 = 0.1 * BallsNum;
-	numBalls10 = 0.1 * 50;
+	numBalls10 = Math.round(0.1 * 50);
 	food_remain = numBalls60 + numBalls30 + numBalls10;
+	food_remain_in_game = food_remain;
+
 
 	defaultMonsers()
 	MonstersArray = new Array();
@@ -178,6 +200,7 @@ function Start() {
 		},
 		false
 	);
+	LivesVisible();
 	interval = setInterval(UpdatePosition, 250);
 	monsterInterval = setInterval(UpdateMonsterPosition, 1000);
 }
@@ -212,6 +235,7 @@ function Draw() {
 	canvas.width = canvas.width; //clean board
 	lblScore.value = score;
 	lblTime.value = time_elapsed;
+	LivesVisible();
 	for (var i = 0; i < 10; i++) {
 		for (var j = 0; j < 10; j++) {
 			var center = new Object();
@@ -604,12 +628,21 @@ function UpdatePosition() {
 	}
 	else if (board[shape.i][shape.j] == 6) {
 		score+=25;
+		food_remain_in_game--;
 	}
 	else if (board[shape.i][shape.j] == 7) {
 		score+=15;
+		food_remain_in_game--;
 	}
 	else if (board[shape.i][shape.j] == 8) {
 		score+=5;
+		food_remain_in_game--;
+	}
+	if (food_remain_in_game==0){
+		Draw();
+		window.clearInterval(interval);
+		window.alert("Game completed");
+		return;
 	}
 	else if (MonsterOnPlace(shape.i,shape.j)) {
 		score-=10;
@@ -690,8 +723,9 @@ function changeDivs(div) {
 	hideDivs();
 	$('.' + div).show();
 	if(div == 'GameDiv'){
-		context = canvas.getContext("2d");
-		Start();
+		// context = canvas.getContext("2d");
+		// Start();
+		StartNewGame();
 	}
 };
 
@@ -705,5 +739,35 @@ function hideDivs() {
 	// resetGame();
 };
 
+function StartNewGame(){
+	stopIntervals();
+	context = canvas.getContext("2d");
+	Start();
+}
 
+function PauseGame(){
+	stopIntervals();
+	stopGame = true;
+}
 
+function ResumeGame(){
+	if (stopGame){
+		stopGame = false;
+		interval = setInterval(UpdatePosition, 250);
+		monsterInterval = setInterval(UpdateMonsterPosition, 1000);
+	}
+}
+function stopIntervals(){
+	clearInterval(interval);
+	clearInterval(monsterInterval);
+}
+
+function LivesVisible(){
+	$("#lifesDiv").html("");
+	for(let i=0;i<disqualification;i++){
+		let img=new Image(20,30);
+		img.src="life.png";
+		img.className="lifeImg";
+		document.getElementById("lifesDiv").appendChild(img);
+	}
+}
