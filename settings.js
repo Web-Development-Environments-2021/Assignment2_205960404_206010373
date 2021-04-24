@@ -40,13 +40,35 @@ function applySettings(){
 	let keyRight = getElementById("keyright").placeholder;
 	let keyLeft= getElementById("keyleft").placeholder;
 	let numOfBallsFromUser = document.getElementById('NumOfBallsChosenValue').value;
-	let ball10ColorFromUser = document.getElementById('ColorFor10').value;
-	let ball30ColorFromUser = document.getElementById('Colorfor30').value;
-	let ball60ColorFromUser = document.getElementById('Colorfor60').value;
+	let smallCookieColor = document.getElementById('ColorFor10').value;
+	let mediumCookieColor = document.getElementById('Colorfor30').value;
+	let largeCookieColor = document.getElementById('Colorfor60').value;
 	let gameTimeFromUser = document.getElementById('GameTimeVal').value;
 	let numOfMonstersFromUser = document.getElementById('numOfMonstersValue').value;
 }
 
 function randomSettings(){
-	pass
+	    keyUp= 38
+		keyDown= 40
+		keyRight= 37
+		keyLeft= 39
+		numOfBallsFromUser = Math.floor(Math.random() * (90 - 50 + 1)) + 50;
+		smallCookieColor = getRandomColor();
+	    mediumCookieColor = getRandomColor();
+	    largeCookieColor = getRandomColor();
+		gameTimeFromUser = Math.floor(Math.random() * (100 - 60 + 1)) + 60;
+	    numOfMonstersFromUser = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+		StartNewGame()
+		changeDivs("GameDiv")
+		return true;
+
+
+function getRandomColor(){
+	var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 }
