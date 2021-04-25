@@ -1,13 +1,36 @@
+//DB
+const SavedUsers = 
+[
+    {
+        username: "k",
+        password: "k",
+        fullName: "",
+        email: "",
+        birthDate: ""
+    },
+
+    {
+        username: "liad",
+        password: "liad1410",
+        fullName: "liad Segev",
+        email: "Liadey2@gmail.com",
+        birthDate: ""
+    }
+];
+
+
+//Valid Functions
+
+//login
+$.validator.addMethod("fullnamecheck", function(value) {
+    return /^[a-zA-Z ]+$/.test(value);
+});
+
 $.validator.addMethod("pwcheck", function(value) {
     return /^[A-Za-z0-9\d=!\-@._*]*$/.test(value) // consists of only these
         && /[a-z]/.test(value) // has a lowercase letter
         && /\d/.test(value) // has a digit
  });
-
-$.validator.addMethod("fullnamecheck", function(value) {
-    return /^[a-zA-Z ]+$/.test(value);
-});
-
 
 
 $.validator.addMethod("passwordMatch", function() {
@@ -17,7 +40,7 @@ $.validator.addMethod("passwordMatch", function() {
     return LoginValid(uname1,pass1);
 });
 
-
+// Jquery Validation
 $(document).ready(function() {
 
     //register
@@ -63,29 +86,37 @@ $(document).ready(function() {
         //     $(".myerror").html(error)
         //   },
         
-        submitHandler: function() {
+        // submitHandler: function() {
 
-            let username = $('#userName').val();
-            let password = $('#psw').val();
-            let fullname = $('#fullname').val();
-            let email = $('#email').val();
-            let birthDate = $('#birthDate').val();
+        //     let username = $('#userName').val();
+        //     let password = $('#psw').val();
+        //     let fullname = $('#fullname').val();
+        //     let email = $('#email').val();
+        //     let birthDate = $('#birthDate').val();
+
+        //     let UserNameExist = checkIfUserExists(username);
+        //     if (UserNameExist){
+        //         alert('Sorry... Username already taken');
+        //     }
+        //     else{
+        //     SavedUsers.push({
+        //         username: username,
+        //         password: password,
+        //         fullName: fullname,
+        //         email: email,
+        //         birthDate: birthDate,
+        //     });
+
+        //     switchDivs("LoginDiv");
+        //     $('#RegisterDivForm')[0].reset();
+        // }
+
+        //    // SavedUsers.push([userName, psw]); // liad - how to push to SAVEDUSERS
+
             
-            SavedUsers.push({
-                username: username,
-                password: password,
-                fullName: fullname,
-                email: email,
-                birthDate: birthDate,
-            });
-
-           // SavedUsers.push([userName, psw]); // liad - how to push to SAVEDUSERS
-
-            switchDivs("LoginDiv");
-            $('#RegisterDivForm')[0].reset();
 
 
-        }
+        // }
 
 
     });
@@ -137,26 +168,13 @@ function LoginValid(uname, pass)
     return SavedUsers.some((user) => user.username === uname && user.password === pass);
 }
 
+
+
 //Register Functions
-function checkIfUserExists()
+function checkIfUserExists(uname)
 {
     return SavedUsers.some((user) => user.username === uname);
 } 
-
-function PasswordOK()
-{
-    pass
-}
-
-function FullNameOK()
-{
-    pass
-} 
-
-function EmailOK()
-{
-    pass
-}
 
 
 function registerInfo(){
@@ -167,17 +185,13 @@ function registerInfo(){
     let fullname = document.getElementById('nameRegiser').value;
     let email = document.getElementById('emailRegiser').value;
     let birthdate = document.getElementById('birthdayRegiser').value;
-    //check Valid
-    let validPassword = checkIfPasswordValid(pass);
-    let validFullName = checkIfFullNameValid(fullname);
-    let validMail = checkIfMailValid(email);
-
+ 
     if (UserNameExist) {
-        if (confirm('Sorry... Username already taken')) {
-            changeDivs("RegisterDiv")
-        return;
+            alert("Sorry, this username is already taken");
+            changeDivs("AboutDiv");
+            
+    return true;
     }
-    if (PasswordOK && FullNameOK && EmailOK) {
         SavedUsers.push({
             username: userName,
             password: pass,
@@ -185,46 +199,15 @@ function registerInfo(){
             email: email,
             birthDate: birthdate,
         });
-        if (
-            confirm('Ready to go! Wanna start a game now?')
-        ) {
-            changeDivs("GameDiv")
-        } else {
-            changeDivs("WelcomeDiv")
+        if (confirm('Ready to go! Wanna start a game now?'))
+        {
+            changeDivs("GameDiv");
         }
-    }
+        else 
+        {
+            changeDivs("WelcomeDiv");
+        }
+    
 }
 
 
-
-// settings Function
-
-function randomSettings(){
-    // todo
-}
-
-function applySettings(){
-    // todo
-}
-
-
-}
-
-var SavedUsers = 
-[
-    {
-        username: "k",
-        password: "k",
-        fullName: "",
-        email: "",
-        birthDate: ""
-    },
-
-    {
-        username: "liad",
-        password: "liad1410",
-        fullName: "liad Segev",
-        email: "Liadey2@gmail.com",
-        birthDate: ""
-    }
-];

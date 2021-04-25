@@ -26,6 +26,11 @@ var side_packman_Y = 1.85 * Math.PI;
 var eye_packman_X = 5;
 var eye_packman_Y = -15;
 var disqualification;
+var cookie5;
+var cookie15;
+var cookie25;
+var game_time;
+var elmo = new Image();
 
 var Keys;
 var BallsNum;
@@ -51,6 +56,98 @@ $(document).ready(function() {
 	changeDivs('WelcomeDiv');
 });
 
+// Credit: Mateusz Rybczonec
+
+const FULL_DASH_ARRAY = 283;
+const WARNING_THRESHOLD = 10;
+const ALERT_THRESHOLD = 5;
+
+const COLOR_CODES = {
+  info: {
+    color: "green"
+  },
+  warning: {
+    color: "orange",
+    threshold: WARNING_THRESHOLD
+  },
+  alert: {
+    color: "red",
+    threshold: ALERT_THRESHOLD
+  }
+};
+
+var TIME_LIMIT;
+var timePassed;
+var timeLeft;
+var timerInterval;
+var remainingPathColor;
+
+
+
+function onTimesUp() {
+  clearInterval(timerInterval);
+}
+
+function startTimer() {
+  timerInterval = setInterval(() => {
+    timePassed = timePassed += 1;
+    timeLeft = TIME_LIMIT - timePassed;
+    document.getElementById("base-timer-label").innerHTML = formatTime(
+      timeLeft
+    );
+    setCircleDasharray();
+    setRemainingPathColor(timeLeft);
+
+    if (timeLeft === 0) {
+      onTimesUp();
+    }
+  }, 1000);
+}
+
+function formatTime(time) {
+  const minutes = Math.floor(time / 60);
+  let seconds = time % 60;
+
+  if (seconds < 10) {
+    seconds = `0${seconds}`;
+  }
+
+  return `${minutes}:${seconds}`;
+}
+
+function setRemainingPathColor(timeLeft) {
+  const { alert, warning, info } = COLOR_CODES;
+  if (timeLeft <= alert.threshold) {
+    document
+      .getElementById("base-timer-path-remaining")
+      .classList.remove(warning.color);
+    document
+      .getElementById("base-timer-path-remaining")
+      .classList.add(alert.color);
+  } else if (timeLeft <= warning.threshold) {
+    document
+      .getElementById("base-timer-path-remaining")
+      .classList.remove(info.color);
+    document
+      .getElementById("base-timer-path-remaining")
+      .classList.add(warning.color);
+  }
+}
+
+function calculateTimeFraction() {
+  const rawTimeFraction = timeLeft / TIME_LIMIT;
+  return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
+}
+
+function setCircleDasharray() {
+  const circleDasharray = `${(
+    calculateTimeFraction() * FULL_DASH_ARRAY
+  ).toFixed(0)} 283`;
+  document
+    .getElementById("base-timer-path-remaining")
+    .setAttribute("stroke-dasharray", circleDasharray);
+}
+
 
 function defaultMonsers(){
 	MonsterTemp = new Array();
@@ -61,12 +158,20 @@ function defaultMonsers(){
 
 	MonsterTemp[0].i = 1;
 	MonsterTemp[0].j = 1;
+	MonsterTemp[0].image = new Image();
+	MonsterTemp[0].image.src = "images/monster1.png";
 	MonsterTemp[1].i = 1;
 	MonsterTemp[1].j = 8;
+	MonsterTemp[1].image = new Image();
+	MonsterTemp[1].image.src = "images/monster2.png";
 	MonsterTemp[2].i = 8;
 	MonsterTemp[2].j = 1;
+	MonsterTemp[2].image = new Image();
+	MonsterTemp[2].image.src = "images/monster3.png";
 	MonsterTemp[3].i = 8;
 	MonsterTemp[3].j = 8;
+	MonsterTemp[3].image = new Image();
+	MonsterTemp[3].image.src = "images/monster4.png";
 }
 
 function sound(src) {
@@ -121,16 +226,23 @@ function Start() {
 	numBalls10 = Math.round(0.1 * 50);
 	food_remain = numBalls60 + numBalls30 + numBalls10;
 	food_remain_in_game = food_remain + 1; //change
+	game_time = 10;
 
 
+	cookie5 = new Image();
+	cookie5.src = "images/cookie5.png";
+	cookie15 = new Image();
+	cookie15.src = "images/cookie15.png";
+	cookie25 = new Image();
+	cookie25.src = "images/cookie25.png";
+	elmo.src = "images/elmo.png";
 	defaultMonsers();
 	MonstersArray = new Array();
 	for(var indexMonser = 0; indexMonser<MonstersNums;indexMonser++){
 			MonstersArray[indexMonser] = new Object();
 			MonstersArray[indexMonser].i = MonsterTemp[indexMonser].i;
 			MonstersArray[indexMonser].j = MonsterTemp[indexMonser].j;
-			MonstersArray[indexMonser].image = new Image();
-			//MonstersArray[indexMonser].image.src = "Screenshot_1.jpg";
+			MonstersArray[indexMonser].image = MonsterTemp[indexMonser].image;
 			totalMonsters++;
 	}
 
@@ -235,8 +347,12 @@ function GetKeyPressed() {
 
 function Draw() {
 	canvas.width = canvas.width; //clean board
-	lblScore.value = score;
-	lblTime.value = time_elapsed;
+	//lblScore.value = score;
+	$("#lblScore").html(score.toString());
+	let timeView = game_time - time_elapsed;
+	$("#lblTime").html(timeView.toString());
+	//lblTime.value = time_elapsed;
+
 	LivesVisible();
 	for (var i = 0; i < 10; i++) {
 		for (var j = 0; j < 10; j++) {
@@ -289,38 +405,48 @@ function Draw() {
 			//	context.fillStyle = "black"; //color
 			//	context.fill();
 			} else if (board[i][j] == 6) {
-				context.beginPath();
-				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-				context.fillStyle = "red"; //color
-				context.fill();
+				context.drawImage(cookie5, center.x-30, center.y-30, 60, 60);
+				// context.beginPath();
+				// context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+				// context.fillStyle = "red"; //color
+				// context.fill();
 			} else if (board[i][j] == 7) {
-				context.beginPath();
-				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-				context.fillStyle = "yellow"; //color
-				context.fill();
+				context.drawImage(cookie15, center.x-30, center.y-30, 60, 60);
+				// context.beginPath();
+				// context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+				// context.fillStyle = "yellow"; //color
+				// context.fill();
 			} else if (board[i][j] == 8) {
-				context.beginPath();
-				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-				context.fillStyle = "pink"; //color
-				context.fill();
-			} else if (board[i][j] == 4) {
-				context.beginPath();
-				context.rect(center.x - 30, center.y - 30, 60, 60);
-				context.fillStyle = "grey"; //color
-				context.fill();
-				
-			}  else if (board[i][j] >=10) {
+				context.drawImage(cookie25, center.x-30, center.y-30, 60, 60);
 
-				context.beginPath();
-				context.rect(center.x - 30, center.y - 30, 60, 60);
-				context.fillStyle = "white"; //color
-				context.fill();
-			}
-			if (MonsterOnPlace(i,j)) {
+				// context.beginPath();
+				// context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+				// context.fillStyle = "pink"; //color
+				// context.fill();
+			} else if (board[i][j] == 4) {
 				context.beginPath();
 				context.rect(center.x - 30, center.y - 30, 60, 60);
 				context.fillStyle = "black"; //color
 				context.fill();
+				
+			}  else if (board[i][j] >=10) {
+				context.drawImage(elmo, center.x-30, center.y-30, 60, 60);
+
+				// context.beginPath();
+				// context.rect(center.x - 30, center.y - 30, 60, 60);
+				// context.fillStyle = "white"; //color
+				// context.fill();
+			}
+			if (MonsterOnPlace(i,j)) {
+				for(var inx=0; inx<MonstersArray.length;inx++){
+					if (MonstersArray[inx].i == i && MonstersArray[inx].j == j){
+						context.drawImage(MonstersArray[inx].image, center.x-30, center.y-30, 60, 60);
+					}
+				}
+				// context.beginPath();
+				// context.rect(center.x - 30, center.y - 30, 60, 60);
+				// context.fillStyle = "black"; //color
+				// context.fill();
 			
 			}
 		}
@@ -476,20 +602,17 @@ function UpdateMonsterPosition(){
 
 			if( shape.i <= MonstersArray[inxMon].i && board[MonstersArray[inxMon].i -1][MonstersArray[inxMon].j ] != 4){
 				MonstersArray[inxMon].i--;
-				return;
 			}
 
-			if(shape.j >= MonstersArray[inxMon].j && board[MonstersArray[inxMon].i ][MonstersArray[inxMon].j +1 ] != 4){
+			else if(shape.j >= MonstersArray[inxMon].j && board[MonstersArray[inxMon].i ][MonstersArray[inxMon].j +1 ] != 4){
 				MonstersArray[inxMon].j++;
-				return;
 			}
 
-			if( shape.j <= MonstersArray[inxMon].j && board[MonstersArray[inxMon].i ][MonstersArray[inxMon].j -1] != 4){
+			else if( shape.j <= MonstersArray[inxMon].j && board[MonstersArray[inxMon].i ][MonstersArray[inxMon].j -1] != 4){
 				MonstersArray[inxMon].j--;
-				return;
 			}
 
-			if(shape.i >= MonstersArray[inxMon].i && board[MonstersArray[inxMon].i +1][MonstersArray[inxMon].j ] != 4){
+			else if(shape.i >= MonstersArray[inxMon].i && board[MonstersArray[inxMon].i +1][MonstersArray[inxMon].j ] != 4){
 				MonstersArray[inxMon].i++;
 				return;
 			}
@@ -585,8 +708,21 @@ function UpdateMonsterPosition(){
 
 }
 function UpdatePosition() {
+	if (timeLeft === 0){
+		Draw();
+			// window.clearInterval(interval);
+			stopIntervals();
+
+		//	myMusic.pause();
+			window.alert("Game Over");
+	}
 	var randomFriendPackman = Math.floor(Math.random() * (4 - 1 + 1) + 1);
+	try{
 	board[shape.i][shape.j] = 0;
+	}
+	catch{
+		StartNewGame();
+	}
 	var x = GetKeyPressed();
 	//
 	position_flag = x;
@@ -633,8 +769,9 @@ function UpdatePosition() {
 		food_remain_in_game-=1;
 		if (food_remain_in_game==0){
 			Draw();
-			window.clearInterval(interval);
-			window.clearInterval(monsterInterval);
+			// window.clearInterval(interval);
+			// window.clearInterval(monsterInterval);
+			stopIntervals();
 			window.alert("Game completed");
 		}
 	}
@@ -643,8 +780,10 @@ function UpdatePosition() {
 		food_remain_in_game-=1;
 		if (food_remain_in_game==0){
 			Draw();
-			window.clearInterval(interval);
-			window.clearInterval(monsterInterval);
+			// window.clearInterval(interval);
+			// window.clearInterval(monsterInterval);
+			stopIntervals();
+
 			window.alert("Game completed");
 		}
 	}
@@ -653,18 +792,25 @@ function UpdatePosition() {
 		food_remain_in_game-=1;
 		if (food_remain_in_game==0){
 			Draw();
-			window.clearInterval(interval);
-			window.clearInterval(monsterInterval);
+			// window.clearInterval(interval);
+			// window.clearInterval(monsterInterval);
+			stopIntervals();
+
 			window.alert("Game completed");
 		}
 	}
 	
 	else if (MonsterOnPlace(shape.i,shape.j)) {
 		score-=10;
+		if(score<=0){
+			score=0;
+		}
 		disqualification-=1;
 		if(disqualification == 0){
 			Draw();
-			window.clearInterval(interval);
+			// window.clearInterval(interval);
+			stopIntervals();
+
 		//	myMusic.pause();
 			window.alert("Game Over");
 		}
@@ -685,8 +831,10 @@ function UpdatePosition() {
 	}
 	if (score >= 1000) {
 		Draw();
-		window.clearInterval(interval);
-		window.clearInterval(monsterInterval);
+		// window.clearInterval(interval);
+		// window.clearInterval(monsterInterval);
+		stopIntervals();
+
 		window.alert("Game completed");
 	} else {
 		Draw();
@@ -756,9 +904,40 @@ function hideDivs() {
 };
 
 function StartNewGame(){
+	
 	stopIntervals();
 	context = canvas.getContext("2d");
 	Start();
+	TIME_LIMIT = game_time;
+ 	timePassed = 0;
+ 	timeLeft = TIME_LIMIT;
+ 	timerInterval = null;
+ 	remainingPathColor = COLOR_CODES.info.color;
+	document.getElementById("app").innerHTML = `
+	<div class="base-timer">
+	  <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+		<g class="base-timer__circle">
+		  <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+		  <path
+			id="base-timer-path-remaining"
+			stroke-dasharray="283"
+			class="base-timer__path-remaining ${remainingPathColor}"
+			d="
+			  M 50, 50
+			  m -45, 0
+			  a 45,45 0 1,0 90,0
+			  a 45,45 0 1,0 -90,0
+			"
+		  ></path>
+		</g>
+	  </svg>
+	  <span id="base-timer-label" class="base-timer__label">${formatTime(
+		timeLeft
+	  )}</span>
+	</div>
+	`;
+
+startTimer();
 }
 
 function PauseGame(){
@@ -771,11 +950,13 @@ function ResumeGame(){
 		stopGame = false;
 		interval = setInterval(UpdatePosition, 250);
 		monsterInterval = setInterval(UpdateMonsterPosition, 1000);
+		startTimer();
 	}
 }
 function stopIntervals(){
 	clearInterval(interval);
 	clearInterval(monsterInterval);
+	onTimesUp();
 }
 
 function LivesVisible(){
