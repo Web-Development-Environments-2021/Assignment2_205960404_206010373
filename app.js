@@ -46,14 +46,56 @@ var numBalls10;
 var food_remain;
 var food_remain_in_game;
 
+var bol_about = false;
+
 var myMusic;
 var musicPlay = false;
 
 $(document).ready(function() {
-		
+	 
 	//context = canvas.getContext("2d");
 	//Start();
 	changeDivs('WelcomeDiv');
+	
+
+	// Get the modal
+var modal = document.getElementById("about");
+
+// Get the button that opens the modal
+var btn = document.getElementById("#about");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+  bol_about = true;
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+	bol_about = false;
+  modal.style.display = "none";
+}
+
+// close about- ESC
+$(document).keydown(function(event) { 
+	if (event.keyCode == 27) { 
+		modal.style.display = "none";
+	}
+  });
+
+// When the user clicks anywhere outside of the modal, close it
+document.getElementById("body").onclick = function(event) {
+	aboutModal = document.getElementById('about');
+	aboutButton = document.getElementById('#about');
+	if(event.target != aboutModal && event.target != aboutButton )
+	{
+		modal.style.display = "none";
+	}
+	
+}
 });
 
 // Credit: Mateusz Rybczonec
@@ -984,34 +1026,38 @@ function LivesVisible(){
 	}
 }
 
-//about
-function showAbout() {
-	changeDivs("AboutDiv")
-	let modal = document.getElementById('about');
-	modal.style.display = 'block';
-  }
 
-  function closeAbout() {
-	let modal = document.getElementById('about');
-	modal.style.display = 'none';
-	changeDivs("WelcomeDiv");
-  }
 
-  // close about -clickoutside
-let aboutModal = document.getElementById('about');
-$('#body').click(function() {
-	if (!$(this.target).is(aboutModal)) {
-	  $("#about").hide();
-	}
-  });
+
+
+// //about
+// function showAbout() {
+// 	changeDivs("AboutDiv")
+// 	let modal = document.getElementById('about');
+// 	modal.style.display = 'block';
+//   }
+
+//   function closeAbout() {
+// 	let modal = document.getElementById('about');
+// 	modal.style.display = 'none';
+// 	changeDivs("WelcomeDiv");
+//   }
+
+//   // close about -clickoutside
+// let aboutModal = document.getElementById('about');
+// $('#body').click(function() {
+// 	if (!$(this.target).is(aboutModal)) {
+// 	  $("#about").hide();
+// 	}
+//   });
   
-// close about- ESC
-$(document).keydown(function(event) { 
-	if (event.keyCode == 27) { 
-	  $('#about').hide();
-	  changeDivs("WelcomeDiv");
-	}
-  });
+// // close about- ESC
+// $(document).keydown(function(event) { 
+// 	if (event.keyCode == 27) { 
+// 	  $('#about').hide();
+// 	  changeDivs("WelcomeDiv");
+// 	}
+//   });
 // document.addEventListener('keydown', (event) => {
 //   if (event.key === 'Escape') {
 //     modal.style.display = 'none';
