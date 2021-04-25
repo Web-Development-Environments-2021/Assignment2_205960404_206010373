@@ -35,16 +35,17 @@ function setKeyPressed(keyIdToSet) {
 
 
 function applySettings(){
-	let keyUp = getElementById("keyup").placeholder;
-	let keyDown = getElementById("keydown").placeholder;
-	let keyRight = getElementById("keyright").placeholder;
-	let keyLeft= getElementById("keyleft").placeholder;
-	let numOfBallsFromUser = document.getElementById('NumOfBallsChosenValue').value;
-	let smallCookieColor = document.getElementById('ColorFor10').value;
+	let keyUp = document.getElementById("keyup").placeholder;
+	let keyDown = document.getElementById("keydown").placeholder;
+	let keyRight = document.getElementById("keyright").placeholder;
+	let keyLeft= document.getElementById("keyleft").placeholder;
+	let numOfBallsFromUser = document.getElementById('NumOfBallsChosenVal').value;
+	let smallCookieColor = document.getElementById('Colorfor10').value;
 	let mediumCookieColor = document.getElementById('Colorfor30').value;
 	let largeCookieColor = document.getElementById('Colorfor60').value;
 	let gameTimeFromUser = document.getElementById('GameTimeVal').value;
 	let numOfMonstersFromUser = document.getElementById('numOfMonstersValue').value;
+	alert("blahblah");
 }
 
 function randomSettings(){
