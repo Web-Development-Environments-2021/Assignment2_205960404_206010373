@@ -5,6 +5,8 @@ body
   margin: 0px;
   font-family: Copperplate, Papyrus, fantasy;
   overflow: hidden; /* Hide scrollbars */
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
   
   
 }
@@ -37,7 +39,8 @@ li:hover {
 {
    text-align: center;
    color:white;
-
+   overflow-y: hidden; /* Hide vertical scrollbar */
+   overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 .Menu
 {
@@ -112,17 +115,6 @@ left:0;
   width: 100%;
   text-align: left;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 h1{
