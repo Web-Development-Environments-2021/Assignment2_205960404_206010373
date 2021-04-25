@@ -893,6 +893,14 @@ function updatePackmenFriendPosition(randomFriendPackman) {
 function changeDivs(div) {
 	hideDivs();
 	$('.' + div).show();
+	if(div == 'GameDiv' || div == "RegisterDiv" || div == "SettingsDiv" || div == "AboutDiv")
+	{
+		document.body.style.backgroundImage = "url(images/bg.jpg)";
+	}
+	if(div == "WelcomeDiv" || div == "LoginDiv")
+	{
+		document.body.style.backgroundImage = "url(images/CookieEater.jpg)";
+	}
 	if(div == 'GameDiv'){
 		// context = canvas.getContext("2d");
 		// Start();
