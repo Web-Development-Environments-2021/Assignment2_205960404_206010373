@@ -209,6 +209,8 @@ function LifeRemmeaning(){
 }
 //function Start(Keys, BallsNum, BallsColor60Per, BallColor30Per, BallsColor10Per, gameTime, MonstersNums) {
 function Start() {
+	let health = document.getElementById("health")
+	health.value = 5; //Or whatever you want to do with it.
 	stopGame = false;
 	StartMusic();
 	MonstersNums = 1;
@@ -314,7 +316,10 @@ function Start() {
 		},
 		false
 	);
-	LivesVisible();
+	// LivesVisible();
+
+	
+
 	interval = setInterval(UpdatePosition, 250);
 	monsterInterval = setInterval(UpdateMonsterPosition, 1000);
 }
@@ -353,7 +358,7 @@ function Draw() {
 	$("#lblTime").html(timeView.toString());
 	//lblTime.value = time_elapsed;
 
-	LivesVisible();
+	// LivesVisible();
 	for (var i = 0; i < 10; i++) {
 		for (var j = 0; j < 10; j++) {
 			var center = new Object();
@@ -806,6 +811,8 @@ function UpdatePosition() {
 			score=0;
 		}
 		disqualification-=1;
+		let health = document.getElementById("health")
+		health.value -= 1; //Or whatever you want to do with it.
 		if(disqualification == 0){
 			Draw();
 			// window.clearInterval(interval);
