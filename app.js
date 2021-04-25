@@ -895,7 +895,7 @@ function changeDivs(div) {
 	$('.' + div).show();
 	if(div == 'GameDiv' || div == "RegisterDiv" || div == "SettingsDiv" || div == "AboutDiv")
 	{
-		document.body.style.backgroundImage = "url(images/bg.jpg)";
+		document.body.style.backgroundImage = "url(images/body.jpg)";
 	}
 	if(div == "WelcomeDiv" || div == "LoginDiv")
 	{

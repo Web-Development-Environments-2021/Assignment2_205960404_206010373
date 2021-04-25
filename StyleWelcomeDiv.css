@@ -33,7 +33,12 @@ li:hover {
 .Content
 {
    text-align: center;
+   color:white;
 
+}
+.Menu
+{
+ color:white;
 }
 
 /* WelcomeDiv */
