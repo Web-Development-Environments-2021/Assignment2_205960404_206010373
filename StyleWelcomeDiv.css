@@ -1,7 +1,7 @@
 
 body 
 {
-  background-image: linear-gradient( rgb(102, 102, 102), rgb(38, 38, 38));
+  /*background-image: linear-gradient( rgb(102, 102, 102), rgb(38, 38, 38));*/
   margin: 0px;
   font-family: Copperplate, Papyrus, fantasy;
 }
@@ -32,24 +32,8 @@ li:hover {
 
 .Content
 {
- 
-  text-align: center;
-  background: rgb(88, 111, 145);
-  padding-bottom: 20px;
-  padding-top: 20px;
-  padding-right: 5px;
-  padding-left: 5px;
-  width: 40%;
-  border-radius: 3rem;
-  background: linear-gradient(
-    to right bottom,
-    rgba(255, 255, 255, 0.7),
-    rgba(255, 255, 255, 0.4)
-  );
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+   text-align: center;
 
-  margin-left: 30%;
-  margin-top: 5%;
 }
 
 /* WelcomeDiv */
@@ -57,38 +41,46 @@ li:hover {
 .WelcomeDiv .btn1 {
   position: absolute;
   top: 80%;
-  left: 56%;
+  left: 58%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   background-color: #555;
   color: white;
   font-size: 16px;
-  padding: 30px 70px;
+  padding: 2% 5%;
   border: none;
   cursor: pointer;
   border-radius: 5px;
 }
 
+.WelcomeDiv {
+    /*background-image: url('images/CookieEater.jpg');*/
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+}
 .WelcomeDiv .btn2 {
   position: absolute;
   top: 80%;
-  left: 44%;
+  left: 43%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   background-color: #555;
   color: white;
   font-size: 16px;
-  padding: 30px 70px;
+  padding: 2% 5%;
   border: none;
   cursor: pointer;
   border-radius: 5px;
 }
 
 .WelcomeDiv .btn1:hover {
-  background-color: black;
+  background-color:blue;
 }
 .WelcomeDiv .btn2:hover {
-  background-color: black;
+  background-color:blue;
 }
 
 
@@ -120,14 +112,14 @@ left:0;
 
 
 h1{
-	color: black;
+	color: white;
 	font-family: Copperplate, Papyrus, fantasy;
 	font-size: 180%;
-	margin: 20px;
+  margin-top: 20%;
 }
 
 h3{
-	color: black;;
+	color: white;;
         font-family: Copperplate, Papyrus, fantasy;
 	font-size: 500%;
 	margin: 80px;
