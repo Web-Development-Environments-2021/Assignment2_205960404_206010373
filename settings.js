@@ -15,10 +15,10 @@ function validateGameTime(time) {
  * This function gets the keys the user press for movment and show them to the user
  */
 $(document).ready(function () {
-	setKeyPressed("#keyUp");
-	setKeyPressed("#keyDown");
-	setKeyPressed("#keyLeft");
-	setKeyPressed("#keyRight");
+	setKeyPressed("#keyup");
+	setKeyPressed("#keydown");
+	setKeyPressed("#keyleft");
+	setKeyPressed("#keyright");
 });
 
 /**
