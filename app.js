@@ -983,3 +983,17 @@ function LivesVisible(){
 		document.getElementById("lifesDiv").appendChild(img);
 	}
 }
+
+//about
+function showAbout() {
+	changeDivs("AboutDiv")
+	let modal = document.getElementById('about');
+	modal.style.display = 'block';
+  }
+
+  function closeAbout() {
+	let modal = document.getElementById('about');
+	modal.style.display = 'none';
+	changeDivs("WelcomeDiv")
+  }
+
