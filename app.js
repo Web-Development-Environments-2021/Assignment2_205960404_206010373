@@ -997,3 +997,18 @@ function showAbout() {
 	changeDivs("WelcomeDiv")
   }
 
+  // close about -clickoutside
+let modal = document.getElementById('about');
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = 'none';
+  }
+};
+
+// close about- ESC
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    modal.style.display = 'none';
+  }
+});
+
