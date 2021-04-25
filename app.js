@@ -895,7 +895,7 @@ function changeDivs(div) {
 	$('.' + div).show();
 	if(div == 'GameDiv' || div == "RegisterDiv" || div == "SettingsDiv" || div == "AboutDiv")
 	{
-		document.body.style.backgroundImage = "url(images/body.jpg)";
+		document.body.style.backgroundImage = "url(images/back.jpg)";
 	}
 	if(div == "WelcomeDiv" || div == "LoginDiv")
 	{
@@ -998,15 +998,14 @@ function showAbout() {
   }
 
   // close about -clickoutside
-var modal = document.getElementById('about');
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = 'none';
-  }
-};
-
+let aboutModal = document.getElementById('about');
+$('#body').click(function() {
+	if (!$(this.target).is(aboutModal)) {
+	  $("#about").hide();
+	}
+  });
+  
 // close about- ESC
-
 $(document).keydown(function(event) { 
 	if (event.keyCode == 27) { 
 	  $('#about').hide();
