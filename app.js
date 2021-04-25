@@ -994,11 +994,11 @@ function showAbout() {
   function closeAbout() {
 	let modal = document.getElementById('about');
 	modal.style.display = 'none';
-	changeDivs("WelcomeDiv")
+	changeDivs("WelcomeDiv");
   }
 
   // close about -clickoutside
-let modal = document.getElementById('about');
+var modal = document.getElementById('about');
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = 'none';
@@ -1006,9 +1006,16 @@ window.onclick = function (event) {
 };
 
 // close about- ESC
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') {
-    modal.style.display = 'none';
-  }
-});
+
+$(document).keydown(function(event) { 
+	if (event.keyCode == 27) { 
+	  $('#about').hide();
+	  changeDivs("WelcomeDiv");
+	}
+  });
+// document.addEventListener('keydown', (event) => {
+//   if (event.key === 'Escape') {
+//     modal.style.display = 'none';
+//   }
+// });
 
