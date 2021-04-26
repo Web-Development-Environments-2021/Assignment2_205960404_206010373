@@ -148,10 +148,9 @@
 
 				<div class="set" id="SetNumOfBalls">
 					<label id="" class="SetNumOfBalls">Choose Number Of Cookies:</label>
-					50  <input type="range" min="50" max="90" value="50" class="slider" id="NumOfBallsChosenVal" onchange="NumOfBallsChosen(this.value)" required>  90
+					<input type="range" min="50" max="90" value="50" class="slider" id="NumOfBallsChosenVal" onchange="NumOfBallsChosen(this.value)" required>
 					<label for="SetNumOfBalls" id="NumOfBallsChosen"></label><br><br>
 				</div>
-
 
 
 				<div class="set">
@@ -216,7 +215,7 @@
 					<!-- <div id="lifesDiv" style="display: inline-block;"></div> -->
 					<progress id="health" value="5" max="5"></progress>
 					<div id="game">
-						<canvas id="canvas" height="600" width="600"></canvas>
+						<canvas id="canvas" height="720" width="720"></canvas>
 					</div>
 					<button class="game-button" onclick="StartNewGame()">Start New Game</button>
 					<button class="game-button orange" onclick="ResumeGame()">Resume Game</button>

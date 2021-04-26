@@ -40,6 +40,17 @@ var BallsColor10Per;
 var gameTime;
 var MonstersNums;
 
+var keyUp;
+var keyDown;
+var keyRight;
+var keyLeft;
+var numOfBallsFromUser;
+var smallCookieColor;
+var mediumCookieColor;
+var largeCookieColor;
+var gameTimeFromUser;
+var numOfMonstersFromUser;
+
 var numBalls60;
 var numBalls30;
 var numBalls10;
@@ -203,15 +214,15 @@ function defaultMonsers(){
 	MonsterTemp[0].image = new Image();
 	MonsterTemp[0].image.src = "images/monster1.png";
 	MonsterTemp[1].i = 1;
-	MonsterTemp[1].j = 8;
+	MonsterTemp[1].j = 10;
 	MonsterTemp[1].image = new Image();
 	MonsterTemp[1].image.src = "images/monster2.png";
-	MonsterTemp[2].i = 8;
+	MonsterTemp[2].i = 10;
 	MonsterTemp[2].j = 1;
 	MonsterTemp[2].image = new Image();
 	MonsterTemp[2].image.src = "images/monster3.png";
-	MonsterTemp[3].i = 8;
-	MonsterTemp[3].j = 8;
+	MonsterTemp[3].i = 10;
+	MonsterTemp[3].j = 10;
 	MonsterTemp[3].image = new Image();
 	MonsterTemp[3].image.src = "images/monster4.png";
 }
@@ -270,7 +281,7 @@ function Start() {
 	numBalls10 = Math.round(0.1 * 50);
 	food_remain = numBalls60 + numBalls30 + numBalls10;
 	food_remain_in_game = food_remain + 1; //change
-	game_time = 10;
+	game_time = 60;
 
 
 	cookie5 = new Image();
@@ -294,12 +305,12 @@ function Start() {
 	disqualification = 5;
 	var pacman_remain = 1;
 	start_time = new Date();
-	for (var i = 0; i < 10; i++) {
+	for (var i = 0; i < 12; i++) {
 		board[i] = new Array();
 		//put obstacles in (i=3,j=3) and (i=3,j=4) and (i=3,j=5), (i=6,j=1) and (i=6,j=2)
-		for (var j = 0; j < 10; j++) {
+		for (var j = 0; j < 12; j++) {
 			if ((i == 3 && j == 3) || (i == 3 && j == 4) ||	(i == 3 && j == 5) ||
-				(i == 6 && j == 1) || (i == 6 && j == 2) || (i==0) || (j==0) || (i==9) || (j==9) ){
+				(i == 6 && j == 1) || (i == 6 && j == 2) || (i==0) || (j==0) || (i==11) || (j==11) ){
 				board[i][j] = 4; //wall
 			} 
 			// else if ((i == 1 && j == 1) || (i == 1 && j == 8) ||	(i == 8 && j == 1) ||
@@ -368,11 +379,11 @@ function Start() {
 
 
 function findRandomEmptyCell(board) {
-	var i = Math.floor(Math.random() * 9 + 1);
-	var j = Math.floor(Math.random() * 9 + 1);
+	var i = Math.floor(Math.random() * 11 + 1);
+	var j = Math.floor(Math.random() * 11 + 1);
 	while (board[i][j] != 0) {
-		i = Math.floor(Math.random() * 9 + 1);
-		j = Math.floor(Math.random() * 9 + 1);
+		i = Math.floor(Math.random() * 11 + 1);
+		j = Math.floor(Math.random() * 11 + 1);
 	}
 	return [i, j];
 }
@@ -401,8 +412,8 @@ function Draw() {
 	//lblTime.value = time_elapsed;
 
 	// LivesVisible();
-	for (var i = 0; i < 10; i++) {
-		for (var j = 0; j < 10; j++) {
+	for (var i = 0; i < 12; i++) {
+		for (var j = 0; j < 12; j++) {
 			var center = new Object();
 			center.x = i * 60 + 30;
 			center.y = j * 60 + 30;
@@ -783,7 +794,7 @@ function UpdatePosition() {
 		
 	}
 	if (x == 2) { //Down Side
-		if (shape.j < 9 && board[shape.i][shape.j + 1] != 4) {
+		if (shape.j < 11 && board[shape.i][shape.j + 1] != 4) {
 			shape.j++;
 		}
 		
@@ -795,7 +806,7 @@ function UpdatePosition() {
 		
 	}
 	if (x == 4) { // Right Side
-		if (shape.i < 9 && board[shape.i + 1][shape.j] != 4) {
+		if (shape.i < 11 && board[shape.i + 1][shape.j] != 4) {
 			shape.i++;
 		}
 		
@@ -906,7 +917,7 @@ function updatePackmenFriendPosition(randomFriendPackman) {
 		
 	}
 	else if (randomFriendPackman == 2) { //Down Side
-		if (friendPackman.j < 9 && board[friendPackman.i][friendPackman.j + 1] != 4) {
+		if (friendPackman.j < 11 && board[friendPackman.i][friendPackman.j + 1] != 4) {
 			board[friendPackman.i][friendPackman.j]-=10;
 			friendPackman.j++;
 			board[friendPackman.i][friendPackman.j]+=10;
@@ -923,7 +934,7 @@ function updatePackmenFriendPosition(randomFriendPackman) {
 		
 	}
 	else if (randomFriendPackman == 4) { // Right Side
-		if (friendPackman.i < 9 && board[friendPackman.i + 1][friendPackman.j] != 4) {
+		if (friendPackman.i < 11 && board[friendPackman.i + 1][friendPackman.j] != 4) {
 			board[friendPackman.i][friendPackman.j]-=10;
 			friendPackman.i++;
 			board[friendPackman.i][friendPackman.j ]+=10;
@@ -1064,3 +1075,85 @@ function LivesVisible(){
 //   }
 // });
 
+function applySettings(){
+	keyUp = document.getElementById("keyup").placeholder;
+	keyDown = document.getElementById("keydown").placeholder;
+	keyRight = document.getElementById("keyright").placeholder;
+	keyLeft= document.getElementById("keyleft").placeholder;
+	numOfBallsFromUser = document.getElementById('NumOfBallsChosenVal').value;
+    smallCookieColor = document.getElementById('Colorfor10').value;
+	mediumCookieColor = document.getElementById('Colorfor30').value;
+	largeCookieColor = document.getElementById('Colorfor60').value;
+	gameTimeFromUser = document.getElementById('GameTimeVal').value;
+	numOfMonstersFromUser = document.getElementById('numOfMonstersValue').value;
+	changeDivs("GameDiv");
+	StartNewGame();
+}
+
+
+
+function randomSettings(){
+	keyUp= 38
+	keyDown= 40
+	keyRight= 37
+	keyLeft= 39
+	numOfBallsFromUser = Math.floor(Math.random() * (90 - 50 + 1)) + 50;
+	smallCookieColor = getRandomColor();
+	mediumCookieColor = getRandomColor();
+	largeCookieColor = getRandomColor();
+	gameTimeFromUser = Math.floor(Math.random() * (100 - 60 + 1)) + 60;
+	numOfMonstersFromUser = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+	document.getElementById("keyup").placeholder = "ArrowUp";
+	document.getElementById("keydown").placeholder = "ArrowDown";
+	document.getElementById("keyright").placeholder = "ArrowRight";
+	document.getElementById("keyleft").placeholder = "ArrowLeft";
+	document.getElementById('NumOfBallsChosenVal').value = numOfBallsFromUser;
+	NumOfBallsChosen(numOfBallsFromUser);
+    document.getElementById('Colorfor10').value = smallCookieColor;
+	document.getElementById('Colorfor30').value =  mediumCookieColor;
+	document.getElementById('Colorfor60').value = largeCookieColor;
+	document.getElementById('GameTimeVal').value = gameTimeFromUser;
+	document.getElementById('numOfMonstersValue').value = numOfMonstersFromUser;
+}
+function getRandomColor(){
+var letters = '0123456789ABCDEF';
+var color = '#';
+for (var i = 0; i < 6; i++) {
+	color += letters[Math.floor(Math.random() * 16)];
+}
+return color;
+}
+
+function KeyBoards() {
+    //todo
+}
+
+
+function NumOfBallsChosen(val) {
+    document.getElementById('NumOfBallsChosen').innerHTML = val;
+}
+
+function validateGameTime(time) {
+    return time < 60 ? false : true;
+}
+
+/**
+ * This function gets the keys the user press for movment and show them to the user
+ */
+$(document).ready(function () {
+	setKeyPressed("#keyup");
+	setKeyPressed("#keydown");
+	setKeyPressed("#keyleft");
+	setKeyPressed("#keyright");
+});
+
+/**
+ * This function sets a listener for each user input key to show the user the key he pressed
+ * @param {*} keyIdToSet key input id to set the listener to
+ */
+function setKeyPressed(keyIdToSet) {
+	$(keyIdToSet).keydown(function (event) {
+		$(keyIdToSet).attr("placeholder", event.key);
+		$(keyIdToSet).val(event.key);
+	});
+}
