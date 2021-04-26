@@ -201,7 +201,7 @@ function registerInfo(){
         });
         if (confirm('Ready to go! Wanna start a game now?'))
         {
-            changeDivs("GameDiv");
+            changeDivs("SettingsDiv");
         }
         else 
         {

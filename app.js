@@ -1115,7 +1115,7 @@ function setKeyPressed(keyIdToSet) {
 	});
 }
 
-function GameStartForLiad(){
+/*function GameStartForLiad(){
 	randomSettings();
 	applySettings();
-}
+}*/

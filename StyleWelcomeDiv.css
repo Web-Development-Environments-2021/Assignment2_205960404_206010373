@@ -240,7 +240,6 @@ h4{ font-size:16px;}
 h5{ font-size:14px;}
 h6{ font-size:18px;}
 h4,h5,h6{ color:#563D64;}
-small{ font-size:10px;}
 b, strong{ font-weight:bold;}
 a{ text-decoration: none; }
 a:hover{ text-decoration: underline; }
@@ -256,12 +255,12 @@ form:after {
   clear: both;
   visibility: hidden;
 }
-.LoginDiv { 
+.LoginDiv, .RegisteDiv { 
   margin: 25px auto; position: relative; width: 900px;
   margin-top: 350px; 
 
 }
-#login {
+#login, #register {
   background: #f9f9f9;
   background: -moz-linear-gradient(top,  rgba(248,248,248,1) 0%, rgba(249,249,249,1) 100%);
   background: -webkit-linear-gradient(top,  rgba(248,248,248,1) 0%,rgba(249,249,249,1) 100%);
@@ -282,7 +281,7 @@ form:after {
   text-shadow: 0 1px 0 #fff;
   width: 400px;
 }
-#login h6 {
+#login h6,#register h6 {
   color: #7E7E7E;
   font: bold 25px Helvetica, Arial, sans-serif;
   letter-spacing: -0.05em;
@@ -290,14 +289,16 @@ form:after {
   margin: 10px 0 30px;
 }
 #login h6:before,
-#login h6:after {
+#login h6:after 
+#register h6:before,
+#register h6:after {
   content: "";
   height: 1px;
   position: absolute;
   top: 10px;
   width: 27%;
 }
-#login h6:after {
+#login h6:after,#register h6:after  {
   background: rgb(126,126,126);
   background: -moz-linear-gradient(left,  rgba(126,126,126,1) 0%, rgba(255,255,255,1) 100%);
   background: -webkit-linear-gradient(left,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
@@ -306,7 +307,7 @@ form:after {
   background: linear-gradient(left,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
     right: 0;
 }
-#login h6:before {
+#login h6:before,#register h6:before {
   background: rgb(126,126,126);
   background: -moz-linear-gradient(right,  rgba(126,126,126,1) 0%, rgba(255,255,255,1) 100%);
   background: -webkit-linear-gradient(right,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
@@ -316,7 +317,9 @@ form:after {
     left: 0;
 }
 #login:after,
-#login:before {
+#login:before,
+#register:after,
+#register:before{
   background: #f9f9f9;
   background: -moz-linear-gradient(top,  rgba(248,248,248,1) 0%, rgba(249,249,249,1) 100%);
   background: -webkit-linear-gradient(top,  rgba(248,248,248,1) 0%,rgba(249,249,249,1) 100%);
@@ -332,7 +335,7 @@ form:after {
   position: absolute;
   width: 100%;
 }
-#login:after {
+#login:after, #register:after {
   -webkit-transform: rotate(2deg);
   -moz-transform: rotate(2deg);
   -ms-transform: rotate(2deg);
@@ -341,7 +344,7 @@ form:after {
   top: 0;
   z-index: -1;
 }
-#login:before {
+#login:before, #register:before {
   -webkit-transform: rotate(-3deg);
   -moz-transform: rotate(-3deg);
   -ms-transform: rotate(-3deg);
@@ -350,9 +353,10 @@ form:after {
   top: 0;
   z-index: -2;
 }
-#login form { margin: 0 20px; position: relative }
-#login form input[type="text"],
-#login form input[type="password"] {
+#login form, #register:before { margin: 0 20px; position: relative }
+#login form input[type="text"], #register form input[type="text"],
+#login form input[type="password"], #register form input[type="password"],
+#login form input[type="date"], #register form input[type="date"] {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
@@ -377,7 +381,9 @@ form:after {
   width: 80%;
 }
 #login form input[type="text"]:focus,
-#login form input[type="password"]:focus {
+#login form input[type="password"]:focus,
+#register form input[type="text"]:focus,
+#register form input[type="password"]:focus {
   -webkit-box-shadow: 0 0 2px #ed1c24 inset;
   -moz-box-shadow: 0 0 2px #ed1c24 inset;
   -ms-box-shadow: 0 0 2px #ed1c24 inset;
@@ -389,7 +395,7 @@ form:after {
 }
 #username { background-position: 10px 10px !important }
 #password { background-position: 10px -53px !important }
-#login form input[type="submit"] {
+#login form input[type="submit"],#register form input[type="submit"] {
   background: rgb(254,231,154);
   background: -moz-linear-gradient(top,  rgba(254,231,154,1) 0%, rgba(254,193,81,1) 100%);
   background: -webkit-linear-gradient(top,  rgba(254,231,154,1) 0%,rgba(254,193,81,1) 100%);
@@ -418,7 +424,7 @@ form:after {
   text-shadow: 0 1px 0 rgba(255,255,255,0.5);
   width: 120px;
 }
-#login form input[type="submit"]:hover {
+#login form input[type="submit"]:hover , #register form input[type="submit"]:hover{
   background: rgb(254,193,81);
   background: -moz-linear-gradient(top,  rgba(254,193,81,1) 0%, rgba(254,231,154,1) 100%);
   background: -webkit-linear-gradient(top,  rgba(254,193,81,1) 0%,rgba(254,231,154,1) 100%);
@@ -427,7 +433,7 @@ form:after {
   background: linear-gradient(top,  rgba(254,193,81,1) 0%,rgba(254,231,154,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fec151', endColorstr='#fee79a',GradientType=0 );
 }
-#login form div a {
+#login form div a, #register form div a {
   color: #004a80;
     float: right;
     font-size: 12px;

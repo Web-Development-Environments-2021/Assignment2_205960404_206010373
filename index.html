@@ -28,8 +28,8 @@
 			<li id="#welcome" onclick="changeDivs('WelcomeDiv')">Welcome</li>
 			<li id="#register" onclick="changeDivs('RegisterDiv')">Register</li>
 			<li id="#login" onclick="changeDivs('LoginDiv')">LogIn</li>
-			<li id="#set" onclick="changeDivs('SettingsDiv')">set</li>
-			<li id="#game" onclick="GameStartForLiad()">game</li>
+			<!-- <li id="#set" onclick="changeDivs('SettingsDiv')">set</li> -->
+			<!-- <li id="#game" onclick="GameStartForLiad()">game</li> -->
 			<li id="#about" >About</li>
 		</ul>
 		</div>
@@ -56,7 +56,7 @@
 				<button class="btn2" id="LogInButton" onclick="changeDivs('LoginDiv')">LogIn</button>
 			</div>
 
-			<div class="RegisterDiv" >
+			<!--<div class="RegisterDiv" >
 				<h2>Register:</h2>
 				<form id="RegisterDivForm">
 				<div id="RegisterDiv1">
@@ -107,11 +107,39 @@
 						</div>
 					</div>
 				</div>
-
-
-
 				</form>
-			</div>
+			</div>-->
+
+			<div class="RegisterDiv">
+				<section id="register">
+				  <form action="" id="RegisterDivForm">
+					<h6>Register Form</h6>
+					<div>
+					  <input type="text" placeholder="Enter User Name" name="userName" id="usernameRegiser" required />
+					</div>
+					<div>
+					  <input type="password" placeholder="Enter Password" name="psw" id="passwordRegiser" required/>
+					</div>
+					<div>
+						<input type="text" placeholder="Enter your full name" name="fullname" id="nameRegiser" required/>
+					  </div>
+					  <div>
+						<input type="text" placeholder="Enter Email" name="email" id="emailRegiser" required />
+					  </div>
+					  <div>
+						<input type="date" placeholder="Enter Birthday" name="birthday" id="birthdayRegiser" required />
+					  </div>
+					<div>
+					  <input type="submit" value="Register" onclick="registerInfo(); return false;"/>
+					  <a href="#" onclick="changeDivs('LoginDiv'); return false;">already have an acount? </a>
+					</div>
+					
+				  </form><!-- form -->
+				</section><!-- content -->
+			  </div><!-- container -->
+
+
+
 				<div class="LoginDiv">
 				  <section id="login">
 					<form action="" id="LoginDivForm">
