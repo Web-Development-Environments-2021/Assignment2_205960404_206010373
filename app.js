@@ -266,7 +266,7 @@ function Start() {
 	let health = document.getElementById("health")
 	health.value = 5; //Or whatever you want to do with it.
 	stopGame = false;
-	StartMusic();
+	//StartMusic();
 	MonstersNums = numOfMonstersFromUser;
 	totalMonsters = 0;
 	board = new Array();

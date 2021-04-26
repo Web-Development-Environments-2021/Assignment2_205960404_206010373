@@ -200,13 +200,6 @@
 
 				<div class="GameDiv">
 
-					<div id="score">
-						<label for="lblScore">SCORE:</label>
-						<label id="lblScore"> 0</label>
-						<!-- <input id="lblScore" type="text" /> -->
-					</div>
-					<div id="app"></div>
-
 					<!-- <div id="time"> -->
 						<!-- <label for="lblTime">TIME:</label>
 
@@ -215,9 +208,20 @@
 
 					<!-- </div> -->
 					<!-- <div id="lifesDiv" style="display: inline-block;"></div> -->
-					<progress id="health" value="5" max="5"></progress>
-					<div id="game">
+					
+					<div class="row">
+					<div class="column" id="game">
 						<canvas id="canvas" height="720" width="720"></canvas>
+					</div>
+					<div class="column" id="right"></div>
+					</div>
+					<div id="app"></div>
+					<progress id="health" value="5" max="5"></progress>
+
+					<div id="score">
+						<label for="lblScore">SCORE:</label>
+						<label id="lblScore"> 0</label>
+						<!-- <input id="lblScore" type="text" /> -->
 					</div>
 					<button class="game-button" onclick="StartNewGame()">Start New Game</button>
 					<button class="game-button orange" onclick="ResumeGame()">Resume Game</button>
