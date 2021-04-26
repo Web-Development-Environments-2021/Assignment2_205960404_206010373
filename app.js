@@ -1036,6 +1036,20 @@ function applySettings(){
 	largeCookieColor = document.getElementById('Colorfor60').value;
 	gameTimeFromUser = document.getElementById('GameTimeVal').value;
 	numOfMonstersFromUser = document.getElementById('numOfMonstersValue').value;
+
+	document.getElementById("keyupGameShow").innerHTML = keyUp;
+	document.getElementById("keydownGameShow").innerHTML = keyDown;
+	document.getElementById("keyrightGameShow").innerHTML = keyRight;
+	document.getElementById("keyleftGameShow").innerHTML = keyLeft;
+	document.getElementById("NumOfBallsGameShow").innerHTML = numOfBallsFromUser;
+	document.getElementById('Colorfor10GameShow').value = document.getElementById('Colorfor10').value;
+	document.getElementById('Colorfor30GameShow').value = document.getElementById('Colorfor30').value;
+	document.getElementById('Colorfor60GameShow').value = document.getElementById('Colorfor60').value;
+	document.getElementById('GameTimeValGameShow').value = gameTimeFromUser;
+	document.getElementById('numOfMonstersGameShow').value = numOfMonstersFromUser;
+
+	
+
 	changeDivs("GameDiv");
 	StartNewGame();
 }
@@ -1068,6 +1082,7 @@ function randomSettings(){
 	document.getElementById('Colorfor60').value = largeCookieColor;
 	document.getElementById('GameTimeVal').value = gameTimeFromUser;
 	document.getElementById('numOfMonstersValue').value = numOfMonstersFromUser;
+
 }
 function getRandomColor(){
 var letters = '0123456789ABCDEF';
