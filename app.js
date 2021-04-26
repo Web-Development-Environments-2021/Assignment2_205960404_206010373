@@ -1093,11 +1093,6 @@ for (var i = 0; i < 6; i++) {
 return color;
 }
 
-function KeyBoards() {
-    //todo
-}
-
-
 function NumOfBallsChosen(val) {
     document.getElementById('NumOfBallsChosen').innerHTML = val;
 }
