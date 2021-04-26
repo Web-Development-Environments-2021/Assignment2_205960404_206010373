@@ -321,10 +321,10 @@ function Start() {
 				
 			// }
 
-			else if( i==4 && j==4){
+			else if( i==5 && j==5){
 				board[i][j] = 10;
-				friendPackman.i = 4;
-				friendPackman.j = 4;
+				friendPackman.i = 5;
+				friendPackman.j = 5;
 			}
 			else {
 				var randomNum = Math.random();
@@ -649,31 +649,7 @@ function UpdateMonsterPosition(){
 			MonstersArray[inxMon].i++;
 		}
 
-		
-
 		else{
-
-			// if(Math.abs(MonstersArray[inxMon].i - shape.i) <= Math.abs(MonstersArray[inxMon].j - shape.j) && shape.i >= MonstersArray[inxMon].i && board[MonstersArray[inxMon].i +1][MonstersArray[inxMon].j ] != 4){
-			// 	MonstersArray[inxMon].i++;
-			// 	return;
-			// }
-			
-			// if(Math.abs(MonstersArray[inxMon].i - shape.i) >= Math.abs(MonstersArray[inxMon].j - shape.j) && shape.j >= MonstersArray[inxMon].j && board[MonstersArray[inxMon].i ][MonstersArray[inxMon].j +1 ] != 4){
-			// 	MonstersArray[inxMon].j++;
-			// 	return;
-			// }
-
-			// if(Math.abs(MonstersArray[inxMon].i - shape.i) <= Math.abs(MonstersArray[inxMon].j - shape.j) && shape.i <= MonstersArray[inxMon].i && board[MonstersArray[inxMon].i -1][MonstersArray[inxMon].j ] != 4){
-			// 	MonstersArray[inxMon].i--;
-			// 	return;
-			// }
-
-			
-			
-			// if(Math.abs(MonstersArray[inxMon].i - shape.i) >= Math.abs(MonstersArray[inxMon].j - shape.j) && shape.j <= MonstersArray[inxMon].j && board[MonstersArray[inxMon].i ][MonstersArray[inxMon].j -1] != 4){
-			// 	MonstersArray[inxMon].j--;
-			// 	return;
-			// }
 
 			if( shape.i <= MonstersArray[inxMon].i && board[MonstersArray[inxMon].i -1][MonstersArray[inxMon].j ] != 4){
 				MonstersArray[inxMon].i--;
@@ -692,94 +668,11 @@ function UpdateMonsterPosition(){
 				return;
 			}
 			
-			
-
-		
-			
-			
 		}
-
-
-		// if (Math.abs(MonstersArray[inxMon].i - shape.i)==0){
-		// 	if(shape.j > MonstersArray[inxMon].j){
-		// 		MonstersArray[inxMon].j++;
-		// 	}
-		// 	else{
-		// 		MonstersArray[inxMon].j--;
-
-		// 	}
-		// }
-		// else if(Math.abs(MonstersArray[inxMon].j - shape.j)==0){
-
-		// 	if(shape.i > MonstersArray[inxMon].i){
-		// 		MonstersArray[inxMon].i++;
-		// 	}
-		// 	else{
-		// 		MonstersArray[inxMon].i--;
-
-		// 	}
-		// }
-
-		// else if(Math.abs(MonstersArray[inxMon].i - shape.i) < Math.abs(MonstersArray[inxMon].j - shape.j) && Math.abs(MonstersArray[inxMon].i - shape.i)>0)
-		// {
-		// 	if(MonstersArray[inxMon].i < shape.i && board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j] != 4){
-		// 		MonstersArray[inxMon].i++;
-		// 	}
-		// 	else if(MonstersArray[inxMon].i > shape.i && board[MonstersArray[inxMon].i - 1][MonstersArray[inxMon].j] != 4){
-		// 		MonstersArray[inxMon].i--;
-		// 	}
-		// 	else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j + 1] != 4 && MonstersArray[inxMon].j < shape.j){
-		// 		MonstersArray[inxMon].j++;
-		// 	}
-		// 	else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j - 1] != 4 && MonstersArray[inxMon].j > shape.j) {
-		// 		MonstersArray[inxMon].j--; 
-
-		// 	}
-
-
-		// 	else if(board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j] != 4){
-		// 		MonstersArray[inxMon].i++;
-		// 	}
-		// 	else if(board[MonstersArray[inxMon].i - 1][MonstersArray[inxMon].j] != 4){
-		// 		MonstersArray[inxMon].i--;
-		// 	}
-		// 	else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j + 1] != 4 ){
-		// 		MonstersArray[inxMon].j++;
-		// 	}
-		// 	else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j - 1] != 4 ) {
-		// 		MonstersArray[inxMon].j--; 
-
-		// 	}
-		// }
-		// else{
-		// 	if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j + 1] != 4 && MonstersArray[inxMon].j < shape.j){
-		// 		MonstersArray[inxMon].j++;
-		// 	}
-		// 	else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j - 1] != 4 && MonstersArray[inxMon].j > shape.j){
-		// 		MonstersArray[inxMon].j--;
-		// 	}
-		// 	else if(MonstersArray[inxMon].i < shape.i && board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j] != 4){
-		// 		MonstersArray[inxMon].i++;
-		// 	}
-		// 	else if(board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j ] != 4 && MonstersArray[inxMon].i > shape.i){
-		// 		MonstersArray[inxMon].i--; 
-		// 	}
-
-
-		// 	else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j + 1] != 4){
-		// 		MonstersArray[inxMon].j++;
-		// 	}
-		// 	else if(board[MonstersArray[inxMon].i][MonstersArray[inxMon].j - 1] != 4 ){
-		// 		MonstersArray[inxMon].j--;
-		// 	}
-		// 	else if(board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j] != 4){
-		// 		MonstersArray[inxMon].i++;
-		// 	}
-		// 	else if(board[MonstersArray[inxMon].i + 1][MonstersArray[inxMon].j ] != 4){
-		// 		MonstersArray[inxMon].i--; 
-		// 	}
-		// }
 	}
+	var randomFriendPackman = Math.floor(Math.random() * (4 - 1 + 1) + 1);
+
+	if (!friendPackmanFlag){updatePackmenFriendPosition(randomFriendPackman);}
 
 }
 function UpdatePosition() {
@@ -791,7 +684,6 @@ function UpdatePosition() {
 		//	myMusic.pause();
 			window.alert("Game Over");
 	}
-	var randomFriendPackman = Math.floor(Math.random() * (4 - 1 + 1) + 1);
 	try{
 	board[shape.i][shape.j] = 0;
 	}
@@ -802,7 +694,6 @@ function UpdatePosition() {
 	//
 	position_flag = x;
 	//
-	if (!friendPackmanFlag){updatePackmenFriendPosition(randomFriendPackman);}
 
 	if (x == 1) { // Up Side
 		if (shape.j > 0 && board[shape.i][shape.j - 1] != 4) {
