@@ -4,10 +4,9 @@ body
   /*background-image: linear-gradient( rgb(102, 102, 102), rgb(38, 38, 38));*/
   margin: 0px;
   font-family: Copperplate, Papyrus, fantasy;
-  overflow: hidden; /* Hide scrollbars */
-  overflow-y: hidden; /* Hide vertical scrollbar */
+  /*overflow: hidden; /* Hide scrollbars */
+  /*overflow-y: hidden; /* Hide vertical scrollbar */
   overflow-x: hidden; /* Hide horizontal scrollbar */
-  
   
 }
 
@@ -195,7 +194,7 @@ text-align: center;
 
 .GameDiv{
     text-align: center;
-    position: fixed;
+    
 
 }
 
