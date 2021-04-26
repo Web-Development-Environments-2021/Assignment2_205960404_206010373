@@ -57,14 +57,14 @@ li:hover {
 
 .WelcomeDiv .btn1 {
   position: absolute;
-  top: 80%;
+  top: 90%;
   left: 58%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   background-color: #555;
   color: white;
   font-size: 16px;
-  padding: 2% 5%;
+  padding: 1% 4%;
   border: none;
   cursor: pointer;
   border-radius: 5px;
@@ -80,14 +80,14 @@ li:hover {
 }
 .WelcomeDiv .btn2 {
   position: absolute;
-  top: 80%;
+  top: 90%;
   left: 43%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   background-color: #555;
   color: white;
   font-size: 16px;
-  padding: 2% 5%;
+  padding: 1% 4%;
   border: none;
   cursor: pointer;
   border-radius: 5px;
@@ -125,7 +125,7 @@ h1{
 }
 
 h3{
-	color: white;;
+	color: white;
   font-family: Copperplate, Papyrus, fantasy;
 	font-size: 500%;
 	margin: 80px;
@@ -137,6 +137,7 @@ a:-webkit-any-link {
     color: white;
     cursor: pointer;
     text-decoration: underline;
+    font-size:18px;
 }
 
 #Button {
@@ -241,7 +242,7 @@ h5{ font-size:14px;}
 h6{ font-size:18px;}
 h4,h5,h6{ color:#563D64;}
 b, strong{ font-weight:bold;}
-a{ text-decoration: none; }
+a{ font-size:10px; }
 a:hover{ text-decoration: underline; }
 .left { float:left; }
 .right { float:right; }
@@ -436,7 +437,7 @@ form:after {
 #login form div a, #register form div a {
   color: #004a80;
     float: right;
-    font-size: 12px;
+    font-size: 18px;
     margin: 30px 15px 0 0;
     text-decoration: underline;
 }
