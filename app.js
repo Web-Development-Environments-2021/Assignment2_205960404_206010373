@@ -683,6 +683,8 @@ function UpdatePosition() {
 
 		//	myMusic.pause();
 		if(score<100){
+			Draw();
+
 			if (confirm("You are better than " + score + " points!\n You want to start new game?")) {
 				changeDivs("SettingsDiv");
 		 	 } else {
@@ -691,6 +693,8 @@ function UpdatePosition() {
 			//window.alert("You are better than " + score + " points!");
 		}
 		else{
+			Draw();
+
 			if (confirm("Winner!!!\n You want to start new game?")) {
 				changeDivs("SettingsDiv");
 		 	 } else {
@@ -756,7 +760,13 @@ function UpdatePosition() {
 			// window.clearInterval(interval);
 			// window.clearInterval(monsterInterval);
 			stopIntervals();
-			window.alert("Game completed");
+			Draw();
+
+			if (confirm("Winner!!!\n You want to start new game?")) {
+				changeDivs("SettingsDiv");
+		 	 } else {
+				changeDivs("WelcomeDiv");
+		  }
 		}
 	}
 	else if (board[shape.i][shape.j] == 7) {
@@ -768,8 +778,14 @@ function UpdatePosition() {
 			// window.clearInterval(monsterInterval);
 			stopIntervals();
 
-			window.alert("Game completed");
-		}
+			Draw();
+
+			if (confirm("Winner!!!\n You want to start new game?")) {
+				changeDivs("SettingsDiv");
+		 	 } else {
+				changeDivs("WelcomeDiv");
+		  }
+				}
 	}
 	else if (board[shape.i][shape.j] == 8) {
 		score+=5;
@@ -780,7 +796,13 @@ function UpdatePosition() {
 			// window.clearInterval(monsterInterval);
 			stopIntervals();
 
-			window.alert("Game completed");
+			Draw();
+
+			if (confirm("Winner!!!\n You want to start new game?")) {
+				changeDivs("SettingsDiv");
+		 	 } else {
+				changeDivs("WelcomeDiv");
+		  }
 		}
 	}
 	else if (board[shape.i][shape.j] == 9) {

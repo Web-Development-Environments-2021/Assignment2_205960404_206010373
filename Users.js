@@ -44,7 +44,8 @@ $.validator.addMethod("passwordMatch", function() {
 $(document).ready(function() {
 
     //register
-    $("#RegisterDivForm").validate({
+    $('#RegisterDivForm').validate({
+        
         rules: {
             userName: {
                 required: true
@@ -61,7 +62,7 @@ $(document).ready(function() {
             email: {
                 required: true,
                 email: true,
-            }
+            },
         },
 
 
@@ -81,6 +82,12 @@ $(document).ready(function() {
                 email: "Enter valid Email. ( example@gmail.com )",
             },
         },
+
+        submitHandler: function() {
+            changeDivs('LoginDiv');
+            $('#RegisterDivForm')[0].reset();
+
+        }
     });
 
     $("#LoginDivForm").validate({
