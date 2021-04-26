@@ -676,13 +676,18 @@ function UpdateMonsterPosition(){
 
 }
 function UpdatePosition() {
-	if (timeLeft === 0){
+	if (timeLeft <= 0){
 		Draw();
 			// window.clearInterval(interval);
 			stopIntervals();
 
 		//	myMusic.pause();
-			window.alert("Game Over");
+		if(score<100){
+			window.alert("You are better than " + score + " points!");
+		}
+		else{
+			window.alert("Winner!!!");
+		}
 	}
 	try{
 	board[shape.i][shape.j] = 0;
@@ -819,7 +824,7 @@ function UpdatePosition() {
 			stopIntervals();
 
 		//	myMusic.pause();
-			window.alert("Game Over");
+			window.alert("Loser!");
 		}
 		else{
 			RandomPositionPackman();
@@ -833,10 +838,10 @@ function UpdatePosition() {
 	board[shape.i][shape.j] = 2;
 	var currentTime = new Date();
 	time_elapsed = (currentTime - start_time) / 1000;
-	if (score >= 800 && time_elapsed <= 10) {
-		pac_color = "green";
-	}
-	if (score >= 1000) {
+	// if (score >= 800 && time_elapsed <= 10) {
+	// 	pac_color = "green";
+	// }
+	if (score >= 100) {
 		Draw();
 		// window.clearInterval(interval);
 		// window.clearInterval(monsterInterval);
