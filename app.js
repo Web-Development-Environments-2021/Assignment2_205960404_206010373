@@ -389,16 +389,16 @@ function findRandomEmptyCell(board) {
 }
 
 function GetKeyPressed() {
-	if (keysDown[38]) {
+	if (keysDown[keyUp]) {
 		return 1;
 	}
-	if (keysDown[40]) {
+	if (keysDown[keyDown]) {
 		return 2;
 	}
-	if (keysDown[37]) {
+	if (keysDown[keyLeft]) {
 		return 3;
 	}
-	if (keysDown[39]) {
+	if (keysDown[keyRight]) {
 		return 4;
 	}
 }
@@ -1095,18 +1095,22 @@ function applySettings(){
 function randomSettings(){
 	keyUp= 38
 	keyDown= 40
-	keyRight= 37
-	keyLeft= 39
+	keyRight= 39
+	keyLeft= 37
 	numOfBallsFromUser = Math.floor(Math.random() * (90 - 50 + 1)) + 50;
 	smallCookieColor = getRandomColor();
 	mediumCookieColor = getRandomColor();
 	largeCookieColor = getRandomColor();
 	gameTimeFromUser = Math.floor(Math.random() * (100 - 60 + 1)) + 60;
 	numOfMonstersFromUser = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
-	document.getElementById("keyup").placeholder = "ArrowUp";
-	document.getElementById("keydown").placeholder = "ArrowDown";
-	document.getElementById("keyright").placeholder = "ArrowRight";
-	document.getElementById("keyleft").placeholder = "ArrowLeft";
+	document.getElementById("keyup").placeholder = keyUp ;
+	document.getElementById("keydown").placeholder = keyDown;
+	document.getElementById("keyright").placeholder = keyRight;
+	document.getElementById("keyleft").placeholder = keyLeft;
+	document.getElementById("keyup").value = "ArrowUp";
+	document.getElementById("keydown").value = "ArrowDown";
+	document.getElementById("keyright").value = "ArrowRight";
+	document.getElementById("keyleft").value = "ArrowLeft";
 	document.getElementById('NumOfBallsChosenVal').value = numOfBallsFromUser;
 	NumOfBallsChosen(numOfBallsFromUser);
     document.getElementById('Colorfor10').value = smallCookieColor;
@@ -1153,7 +1157,10 @@ $(document).ready(function () {
  */
 function setKeyPressed(keyIdToSet) {
 	$(keyIdToSet).keydown(function (event) {
-		$(keyIdToSet).attr("placeholder", event.key);
-		$(keyIdToSet).val(event.key);
+		$(keyIdToSet).attr("value", event.key);
+		$(keyIdToSet).attr("placeholder", event.which);
+		//$(keyIdToSet).val(event.key);
+		
+
 	});
 }
