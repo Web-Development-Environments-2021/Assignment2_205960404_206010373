@@ -248,23 +248,31 @@
 				</div>
 				<div class="column" id="right">
 				</div>
-				<div id="app" style="margin-left: 719px;"></div><br>
+				<div id="app" style="margin-left: 719px;">
+					
+				</div><br>
 				<progress id="health" value="5" max="5" style="margin-right: 52%;"></progress>
 
-				<div id="score" style="margin-right: 52%;">
+				<div id="score" >
+					<div style="margin-right: 52%;">
 					<label for="lblScore">SCORE:</label>
 					<label id="lblScore"> 0</label>
+					</div>
+					<div class="row">
+						<div class="column" id = "buttonsDiv" >
+							<button class="game-button" onclick="StartNewGame()">Start New Game</button><br>
+							<button class="game-button orange" onclick="ResumeGame()">Resume Game</button><br>
+							<button class="game-button red" onclick="PauseGame()">Pause Game</button><br>
+							<button class="game-button orange" onclick="StartMusic()">Resume Music</button><br>
+							<button class="game-button green" onclick="PauseMusic()">Pause Music</button>
+						</div>
+					<div >asdasasd<br>asdasasd<br>asdasasd<br>asdasasd<br>asdasasd<br><br><br><br>	</div>
+
+					</div>
 					<!-- <input id="lblScore" type="text" /> -->
 				</div>
-				<div id = "buttonsDiv" style="margin-right: 52%;">
-				<button class="game-button" onclick="StartNewGame()">Start New Game</button><br>
-				<button class="game-button orange" onclick="ResumeGame()">Resume Game</button><br>
-				<button class="game-button red" onclick="PauseGame()">Pause Game</button><br>
-				<button class="game-button orange" onclick="StartMusic()">Resume Music</button><br>
-				<button class="game-button green" onclick="PauseMusic()">Pause Music</button>
-			</div>
-			<div class="column" id="right" style="margin-left:500px; margin-bottom: 500px;">asdasasd	
-			</div>
+				
+			
 							</div>
 
 
