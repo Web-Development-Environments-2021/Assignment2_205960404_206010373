@@ -103,7 +103,7 @@ li:hover {
 
 #logo{
 position:absolute;
-top:0;
+top: 30px;
 left:0;
 }
 
@@ -148,6 +148,8 @@ font-size: 18px;
 color: #FFFFFF;
 }
 
+
+
 #Button:hover {
 background-color: #808080;
 font-family: Copperplate, Papyrus, fantasy;
@@ -188,6 +190,11 @@ footer{
 .SettingsDiv{
 
 text-align: center;
+}
+
+.GameDiv{
+    text-align: center;
+    
 }
 
 .close {
