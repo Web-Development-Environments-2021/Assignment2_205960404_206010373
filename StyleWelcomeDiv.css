@@ -183,9 +183,9 @@ footer{
 .AboutDiv {
   margin: 2%;
   margin-left: 20% ;
-  border: 7px solid rgb(14, 11, 219);
+  border: 7px solid rgb(219, 11, 98);
   width: 80%; /* Could be more or less, depending on screen size */
-  background-color: rgba(76, 208, 231, 0.7);
+  background-color: rgb(224, 148, 173);
   color:#f5f5f4 ;
 }
 .SettingsDiv
