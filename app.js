@@ -217,7 +217,7 @@ function defaultMonsers(){
 	MonsterTemp[1].i = 1;
 	MonsterTemp[1].j = 10;
 	MonsterTemp[1].image = new Image();
-	MonsterTemp[1].image.src = "images/monster2.png";
+	MonsterTemp[1].image.src = "images/HardMonster.png";
 	MonsterTemp[2].i = 10;
 	MonsterTemp[2].j = 1;
 	MonsterTemp[2].image = new Image();
@@ -889,14 +889,37 @@ function UpdatePosition() {
 	}
 
 	else if (MonsterOnPlace(shape.i,shape.j)) {
-		score-=10;
-		if(score<=0){
-			score=0;
+		if(totalMonsters>1 ){
+			if(MonstersArray[1].i==shape.i && MonstersArray[1].j == shape.j){
+				score-=20;
+				if(score<=0){
+				score=0;
+			}
+			disqualification-=2;
+			let health = document.getElementById("health")
+			health.value -= 2; //Or whatever you want to do with it.
+			}
+			else{
+				score-=10;
+				if(score<=0){
+					score=0;
+				}
+				disqualification-=1;
+				let health = document.getElementById("health")
+				health.value -= 1; //Or whatever you want to do with it.
+			}
 		}
-		disqualification-=1;
-		let health = document.getElementById("health")
-		health.value -= 1; //Or whatever you want to do with it.
-		if(disqualification == 0){
+		else{
+			score-=10;
+			if(score<=0){
+				score=0;
+			}
+			disqualification-=1;
+			let health = document.getElementById("health")
+			health.value -= 1; //Or whatever you want to do with it.
+		}
+
+		if(disqualification <= 0){
 			Draw();
 			// window.clearInterval(interval);
 			stopIntervals();
