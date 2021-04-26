@@ -281,7 +281,7 @@ function Start() {
 	//var numBalls10 = 0.1 * BallsNum;
 	numBalls10 = Math.round(0.1 * numOfBallsFromUser);
 	food_remain = numBalls60 + numBalls30 + numBalls10;
-	food_remain_in_game = food_remain + 1; //change
+	food_remain_in_game = food_remain; //change
 	game_time = gameTimeFromUser;
 
 
@@ -435,21 +435,21 @@ function Draw() {
 					eye_packman_Y = -10;
 				}
 
-				if(position_flag==2){ // key down
+				else if(position_flag==2){ // key down
 					side_packman_X = 0.65 * Math.PI;
 					side_packman_Y = 0.35 * Math.PI;
 					eye_packman_X = -15;
 					eye_packman_Y = 10;
 				}
 
-				if(position_flag==3){ //key left
+				else if(position_flag==3){ //key left
 					side_packman_X = 1.15 * Math.PI;
 					side_packman_Y = 0.85 * Math.PI;
 					eye_packman_X = -5;
 					eye_packman_Y = -15;
 				}
 
-				if(position_flag==4){ //key right
+				else if(position_flag==4){ //key right
 					side_packman_X = 0.15 * Math.PI;
 					side_packman_Y = 1.85 * Math.PI;
 					eye_packman_X = 5;
@@ -726,6 +726,9 @@ function UpdatePosition() {
 	
 	if(board[shape.i][shape.j] >= 10)
 	{
+		if(board[shape.i][shape.j]>10){
+			food_remain_in_game--;
+		}
 		board[shape.i][shape.j]-=10;
 		score+=50;
 		friendPackmanFlag = true;
