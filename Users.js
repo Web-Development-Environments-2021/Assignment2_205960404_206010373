@@ -81,44 +81,6 @@ $(document).ready(function() {
                 email: "Enter valid Email. ( example@gmail.com )",
             },
         },
-        
-        // errorPlacement: function(error, element) {
-        //     $(".myerror").html(error)
-        //   },
-        
-        // submitHandler: function() {
-
-        //     let username = $('#userName').val();
-        //     let password = $('#psw').val();
-        //     let fullname = $('#fullname').val();
-        //     let email = $('#email').val();
-        //     let birthDate = $('#birthDate').val();
-
-        //     let UserNameExist = checkIfUserExists(username);
-        //     if (UserNameExist){
-        //         alert('Sorry... Username already taken');
-        //     }
-        //     else{
-        //     SavedUsers.push({
-        //         username: username,
-        //         password: password,
-        //         fullName: fullname,
-        //         email: email,
-        //         birthDate: birthDate,
-        //     });
-
-        //     switchDivs("LoginDiv");
-        //     $('#RegisterDivForm')[0].reset();
-        // }
-
-        //    // SavedUsers.push([userName, psw]); // liad - how to push to SAVEDUSERS
-
-            
-
-
-        // }
-
-
     });
 
     $("#LoginDivForm").validate({
