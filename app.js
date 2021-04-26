@@ -959,6 +959,9 @@ function changeDivs(div) {
 		// Start();
 		StartNewGame();
 	}
+	else{
+		PauseMusic();
+	}
 };
 
 function hideDivs() {
