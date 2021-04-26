@@ -266,7 +266,7 @@ function Start() {
 	health.value = 5; //Or whatever you want to do with it.
 	stopGame = false;
 	StartMusic();
-	MonstersNums = 1;
+	MonstersNums = numOfMonstersFromUser;
 	totalMonsters = 0;
 	board = new Array();
 	score = 0;
@@ -274,14 +274,14 @@ function Start() {
 	friendPackmanFlag = false;
 	var cnt = 100;
 	//var numBalls60 = 0.6 * BallsNum;
-	numBalls60 = Math.round(0.6 * 50);
+	numBalls60 = Math.round(0.6 * numOfBallsFromUser);
 	//var numBalls30 = 0.3 * BallsNum;
-	numBalls30 = Math.round(0.3 * 50);
+	numBalls30 = Math.round(0.3 * numOfBallsFromUser);
 	//var numBalls10 = 0.1 * BallsNum;
-	numBalls10 = Math.round(0.1 * 50);
+	numBalls10 = Math.round(0.1 * numOfBallsFromUser);
 	food_remain = numBalls60 + numBalls30 + numBalls10;
 	food_remain_in_game = food_remain + 1; //change
-	game_time = 60;
+	game_time = gameTimeFromUser;
 
 
 	cookie5 = new Image();
@@ -463,24 +463,24 @@ function Draw() {
 			//	context.fillStyle = "black"; //color
 			//	context.fill();
 			} else if (board[i][j] == 6) {
-				context.drawImage(cookie5, center.x-30, center.y-30, 60, 60);
-				// context.beginPath();
-				// context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-				// context.fillStyle = "red"; //color
-				// context.fill();
+				//context.drawImage(cookie5, center.x-30, center.y-30, 60, 60);
+				context.beginPath();
+				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+				context.fillStyle = smallCookieColor; //color
+				context.fill();
 			} else if (board[i][j] == 7) {
-				context.drawImage(cookie15, center.x-30, center.y-30, 60, 60);
-				// context.beginPath();
-				// context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-				// context.fillStyle = "yellow"; //color
-				// context.fill();
+				//context.drawImage(cookie15, center.x-30, center.y-30, 60, 60);
+				context.beginPath();
+				context.arc(center.x, center.y, 10, 0, 2 * Math.PI); // circle
+				context.fillStyle = mediumCookieColor; //color
+				context.fill();
 			} else if (board[i][j] == 8) {
-				context.drawImage(cookie25, center.x-30, center.y-30, 60, 60);
+				//context.drawImage(cookie25, center.x-30, center.y-30, 60, 60);
 
-				// context.beginPath();
-				// context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-				// context.fillStyle = "pink"; //color
-				// context.fill();
+				context.beginPath();
+				context.arc(center.x, center.y, 5, 0, 2 * Math.PI); // circle
+				context.fillStyle = largeCookieColor; //color
+				context.fill();
 			} else if (board[i][j] == 4) {
 				context.beginPath();
 				context.rect(center.x - 30, center.y - 30, 60, 60);
@@ -524,8 +524,8 @@ function RandomPositionPackman(){
 
 	var NotEmpty = false;
 	while(!NotEmpty){
-		var RandomI = Math.floor(Math.random() * (8 - 1 + 1) + 1);
-		var RandomJ = Math.floor(Math.random() * (8 - 1 + 1) + 1);
+		var RandomI = Math.floor(Math.random() * (10 - 1 + 1) + 1);
+		var RandomJ = Math.floor(Math.random() * (10 - 1 + 1) + 1);
 		if (board[RandomI][RandomJ] == 0){
 			shape.i = RandomI;
 			shape.j = RandomJ;
@@ -586,25 +586,25 @@ function InitMonsters(){
 			MonstersArray[0].i = 1;
 			MonstersArray[0].j = 1;
 			MonstersArray[1].i = 1;
-			MonstersArray[1].j = 8;
+			MonstersArray[1].j = 10;
 			break;
 		case 3: 
 			MonstersArray[0].i = 1;
 			MonstersArray[0].j = 1;
 			MonstersArray[1].i = 1;
-			MonstersArray[1].j = 8;
-			MonstersArray[2].i = 8;
+			MonstersArray[1].j = 10;
+			MonstersArray[2].i = 10;
 			MonstersArray[2].j = 1;
 			break;
 		case 4:
 			MonstersArray[0].i = 1;
 			MonstersArray[0].j = 1;
 			MonstersArray[1].i = 1;
-			MonstersArray[1].j = 8;
-			MonstersArray[2].i = 8;
+			MonstersArray[1].j = 10;
+			MonstersArray[2].i = 10;
 			MonstersArray[2].j = 1;
-			MonstersArray[3].i = 8;
-			MonstersArray[3].j = 8;
+			MonstersArray[3].i = 10;
+			MonstersArray[3].j = 10;
 			break;
 	}
 }
