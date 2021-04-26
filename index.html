@@ -23,7 +23,7 @@
 		</header>
 
 		<div class="Menu">
-			<img src="images\logo4.jpg" class="logo" align="left" width="35" height="35"></img>
+			<img src="images\logo.png" class="logo" align="left" width="100" height="100"></img>
 			<ul></ul>
 			<li id="#welcome" onclick="changeDivs('WelcomeDiv')">Welcome</li>
 			<li id="#register" onclick="changeDivs('RegisterDiv')">Register</li>
@@ -65,7 +65,7 @@
 						</div>
 
 						<div id="RegiserInstruction">
-							Please fill this form to create your account !
+							Please fill this form to create your account ! </br>
 						</div>
 
 						<div class="registerFields">
@@ -112,24 +112,29 @@
 
 				</form>
 			</div>
+				<div class="LoginDiv">
+				  <section id="login">
+					<form action="" id="LoginDivForm">
+					  <h6>Login Form</h6>
+					  <div>
+						<input type="text" placeholder="Username" required="" id="uname" name="uname" />
+					  </div>
+					  <div>
+						<input type="password" placeholder="Password" required="" id="pass" name="pass" />
+					  </div>
+					  <div>
+						<input type="submit" value="Log in" onclick="Login(); return false;" />
+						<a href="#" onclick="changeDivs('RegisterDiv'); return false;">dont have a user? </a>
+					  </div>
+					</form><!-- form -->
+				  </section><!-- content -->
+				</div><!-- container -->
 
-			<div class="LoginDiv" >
-				<h1> Login:</h1>
-				<form method="post" id="LoginDivForm">
-					<div class="imgcontainer">
-					</div>
-					<input id="uname" type="text" placeholder="Enter Username" name="uname" ><br /><br />
-					<input id="pass" type="password" placeholder="Enter Password" name="pass" ><br /><br />
-					
-					<button onclick="Login(); return false;">Login</button>
-					<button type="submit" onclick="changeDivs('RegisterDiv'); return false;">Register</button>
-				</form>
-			</div>
 
 			<div class="SettingsDiv">
 				
 				<h2>Choose the Game Settings as you Wish:</h2>
-				<!-- keyboard--todo------------>
+
 				<div class="set" id="keyup1">
 					<label>Choose your UP Key:</label>
 					<input class="key" type="text" id="keyup"  name="keyup" readonly placeholder="Choose any key"><br />
