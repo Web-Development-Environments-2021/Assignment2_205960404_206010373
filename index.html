@@ -140,7 +140,7 @@
 						<input type="date" placeholder="Enter Birthday" name="birthday" id="birthdayRegiser" required >
 					  </div>
 					<div>
-					  <input type="submit" value="Register" onclick="registerInfo(); return false;"/>
+					  <input type="submit" value="Register">
 					  <a href="#" onclick="changeDivs('LoginDiv'); return false;">already have an acount? </a>
 					</div>
 					
@@ -150,7 +150,7 @@
 
 				<div class="LoginDiv">
 				  <section id="login">
-					<form action="" id="LoginDivForm">
+					<form method="POST" id="LoginDivForm">
 					  <h6>Login Form</h6>
 					  <div>
 						<input type="text" placeholder="Username" required="" id="uname" name="uname" />
@@ -159,7 +159,7 @@
 						<input type="password" placeholder="Password" required="" id="pass" name="pass" />
 					  </div>
 					  <div>
-						<input type="submit" value="Log in" onclick="Login(); return false;" />
+						<input type="submit" value="Log in"  />
 						<a href="#" onclick="changeDivs('RegisterDiv'); return false;">dont have a user? </a>
 					  </div>
 					</form><!-- form -->
@@ -214,7 +214,7 @@
 
 				<div class="set" id="SetGameTime">
 					<label for="" class="set-labels">Choose Game Time in seconds (minimum 60 sec):</label>
-					<label for="GameTimeVal"></label><input type="text" min='60' id="GameTimeVal" required><br><br>
+					<label for="GameTimeVal"></label><input type="text" min='60' id="GameTimeVal" value=60 required><br><br>
 				</div>
 				<div class="set" id="setNumOfMonsters">
 					<label id="liad">Choose Number Of Monsters:</label>
@@ -276,7 +276,7 @@
 						</div>
 					<div >
 						
-						<h2>Your Game Settings are:</h2>
+						<h5>Your Game Settings are:</h5>
 
 						<div class="set" id="keyup1">
 						<label>Choose your UP Key:</label>

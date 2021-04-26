@@ -21,6 +21,11 @@ const SavedUsers =
 
 //Valid Functions
 
+
+$.validator.addMethod("userNameExist", function(value) {
+    return !checkIfUserExists(value);
+});
+
 //login
 $.validator.addMethod("fullnamecheck", function(value) {
     return /^[a-zA-Z ]+$/.test(value);
@@ -48,7 +53,8 @@ $(document).ready(function() {
         
         rules: {
             userName: {
-                required: true
+                required: true,
+                userNameExist: true
             },
             psw: {
                 required: true,
@@ -67,7 +73,10 @@ $(document).ready(function() {
 
 
         messages: {
-            userName: "Enter your username.",
+            userName: {
+                required: "Enter your username.",
+                userNameExist: "User name exist.",
+            },
             psw: {
                 required: "Enter your password.",
                 minlength: "Password must consist at least 6 characters.",
@@ -84,6 +93,7 @@ $(document).ready(function() {
         },
 
         submitHandler: function() {
+            registerInfo();
             changeDivs('LoginDiv');
             $('#RegisterDivForm')[0].reset();
 
@@ -109,9 +119,10 @@ $(document).ready(function() {
         },
 
         submitHandler: function() {
-            userNameInGame = $('#uname').val();
-            changeDivs('SettingsDiv');
-            $('#loginForm')[0].reset();
+            Login();
+            // userNameInGame = $('#uname').val();
+            // changeDivs('SettingsDiv');
+            // $('#loginForm')[0].reset();
 
         }
     });
@@ -153,28 +164,22 @@ function checkIfUserExists(uname)
 function registerInfo(){
     let userName = document.getElementById('usernameRegiser').value;
     //check if exists
-    let UserNameExist = checkIfUserExists(userName);
     let pass = document.getElementById('passwordRegiser').value;
     let fullname = document.getElementById('nameRegiser').value;
     let email = document.getElementById('emailRegiser').value;
     let birthdate = document.getElementById('birthdayRegiser').value;
  
-    if (UserNameExist) {
-            alert("Sorry, this username is already taken");
-            changeDivs("AboutDiv");
-            
-    return true;
-    }
-        SavedUsers.push({
-            username: userName,
-            password: pass,
-            fullName: fullname,
-            email: email,
-            birthDate: birthdate,
-        });
-        if (confirm('Ready to go! Wanna start a game now?'))
+    
+    SavedUsers.push({
+        username: userName,
+        password: pass,
+        fullName: fullname,
+        email: email,
+        birthDate: birthdate,
+    });
+        if (confirm('Ready to go! Want to Login?'))
         {
-            changeDivs("SettingsDiv");
+            changeDivs("LoginDiv");
         }
         else 
         {
