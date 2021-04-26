@@ -1045,8 +1045,8 @@ function applySettings(){
 	document.getElementById('Colorfor10GameShow').value = document.getElementById('Colorfor10').value;
 	document.getElementById('Colorfor30GameShow').value = document.getElementById('Colorfor30').value;
 	document.getElementById('Colorfor60GameShow').value = document.getElementById('Colorfor60').value;
-	document.getElementById('GameTimeValGameShow').value = gameTimeFromUser;
-	document.getElementById('numOfMonstersGameShow').value = numOfMonstersFromUser;
+	document.getElementById("GameTimeValGameShow").innerHTML = gameTimeFromUser;
+	document.getElementById("numOfMonstersGameShow").innerHTML = numOfMonstersFromUser;
 
 	
 
