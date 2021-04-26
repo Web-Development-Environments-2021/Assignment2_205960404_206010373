@@ -31,6 +31,7 @@ var cookie15;
 var cookie25;
 var game_time;
 var elmo = new Image();
+var clock = new Image();
 
 var Keys;
 var BallsNum;
@@ -188,12 +189,12 @@ function setRemainingPathColor(timeLeft) {
 }
 
 function calculateTimeFraction() {
-  const rawTimeFraction = timeLeft / TIME_LIMIT;
+  var rawTimeFraction = timeLeft / TIME_LIMIT;
   return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
 }
 
 function setCircleDasharray() {
-  const circleDasharray = `${(
+  var circleDasharray = `${(
     calculateTimeFraction() * FULL_DASH_ARRAY
   ).toFixed(0)} 283`;
   document
@@ -291,6 +292,7 @@ function Start() {
 	cookie25 = new Image();
 	cookie25.src = "images/cookie25.png";
 	elmo.src = "images/elmo.png";
+	clock.src = "images/clock.png";
 	defaultMonsers();
 	MonstersArray = new Array();
 	for(var indexMonser = 0; indexMonser<MonstersNums;indexMonser++){
@@ -304,6 +306,7 @@ function Start() {
 
 	disqualification = 5;
 	var pacman_remain = 1;
+	var clock_remain = 1;
 	start_time = new Date();
 	for (var i = 0; i < 12; i++) {
 		board[i] = new Array();
@@ -328,6 +331,7 @@ function Start() {
 				if (randomNum <= (1.0 * food_remain) / cnt) {
 					
 					// 10 - friendPackman
+					// 9 - clock
 					// 8 - 60
 					// 7 - 30
 					// 6 - 10
@@ -342,6 +346,7 @@ function Start() {
 					board[i][j] = 2;
 				} else {
 					board[i][j] = 0;
+					
 				}
 				cnt--;
 			}
@@ -354,6 +359,10 @@ function Start() {
 		//board[emptyCell[0]][emptyCell[1]] = 1;
 		//food_remain--;
 	}
+	let arr_r = findRandomEmptyCell(board);
+	clock_remain--;
+	board[arr_r[0]][arr_r[1]] = 9;
+					
 	keysDown = {};
 	addEventListener(
 		"keydown",
@@ -495,6 +504,14 @@ function Draw() {
 				// context.fillStyle = "white"; //color
 				// context.fill();
 			}
+			  else if (board[i][j] ==9) {
+			context.drawImage(clock, center.x-30, center.y-30, 60, 60);
+
+			// context.beginPath();
+			// context.rect(center.x - 30, center.y - 30, 60, 60);
+			// context.fillStyle = "white"; //color
+			// context.fill();
+		}
 			if (MonsterOnPlace(i,j)) {
 				for(var inx=0; inx<MonstersArray.length;inx++){
 					if (MonstersArray[inx].i == i && MonstersArray[inx].j == j){
@@ -857,7 +874,20 @@ function UpdatePosition() {
 			window.alert("Game completed");
 		}
 	}
-	
+	else if (board[shape.i][shape.j] == 9) {
+		clearInterval(timerInterval);
+		TIME_LIMIT= parseInt(game_time) + 15;
+		timeLeft = TIME_LIMIT;
+		startTimer();
+		
+		// if(timePassed<=15){
+		// 	timePassed=0;
+		// }
+		// else{
+		// 	timePassed-=15;
+		// }
+	}
+
 	else if (MonsterOnPlace(shape.i,shape.j)) {
 		score-=10;
 		if(score<=0){
@@ -1166,4 +1196,9 @@ function setKeyPressed(keyIdToSet) {
 		
 
 	});
+}
+
+function GameStartForLiad(){
+	randomSettings();
+	applySettings();
 }
