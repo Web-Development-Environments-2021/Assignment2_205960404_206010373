@@ -473,7 +473,7 @@ function Draw() {
 			} else if (board[i][j] == 4) {
 				context.beginPath();
 				context.rect(center.x - 30, center.y - 30, 60, 60);
-				context.fillStyle = "black"; //color
+				context.fillStyle = "white"; //color
 				context.fill();
 				
 			}  else if (board[i][j] >=10) {
