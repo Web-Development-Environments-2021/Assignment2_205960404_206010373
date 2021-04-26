@@ -683,10 +683,20 @@ function UpdatePosition() {
 
 		//	myMusic.pause();
 		if(score<100){
-			window.alert("You are better than " + score + " points!");
+			if (confirm("You are better than " + score + " points!\n You want to start new game?")) {
+				changeDivs("SettingsDiv");
+		 	 } else {
+				changeDivs("WelcomeDiv");
+		  }
+			//window.alert("You are better than " + score + " points!");
 		}
 		else{
-			window.alert("Winner!!!");
+			if (confirm("Winner!!!\n You want to start new game?")) {
+				changeDivs("SettingsDiv");
+		 	 } else {
+				changeDivs("WelcomeDiv");
+		  }
+			//window.alert("Winner!!!");
 		}
 	}
 	try{
@@ -824,7 +834,13 @@ function UpdatePosition() {
 			stopIntervals();
 
 		//	myMusic.pause();
-			window.alert("Loser!");
+			if (confirm("Loser!\n You want to start new game?")) {
+				changeDivs("SettingsDiv");
+		 	 } else {
+				changeDivs("WelcomeDiv");
+		  }
+		
+			
 		}
 		else{
 			RandomPositionPackman();
@@ -841,16 +857,17 @@ function UpdatePosition() {
 	// if (score >= 800 && time_elapsed <= 10) {
 	// 	pac_color = "green";
 	// }
-	if (score >= 100) {
-		Draw();
-		// window.clearInterval(interval);
-		// window.clearInterval(monsterInterval);
-		stopIntervals();
+	Draw();
+	// if (score >= 100) {
+	// 	Draw();
+	// 	// window.clearInterval(interval);
+	// 	// window.clearInterval(monsterInterval);
+	// 	stopIntervals();
 
-		window.alert("Game completed");
-	} else {
-		Draw();
-	}
+	// 	// window.alert("Game completed");
+	// } else {
+	// 	Draw();
+	// }
 }
 
 
