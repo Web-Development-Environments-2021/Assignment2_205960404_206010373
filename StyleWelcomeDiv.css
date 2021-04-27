@@ -167,6 +167,12 @@ footer{
   left: 56%;
 }
 
+#us{
+  font-size: 0.9rem;
+  font: normal 18px;
+  margin-right: 16px;
+}
+
 
 #about {
   display: none; /* Hidden by default */
