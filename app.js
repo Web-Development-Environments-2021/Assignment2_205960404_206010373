@@ -903,9 +903,9 @@ function changeDivs(div) {
 			return;
 		}
 	}
-	// if (div == "SettingsDiv"){
-	// 	randomSettings();
-	// }
+	if (div == "SettingsDiv"){
+		randomSettings();
+	}
 	$('.' + div).show();
 	if(div == 'GameDiv' || div == "RegisterDiv" || div == "SettingsDiv" || div == "AboutDiv")
 	{
@@ -1044,14 +1044,15 @@ function randomSettings(){
 	largeCookieColor = getRandomColor();
 	gameTimeFromUser = Math.floor(Math.random() * (100 - 60 + 1)) + 60;
 	numOfMonstersFromUser = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
-	document.getElementById("keyup").placeholder = keyUp ;
-	document.getElementById("keydown").placeholder = keyDown;
-	document.getElementById("keyright").placeholder = keyRight;
-	document.getElementById("keyleft").placeholder = keyLeft;
-	document.getElementById("keyup").value = "ArrowUp";
-	document.getElementById("keydown").value = "ArrowDown";
-	document.getElementById("keyright").value = "ArrowRight";
-	document.getElementById("keyleft").value = "ArrowLeft";
+	$("#keyup").attr("value", "ArrowUp");
+	$("#keyup").attr("placeholder", keyUp)
+	$("#keydown").attr("value", "ArrowDown");
+	$("#keydown").attr("placeholder", keyDown)
+	$("#keyleft").attr("value", "ArrowLeft");
+	$("#keyleft").attr("placeholder", keyLeft)
+	$("#keyright").attr("value", "ArrowRight");
+	$("#keyright").attr("placeholder", keyRight)
+
 	document.getElementById('NumOfBallsChosenVal').value = numOfBallsFromUser;
 	NumOfBallsChosen(numOfBallsFromUser);
     document.getElementById('Colorfor10').value = smallCookieColor;
