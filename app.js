@@ -32,6 +32,7 @@ var cookie25;
 var game_time;
 var elmo = new Image();
 var clock = new Image();
+var userLogin = false;
 
 var Keys;
 var BallsNum;
@@ -1079,6 +1080,9 @@ function applySettings(){
 	mediumCookieColor = document.getElementById('Colorfor30').value;
 	largeCookieColor = document.getElementById('Colorfor60').value;
 	gameTimeFromUser = document.getElementById('GameTimeVal').value;
+	if(gameTimeFromUser<60){
+		gameTimeFromUser = 60;
+	}
 	numOfMonstersFromUser = document.getElementById('numOfMonstersValue').value;
 
 	document.getElementById("keyupGameShow").innerHTML = keyUp;
@@ -1169,6 +1173,14 @@ function setKeyPressed(keyIdToSet) {
 	});
 }
 
+
+function changeUserLoginTrue(){
+	userLogin = true;
+}
+
+function changeUserLoginFalse(){
+	userLogin = false;
+}
 /*function GameStartForLiad(){
 	randomSettings();
 	applySettings();

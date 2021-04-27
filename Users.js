@@ -135,8 +135,10 @@ function Login(){
     let pass1= document.getElementById('pass').value;
     if (LoginValid(uname1,pass1))
     {
+        changeUserLoginTrue();
         WelcomeUser(uname1);
         changeDivs('SettingsDiv');
+        //randomSettings();
         $('#LoginDivForm')[0].reset();
     }
     else {
