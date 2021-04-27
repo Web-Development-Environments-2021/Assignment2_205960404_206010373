@@ -869,6 +869,15 @@ function updatePackmenFriendPosition(randomFriendPackman) {
 }
 
 function changeDivs(div) {
+	$('#RegisterDivForm')[0].reset();
+	$('#LoginDivForm')[0].reset();
+	$('#usernameRegiser-error').hide();
+	$('#nameRegiser-error').hide();
+	$('#passwordRegiser-error').hide();
+	$('#emailRegiser-error').hide();
+	$('#uname-error').hide();
+	$('#pass-error').hide();
+	
 	hideDivs();
 	if(div == "LoginDiv" && userLogin){
 		if(confirm("You are already logged in, Do you want to move to settings? (Ok -to settings, cancel will log you out")){
