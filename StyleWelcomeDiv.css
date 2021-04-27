@@ -482,3 +482,8 @@ form:after {
 #LoginDivForm, #RegisterDivForm{
   color: #000;
 }
+
+#score{
+
+position: static;
+}
