@@ -1014,10 +1014,10 @@ function applySettings(){
 	}
 	numOfMonstersFromUser = document.getElementById('numOfMonstersValue').value;
 
-	document.getElementById("keyupGameShow").innerHTML = keyUp;
-	document.getElementById("keydownGameShow").innerHTML = keyDown;
-	document.getElementById("keyrightGameShow").innerHTML = keyRight;
-	document.getElementById("keyleftGameShow").innerHTML = keyLeft;
+	document.getElementById("keyupGameShow").innerHTML = document.getElementById("keyup").value;
+	document.getElementById("keydownGameShow").innerHTML = document.getElementById("keydown").value;
+	document.getElementById("keyrightGameShow").innerHTML = document.getElementById("keyright").value;
+	document.getElementById("keyleftGameShow").innerHTML = document.getElementById("keyleft").value;
 	document.getElementById("NumOfBallsGameShow").innerHTML = numOfBallsFromUser;
 	document.getElementById('Colorfor10GameShow').value = document.getElementById('Colorfor10').value;
 	document.getElementById('Colorfor30GameShow').value = document.getElementById('Colorfor30').value;
