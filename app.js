@@ -937,6 +937,18 @@ function updatePackmenFriendPosition(randomFriendPackman) {
 
 function changeDivs(div) {
 	hideDivs();
+	if(div == "LoginDiv" && userLogin){
+		if(confirm("You already login, you want to move to settings? (confirm move you to settings, cancel will logout you.")){
+			changeDivs("SettingsDiv");
+			return;
+		}
+		else{
+			userLogin = false;
+			document.getElementById('welcomeUser').innerText = "Welcome guest!!";
+			changeDivs("WelcomeDiv");
+			return;
+		}
+	}
 	$('.' + div).show();
 	if(div == 'GameDiv' || div == "RegisterDiv" || div == "SettingsDiv" || div == "AboutDiv")
 	{
