@@ -949,6 +949,18 @@ function changeDivs(div) {
 			return;
 		}
 	}
+	if(div == "RegisterDiv" && userLogin){
+		if(confirm("You already login, you want to logout and register with new username?(confirm move you to Register as a guest, cancel will move to HomePage.")){
+			userLogin = false;
+			document.getElementById('welcomeUser').innerText = "Welcome guest!!";
+			changeDivs("RegisterDiv");
+			return;
+		}
+		else{
+			changeDivs("WelcomeDiv");
+			return;
+		}
+	}
 	$('.' + div).show();
 	if(div == 'GameDiv' || div == "RegisterDiv" || div == "SettingsDiv" || div == "AboutDiv")
 	{
