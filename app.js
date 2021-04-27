@@ -938,7 +938,7 @@ function updatePackmenFriendPosition(randomFriendPackman) {
 function changeDivs(div) {
 	hideDivs();
 	if(div == "LoginDiv" && userLogin){
-		if(confirm("You already login, you want to move to settings? (confirm move you to settings, cancel will logout you.")){
+		if(confirm("You are already logged in, Do you want to move to settings? (Ok -to settings, cancel will log you out")){
 			changeDivs("SettingsDiv");
 			return;
 		}
@@ -950,7 +950,7 @@ function changeDivs(div) {
 		}
 	}
 	if(div == "RegisterDiv" && userLogin){
-		if(confirm("You already login, you want to logout and register with new username?(confirm move you to Register as a guest, cancel will move to HomePage.")){
+		if(confirm("You are already logged in, Do you want to logout and register with a new username? (OK -Register as a guest, cancel - HomePage.")){
 			userLogin = false;
 			document.getElementById('welcomeUser').innerText = "Welcome guest!!";
 			changeDivs("RegisterDiv");
@@ -971,8 +971,6 @@ function changeDivs(div) {
 		document.body.style.backgroundImage = "url(images/CookieEater.jpg)";
 	}
 	if(div == 'GameDiv'){
-		// context = canvas.getContext("2d");
-		// Start();
 		StartNewGame();
 	}
 	else{
@@ -987,7 +985,7 @@ function hideDivs() {
 	$('.GameDiv').hide();
 	$('.SettingsDiv').hide();
 	$('.AboutDiv').hide();
-	// resetGame();
+	
 };
 
 function StartNewGame(){
@@ -1055,44 +1053,6 @@ function LivesVisible(){
 		document.getElementById("lifesDiv").appendChild(img);
 	}
 }
-
-
-
-
-
-// //about
-// function showAbout() {
-// 	changeDivs("AboutDiv")
-// 	let modal = document.getElementById('about');
-// 	modal.style.display = 'block';
-//   }
-
-//   function closeAbout() {
-// 	let modal = document.getElementById('about');
-// 	modal.style.display = 'none';
-// 	changeDivs("WelcomeDiv");
-//   }
-
-//   // close about -clickoutside
-// let aboutModal = document.getElementById('about');
-// $('#body').click(function() {
-// 	if (!$(this.target).is(aboutModal)) {
-// 	  $("#about").hide();
-// 	}
-//   });
-  
-// // close about- ESC
-// $(document).keydown(function(event) { 
-// 	if (event.keyCode == 27) { 
-// 	  $('#about').hide();
-// 	  changeDivs("WelcomeDiv");
-// 	}
-//   });
-// document.addEventListener('keydown', (event) => {
-//   if (event.key === 'Escape') {
-//     modal.style.display = 'none';
-//   }
-// });
 
 function applySettings(){
 	keyUp = document.getElementById("keyup").placeholder;
@@ -1191,9 +1151,7 @@ function setKeyPressed(keyIdToSet) {
 	$(keyIdToSet).keydown(function (event) {
 		$(keyIdToSet).attr("value", event.key);
 		$(keyIdToSet).attr("placeholder", event.which);
-		//$(keyIdToSet).val(event.key);
-		
-
+	
 	});
 }
 
@@ -1205,7 +1163,3 @@ function changeUserLoginTrue(){
 function changeUserLoginFalse(){
 	userLogin = false;
 }
-/*function GameStartForLiad(){
-	randomSettings();
-	applySettings();
-}*/
