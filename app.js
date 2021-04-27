@@ -420,43 +420,44 @@ function Draw() {
 	let timeView = game_time - time_elapsed;
 	$("#lblTime").html(timeView.toString());
 	//lblTime.value = time_elapsed;
+	if(position_flag==1){ // key up
+		side_packman_X =1.65 * Math.PI;
+		side_packman_Y =1.35 * Math.PI;
+		eye_packman_X = -15;
+		eye_packman_Y = -10;
+	}
 
+	else if(position_flag==2){ // key down
+		side_packman_X = 0.65 * Math.PI;
+		side_packman_Y = 0.35 * Math.PI;
+		eye_packman_X = -15;
+		eye_packman_Y = 10;
+	}
+
+	else if(position_flag==3){ //key left
+		side_packman_X = 1.15 * Math.PI;
+		side_packman_Y = 0.85 * Math.PI;
+		eye_packman_X = -5;
+		eye_packman_Y = -15;
+	}
+
+	else if(position_flag==4){ //key right
+		side_packman_X = 0.15 * Math.PI;
+		side_packman_Y = 1.85 * Math.PI;
+		eye_packman_X = 5;
+		eye_packman_Y = -15;	
+
+	}
 	// LivesVisible();
 	for (var i = 0; i < 12; i++) {
 		for (var j = 0; j < 12; j++) {
 			var center = new Object();
 			center.x = i * 60 + 30;
 			center.y = j * 60 + 30;
+			
 			if (board[i][j] == 2) {
 				//
-				if(position_flag==1){ // key up
-					side_packman_X =1.65 * Math.PI;
-					side_packman_Y =1.35 * Math.PI;
-					eye_packman_X = -15;
-					eye_packman_Y = -10;
-				}
-
-				else if(position_flag==2){ // key down
-					side_packman_X = 0.65 * Math.PI;
-					side_packman_Y = 0.35 * Math.PI;
-					eye_packman_X = -15;
-					eye_packman_Y = 10;
-				}
-
-				else if(position_flag==3){ //key left
-					side_packman_X = 1.15 * Math.PI;
-					side_packman_Y = 0.85 * Math.PI;
-					eye_packman_X = -5;
-					eye_packman_Y = -15;
-				}
-
-				else if(position_flag==4){ //key right
-					side_packman_X = 0.15 * Math.PI;
-					side_packman_Y = 1.85 * Math.PI;
-					eye_packman_X = 5;
-					eye_packman_Y = -15;	
-
-				}
+				
 				//
 				context.beginPath();
 				context.arc(center.x, center.y, 30, side_packman_X, side_packman_Y); // half circle - Right
