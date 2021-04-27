@@ -8,7 +8,6 @@ var time_elapsed;
 var interval;
 var monsterInterval;
 var emptyCell;
-//
 var friendPackman = new Object();
 var Monster1 = new Object();
 var Monster2 = new Object();
@@ -66,8 +65,7 @@ var musicPlay = false;
 
 $(document).ready(function() {
 	 
-	//context = canvas.getContext("2d");
-	//Start();
+	
 	changeDivs('WelcomeDiv');
 	
 
@@ -267,7 +265,7 @@ function Start() {
 	let health = document.getElementById("health")
 	health.value = 5; //Or whatever you want to do with it.
 	stopGame = false;
-	//StartMusic();
+	StartMusic();
 	MonstersNums = numOfMonstersFromUser;
 	totalMonsters = 0;
 	board = new Array();
@@ -282,10 +280,8 @@ function Start() {
 	//var numBalls10 = 0.1 * BallsNum;
 	numBalls10 = Math.round(0.1 * numOfBallsFromUser);
 	food_remain = numBalls60 + numBalls30 + numBalls10;
-	food_remain_in_game = food_remain; //change
+	food_remain_in_game = food_remain; 
 	game_time = gameTimeFromUser;
-
-
 	cookie5 = new Image();
 	cookie5.src = "images/cookie5.png";
 	cookie15 = new Image();
@@ -303,8 +299,6 @@ function Start() {
 			MonstersArray[indexMonser].image = MonsterTemp[indexMonser].image;
 			totalMonsters++;
 	}
-
-
 	disqualification = 5;
 	var pacman_remain = 1;
 	var clock_remain = 1;
@@ -317,11 +311,7 @@ function Start() {
 				(i == 6 && j == 1) || (i == 6 && j == 2) || (i==0) || (j==0) || (i==11) || (j==11) ){
 				board[i][j] = 4; //wall
 			} 
-			// else if ((i == 1 && j == 1) || (i == 1 && j == 8) ||	(i == 8 && j == 1) ||
-			// 	(i == 8 && j == 8)) {
-				
-			// }
-
+		
 			else if( i==5 && j==5){
 				board[i][j] = 10;
 				friendPackman.i = 5;
@@ -379,10 +369,7 @@ function Start() {
 		},
 		false
 	);
-	// LivesVisible();
-
 	
-
 	interval = setInterval(UpdatePosition, 45);
 	monsterInterval = setInterval(UpdateMonsterPosition, 1000);
 }
@@ -456,10 +443,7 @@ function Draw() {
 			center.y = j * 60 + 30;
 			
 			if (board[i][j] == 2) {
-				//
-				
-				//
-				context.beginPath();
+						context.beginPath();
 				context.arc(center.x, center.y, 30, side_packman_X, side_packman_Y); // half circle - Right
 				context.lineTo(center.x, center.y);
 				context.fillStyle = pac_color; //color
@@ -468,11 +452,6 @@ function Draw() {
 				context.arc(center.x + eye_packman_X, center.y + eye_packman_Y, 5, 0, 2 * Math.PI); // circle
 				context.fillStyle = "black"; //color
 				context.fill();
-			//} else if (board[i][j] == 1) {
-			//	context.beginPath();
-			//	context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-			//	context.fillStyle = "black"; //color
-			//	context.fill();
 			} else if (board[i][j] == 6) {
 				//context.drawImage(cookie5, center.x-30, center.y-30, 60, 60);
 				context.beginPath();
@@ -487,7 +466,6 @@ function Draw() {
 				context.fill();
 			} else if (board[i][j] == 8) {
 				//context.drawImage(cookie25, center.x-30, center.y-30, 60, 60);
-
 				context.beginPath();
 				context.arc(center.x, center.y, 5, 0, 2 * Math.PI); // circle
 				context.fillStyle = largeCookieColor; //color
@@ -501,18 +479,9 @@ function Draw() {
 			}  else if (board[i][j] >=10) {
 				context.drawImage(elmo, center.x-30, center.y-30, 60, 60);
 
-				// context.beginPath();
-				// context.rect(center.x - 30, center.y - 30, 60, 60);
-				// context.fillStyle = "white"; //color
-				// context.fill();
 			}
 			  else if (board[i][j] ==9) {
 			context.drawImage(clock, center.x-30, center.y-30, 60, 60);
-
-			// context.beginPath();
-			// context.rect(center.x - 30, center.y - 30, 60, 60);
-			// context.fillStyle = "white"; //color
-			// context.fill();
 		}
 			if (MonsterOnPlace(i,j)) {
 				for(var inx=0; inx<MonstersArray.length;inx++){
@@ -520,10 +489,6 @@ function Draw() {
 						context.drawImage(MonstersArray[inx].image, center.x-30, center.y-30, 60, 60);
 					}
 				}
-				// context.beginPath();
-				// context.rect(center.x - 30, center.y - 30, 60, 60);
-				// context.fillStyle = "black"; //color
-				// context.fill();
 			
 			}
 		}
@@ -558,7 +523,6 @@ function RandomPositionPackman(){
 
 function placeFood(i,j){
 	var randomFood = Math.floor(Math.random() * (8 - 6 + 1) + 6); 
-	//board[i][j] = randomFood;
 	switch(randomFood){
 		case 6:
 			if (numBalls10 != 0){
@@ -627,7 +591,6 @@ function InitMonsters(){
 			break;
 	}
 }
-
 
 function UpdateMonsterPosition(){
 
@@ -712,9 +675,7 @@ function UpdatePosition() {
 		StartNewGame();
 	}
 	var x = GetKeyPressed();
-	//
 	position_flag = x;
-	//
 
 	if (x == 1) { // Up Side
 		if (shape.j > 0 && board[shape.i][shape.j - 1] != 4) {
@@ -740,10 +701,6 @@ function UpdatePosition() {
 		}
 		
 	}
-	//if (board[shape.i][shape.j] == 1) {
-	//	score++;
-	//}
-
 	
 	if(board[shape.i][shape.j] >= 10)
 	{
@@ -759,8 +716,7 @@ function UpdatePosition() {
 		food_remain_in_game-=1;
 		if (food_remain_in_game==0){
 			Draw();
-			// window.clearInterval(interval);
-			// window.clearInterval(monsterInterval);
+	
 			stopIntervals();
 			Draw();
 
@@ -776,8 +732,7 @@ function UpdatePosition() {
 		food_remain_in_game-=1;
 		if (food_remain_in_game==0){
 			Draw();
-			// window.clearInterval(interval);
-			// window.clearInterval(monsterInterval);
+
 			stopIntervals();
 
 			Draw();
@@ -794,8 +749,7 @@ function UpdatePosition() {
 		food_remain_in_game-=1;
 		if (food_remain_in_game==0){
 			Draw();
-			// window.clearInterval(interval);
-			// window.clearInterval(monsterInterval);
+			
 			stopIntervals();
 
 			Draw();
@@ -812,13 +766,6 @@ function UpdatePosition() {
 		TIME_LIMIT= parseInt(game_time) + 15;
 		timeLeft = TIME_LIMIT;
 		startTimer();
-		
-		// if(timePassed<=15){
-		// 	timePassed=0;
-		// }
-		// else{
-		// 	timePassed-=15;
-		// }
 	}
 
 	else if (MonsterOnPlace(shape.i,shape.j)) {
@@ -830,7 +777,7 @@ function UpdatePosition() {
 			}
 			disqualification-=2;
 			let health = document.getElementById("health")
-			health.value -= 2; //Or whatever you want to do with it.
+			health.value -= 2; 
 			}
 			else{
 				score-=10;
@@ -839,7 +786,7 @@ function UpdatePosition() {
 				}
 				disqualification-=1;
 				let health = document.getElementById("health")
-				health.value -= 1; //Or whatever you want to do with it.
+				health.value -= 1; 
 			}
 		}
 		else{
@@ -849,15 +796,15 @@ function UpdatePosition() {
 			}
 			disqualification-=1;
 			let health = document.getElementById("health")
-			health.value -= 1; //Or whatever you want to do with it.
+			health.value -= 1; 
 		}
 
 		if(disqualification <= 0){
 			Draw();
-			// window.clearInterval(interval);
+			
 			stopIntervals();
 
-		//	myMusic.pause();
+			PauseMusic();
 			if (confirm("Loser!\n You want to start new game?")) {
 				changeDivs("SettingsDiv");
 		 	 } else {
@@ -878,24 +825,9 @@ function UpdatePosition() {
 	board[shape.i][shape.j] = 2;
 	var currentTime = new Date();
 	time_elapsed = (currentTime - start_time) / 1000;
-	// if (score >= 800 && time_elapsed <= 10) {
-	// 	pac_color = "green";
-	// }
 	Draw();
-	// if (score >= 100) {
-	// 	Draw();
-	// 	// window.clearInterval(interval);
-	// 	// window.clearInterval(monsterInterval);
-	// 	stopIntervals();
 
-	// 	// window.alert("Game completed");
-	// } else {
-	// 	Draw();
-	// }
 }
-
-
-
 }
 
 
@@ -962,6 +894,9 @@ function changeDivs(div) {
 			return;
 		}
 	}
+	// if (div == "SettingsDiv"){
+	// 	randomSettings();
+	// }
 	$('.' + div).show();
 	if(div == 'GameDiv' || div == "RegisterDiv" || div == "SettingsDiv" || div == "AboutDiv")
 	{
@@ -1134,9 +1069,6 @@ function validateGameTime(time) {
     return time < 60 ? false : true;
 }
 
-/**
- * This function gets the keys the user press for movment and show them to the user
- */
 $(document).ready(function () {
 	setKeyPressed("#keyup");
 	setKeyPressed("#keydown");
@@ -1144,10 +1076,7 @@ $(document).ready(function () {
 	setKeyPressed("#keyright");
 });
 
-/**
- * This function sets a listener for each user input key to show the user the key he pressed
- * @param {*} keyIdToSet key input id to set the listener to
- */
+
 function setKeyPressed(keyIdToSet) {
 	$(keyIdToSet).keydown(function (event) {
 		$(keyIdToSet).attr("value", event.key);
