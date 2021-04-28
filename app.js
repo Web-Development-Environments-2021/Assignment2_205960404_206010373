@@ -244,7 +244,7 @@ function sound(src) {
 
 function StartMusic(){
 	if(!musicPlay){
-	myMusic = new sound('AMNAMNAM.mp3');
+	myMusic = new sound('Sounds/AMNAMNAM.mp3');
 	myMusic.play();
 	musicPlay = true;
 	}
@@ -273,11 +273,8 @@ function Start() {
 	pac_color = "blue";
 	friendPackmanFlag = false;
 	var cnt = 100;
-	//var numBalls60 = 0.6 * BallsNum;
 	numBalls60 = Math.round(0.6 * numOfBallsFromUser);
-	//var numBalls30 = 0.3 * BallsNum;
 	numBalls30 = Math.round(0.3 * numOfBallsFromUser);
-	//var numBalls10 = 0.1 * BallsNum;
 	numBalls10 = Math.round(0.1 * numOfBallsFromUser);
 	food_remain = numBalls60 + numBalls30 + numBalls10;
 	food_remain_in_game = food_remain; 
@@ -1017,8 +1014,6 @@ function applySettings(){
 	document.getElementById('Colorfor60GameShow').value = document.getElementById('Colorfor60').value;
 	document.getElementById("GameTimeValGameShow").innerHTML = gameTimeFromUser;
 	document.getElementById("numOfMonstersGameShow").innerHTML = numOfMonstersFromUser;
-
-	
 
 	changeDivs("GameDiv");
 	StartNewGame();
