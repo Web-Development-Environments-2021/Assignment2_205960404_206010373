@@ -875,6 +875,7 @@ function changeDivs(div) {
 	$('#uname-error').hide();
 	$('#pass-error').hide();
 	
+	PauseGame();
 	hideDivs();
 	if(div == "LoginDiv" && userLogin){
 		if(confirm("You are already logged in, Do you want to move to settings? (Ok -to settings, cancel will log you out")){
