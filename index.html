@@ -192,95 +192,90 @@
 					<button id="setapplyBtn" onclick="applySettings()">Apply</button>
 				</div>
 			</div>
-						
-			<div class="GameDiv">
-				
-				<div class="row">
-				<div class="column" id="game">
-					<canvas id="canvas" height="720" width="720"></canvas>
-				</div>
-				<div class="column" id="right">
-				</div>
-				<div id="app" style="margin-left: 719px;">
-					
-				</div><br>
-				<label>life:</label>
-				<progress id="health" value="5" max="5" ></progress>
-
-				<div id="score" >
-					<div id="scoreidFix">
-					<label for="lblScore">SCORE:</label>
-					<label id="lblScore"> 0</label>
-					</div>
-					<div class="row">
-						<div class="column" id = "buttonsDiv" >
-							<button class="game-button" onclick="StartNewGame()">Start New Game</button><br>
-							<button class="game-button orange" onclick="ResumeGame()">Resume Game</button><br>
-							<button class="game-button red" onclick="PauseGame()">Pause Game</button><br>
-							<button class="game-button orange" onclick="StartMusic()">Resume Music</button><br>
-							<button class="game-button green" onclick="PauseMusic()">Pause Music</button>
-						</div>
-					<div >
-						
-						<h2>Your Game Settings are:</h2>
-
-						<div class="set" id="keyup1">
-						<label>Choose your UP Key:</label>
-						<label id="keyupGameShow"></label><br />
-					</div>
-					<div class="set" id="keydown1">
-						<label>Choose your Down Key:</label>
-						<label id="keydownGameShow"></label><br /></div>
-					<div class="set" id="keyright1">
-						<label>Choose your Right Key:</label>
-						<label id="keyrightGameShow"></label></div>
-					<div class="set" id="keyleft1">
-						<label>Choose your Left Key:</label>
-						<label id="keyleftGameShow"></label>
-					</div>
-	
-	
-	
-					<div class="set" id="SetNumOfBalls">
-						<label id="" class="SetNumOfBalls">Number Of Cookies:</label>
-						<label id="NumOfBallsGameShow"></label><br />	
-					</div>
-	
-					<div class="set">
-						<label id="favcolor">your favorite color for large cookies:</label>
-						<label for="ColorFor10"></label><input readonly type="color" id="Colorfor10GameShow" name="favcolor" value="#0000e6"><br>
-					</div>
-	
-					<div>
-						<label for="favcolor">your favorite color medium cookies:</label>
-						<label for="ColorFor30"></label><input readonly type="color" id="Colorfor30GameShow" name="favcolor" value="#0000e6"><br>
-					</div>
-	
-					<div>
-						<label for="favcolor">your favorite color small cookies:</label>
-						<input readonly type="color" id="Colorfor60GameShow" name="favcolor" value="#0000e6"><br>
-					</div>
-	
-	
-					<div>
-						<label>Game Time in seconds:</label>
-						<label id="GameTimeValGameShow"></label>
-					</div>
-					<div>
-						<label>Number Of Monsters:</label>
-						<label id="numOfMonstersGameShow"></label>
-						<br><br />
-	
-					</div></div>
-
-					</div>
-					<!-- <input id="lblScore" type="text" /> -->
-				</div>
-				
 			
+			<div class="GameDiv" id ="row">
+				<div class="column" id="row" >
+					<div id="app"  class="column"></div>
+
+					<label>life:</label>
+					<progress id="health" value="5" max="5" ></progress>
+					<div id="scoreidFix" class="column">
+						<label for="lblScore" >SCORE:</label>
+						<label id="lblScore"> 0</label>
+						<div class="row">
+							<div class="column" id = "buttonsDiv" >
+								<button class="game-button" onclick="StartNewGame()">Start New Game</button><br>
+								<button class="game-button orange" onclick="ResumeGame()">Resume Game</button><br>
+								<button class="game-button red" onclick="PauseGame()">Pause Game</button><br>
+								<button class="game-button orange" onclick="StartMusic()">Resume Music</button><br>
+								<button class="game-button green" onclick="PauseMusic()">Pause Music</button>
+							</div>
+						<div >
+							
+							<h2>Your Game Settings are:</h2>
+	
+							<div class="set" id="keyup1">
+							<label>Choose your UP Key:</label>
+							<label id="keyupGameShow"></label><br />
+						</div>
+						<div class="set" id="keydown1">
+							<label>Choose your Down Key:</label>
+							<label id="keydownGameShow"></label><br /></div>
+						<div class="set" id="keyright1">
+							<label>Choose your Right Key:</label>
+							<label id="keyrightGameShow"></label></div>
+						<div class="set" id="keyleft1">
+							<label>Choose your Left Key:</label>
+							<label id="keyleftGameShow"></label>
+						</div>
+		
+		
+		
+						<div class="set" id="SetNumOfBalls">
+							<label id="" class="SetNumOfBalls">Number Of Cookies:</label>
+							<label id="NumOfBallsGameShow"></label><br />	
+						</div>
+		
+						<div class="set">
+							<label id="favcolor">your favorite color for large cookies:</label>
+							<label for="ColorFor10"></label><input readonly type="color" id="Colorfor10GameShow" name="favcolor" value="#0000e6"><br>
+						</div>
+		
+						<div>
+							<label for="favcolor">your favorite color medium cookies:</label>
+							<label for="ColorFor30"></label><input readonly type="color" id="Colorfor30GameShow" name="favcolor" value="#0000e6"><br>
+						</div>
+		
+						<div>
+							<label for="favcolor">your favorite color small cookies:</label>
+							<input readonly type="color" id="Colorfor60GameShow" name="favcolor" value="#0000e6"><br>
+						</div>
+		
+		
+						<div>
+							<label>Game Time in seconds:</label>
+							<label id="GameTimeValGameShow"></label>
+						</div>
+						<div>
+							<label>Number Of Monsters:</label>
+							<label id="numOfMonstersGameShow"></label>
+							<br><br />
+		
+						</div></div>
+	
+						</div>
+						</div>
+						
+				</div>
+
+
+  				<div class="column" id="game">
+					<canvas id="canvas" height="600" width="600"></canvas>
+				  </div>
+
 			</div>
-			</div>
-			</div>
+		
+		</div>
 
 				<br /><br /><br /><br /><br /><br />
 

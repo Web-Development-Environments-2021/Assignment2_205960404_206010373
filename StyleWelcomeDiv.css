@@ -38,8 +38,8 @@ li:hover {
 {
    text-align: center;
    color:white;
-   overflow-y: hidden; /* Hide vertical scrollbar */
-   overflow-x: hidden; /* Hide horizontal scrollbar */
+   /* overflow-y: hidden; Hide vertical scrollbar */
+   /* overflow-x: hidden; Hide horizontal scrollbar */
 }
 .Menu
 {

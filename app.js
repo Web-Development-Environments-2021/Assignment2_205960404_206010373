@@ -439,12 +439,12 @@ function Draw() {
 	for (var i = 0; i < 12; i++) {
 		for (var j = 0; j < 12; j++) {
 			var center = new Object();
-			center.x = i * 60 + 30;
-			center.y = j * 60 + 30;
+			center.x = i * 50 + 25;
+			center.y = j * 50 + 25;
 			
 			if (board[i][j] == 2) {
 						context.beginPath();
-				context.arc(center.x, center.y, 30, side_packman_X, side_packman_Y); // half circle - Right
+				context.arc(center.x, center.y, 25, side_packman_X, side_packman_Y); // half circle - Right
 				context.lineTo(center.x, center.y);
 				context.fillStyle = pac_color; //color
 				context.fill();
@@ -472,21 +472,21 @@ function Draw() {
 				context.fill();
 			} else if (board[i][j] == 4) {
 				context.beginPath();
-				context.rect(center.x - 30, center.y - 30, 60, 60);
+				context.rect(center.x - 25, center.y - 25, 50, 50);
 				context.fillStyle = "white"; //color
 				context.fill();
 				
 			}  else if (board[i][j] >=10) {
-				context.drawImage(elmo, center.x-30, center.y-30, 60, 60);
+				context.drawImage(elmo, center.x-25, center.y-25, 50, 50);
 
 			}
 			  else if (board[i][j] ==9) {
-			context.drawImage(clock, center.x-30, center.y-30, 60, 60);
+			context.drawImage(clock, center.x-25, center.y-25, 50, 50);
 		}
 			if (MonsterOnPlace(i,j)) {
 				for(var inx=0; inx<MonstersArray.length;inx++){
 					if (MonstersArray[inx].i == i && MonstersArray[inx].j == j){
-						context.drawImage(MonstersArray[inx].image, center.x-30, center.y-30, 60, 60);
+						context.drawImage(MonstersArray[inx].image, center.x-25, center.y-25, 50, 50);
 					}
 				}
 			
@@ -973,14 +973,16 @@ startTimer();
 function PauseGame(){
 	stopIntervals();
 	stopGame = true;
+	PauseMusic();
 }
 
 function ResumeGame(){
 	if (stopGame){
 		stopGame = false;
-		interval = setInterval(UpdatePosition, 250);
+		interval = setInterval(UpdatePosition, 45);
 		monsterInterval = setInterval(UpdateMonsterPosition, 1000);
 		startTimer();
+		StartMusic();
 	}
 }
 function stopIntervals(){
@@ -989,15 +991,6 @@ function stopIntervals(){
 	onTimesUp();
 }
 
-function LivesVisible(){
-	$("#lifesDiv").html("");
-	for(let i=0;i<disqualification;i++){
-		let img=new Image(20,30);
-		img.src="life.png";
-		img.className="lifeImg";
-		document.getElementById("lifesDiv").appendChild(img);
-	}
-}
 
 function applySettings(){
 	keyUp = document.getElementById("keyup").placeholder;
